@@ -2,3 +2,4 @@
 import './flows/onboarding-assistant-flow';
 import './flows/rfp-consultant-flow';
 import './flows/enterprise-orchestrator-flow';
+import './flows/procurement-orchestrator-flow';
