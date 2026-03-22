@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, Zap, Award, Target, Briefcase, Gavel, ShieldCheck, Clock, Star, Layout, Sparkles, Waves } from 'lucide-react';
+import { ArrowRight, Zap, Award, Target, Briefcase, Gavel, ShieldCheck, Clock, Star, Layout, Sparkles, Waves, Search, BarChart3, Cpu, ShieldAlert } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { AuctionCard } from '@/components/AuctionCard';
 import { getMockAuctions } from '@/lib/db-mock';
@@ -9,20 +9,20 @@ export default async function Home() {
   const activeAuctions = auctions.filter(a => a.status === 'active').slice(0, 3);
 
   return (
-    <div className="space-y-20 pb-20">
+    <div className="space-y-24 pb-20">
       {/* Client-Facing Hero Section */}
-      <section className="relative overflow-hidden bg-background py-24 sm:py-32 border-b">
+      <section className="relative overflow-hidden bg-background pt-24 pb-32 border-b">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.primary.DEFAULT),white)] opacity-10"></div>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase mb-6 border border-primary/20">
-              <ShieldCheck className="w-3 h-3" /> Vetted Roster of Strategic Operators
+              <ShieldCheck className="w-3 h-3" /> Tier-0 Enterprise Logic Layer
             </div>
             <h1 className="font-headline text-5xl font-extrabold tracking-tight sm:text-7xl mb-6 text-foreground leading-[1.1]">
               Secure <span className="text-primary italic">Human Capacity</span> for the Agentic Shift.
             </h1>
             <h2 className="text-xl text-muted-foreground mb-10 leading-relaxed max-w-2xl">
-              The <span className="text-foreground font-bold">Deep Water</span> Marketplace: Free to Post, Free to Tender. We only charge a strategic fee when the win is adjudicated by our Tier-0 AI.
+              The <span className="text-foreground font-bold italic">Deep Water</span> Marketplace: Free to Post, Free to Tender. We adjudicate the "Worth" and charge only for the Strategic Win.
             </h2>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" className="h-14 px-10 text-lg rounded-full shadow-2xl shadow-primary/30 font-bold" asChild>
@@ -35,6 +35,29 @@ export default async function Home() {
               </Button>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* The Deep Water Workflow */}
+      <section className="container mx-auto px-4">
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+          <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-primary">The Deep Water Method</h2>
+          <h3 className="text-4xl font-extrabold tracking-tight">How we scale mission-critical sales.</h3>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {[
+            { step: '01', title: 'Post', desc: 'Founders post strategic RFPs for free. No upfront discovery fees.', icon: Target },
+            { step: '02', title: 'Tender', desc: 'Elite experts submit proposals for free. No cost-of-entry.', icon: Gavel },
+            { step: '03', title: 'Adjudicate', desc: 'The AMO autonomously determines the true Worth of the outcome.', icon: Cpu },
+            { step: '04', title: 'Win', desc: 'Value is extracted only when the Strategic Win is secured.', icon: Award },
+          ].map((item, i) => (
+            <div key={i} className="relative group p-8 rounded-[2rem] bg-card border hover:border-primary/50 transition-all">
+              <div className="absolute top-4 right-6 text-4xl font-black opacity-5 text-primary group-hover:opacity-10 transition-opacity">{item.step}</div>
+              <item.icon className="w-10 h-10 text-primary mb-6" />
+              <h4 className="text-xl font-bold mb-2">{item.title}</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -59,135 +82,81 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Tier-0 Core Features */}
-      <section className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-card border rounded-[2rem] p-8 space-y-4 hover:border-primary/50 transition-all group">
-            <div className="bg-primary/10 w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-              <Sparkles className="w-6 h-6 text-primary" />
-            </div>
-            <h3 className="text-xl font-bold">Strategic Memory</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Our AI orchestrators build a private "Strategic DNA" corpus for every founder, remembering preferences and past wins to inform future project tenders.
-            </p>
+      {/* Tier-0 Core Orchestrators */}
+      <section className="bg-primary/5 py-24 border-y">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-20 space-y-4">
+            <h2 className="text-3xl font-bold">Powered by <span className="text-primary italic">Tier-0</span> Logic</h2>
+            <p className="text-muted-foreground">A specialized suite of autonomous orchestrators managing the high-stakes project lifecycle.</p>
           </div>
-          <div className="bg-card border rounded-[2rem] p-8 space-y-4 hover:border-primary/50 transition-all group">
-            <div className="bg-primary/10 w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-              <Layout className="w-6 h-6 text-primary" />
-            </div>
-            <h3 className="text-xl font-bold">Visual Blueprints</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Visualize the "anxiety-free" future. Generate cinematic blueprints of your project's successful outcome before a single hour is billed.
-            </p>
-            <Link href="/rfp" className="text-xs font-bold text-primary flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-              Try it on any RFP <ArrowRight className="w-3 h-3" />
-            </Link>
-          </div>
-          <div className="bg-card border rounded-[2rem] p-8 space-y-4 hover:border-primary/50 transition-all group">
-            <div className="bg-primary/10 w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-              <Waves className="w-6 h-6 text-primary" />
-            </div>
-            <h3 className="text-xl font-bold">Deep Water Model</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Zero upfront costs. Free to post mission-critical RFPs and free for elite experts to tender. We only charge when the AMO adjudicates a win.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Value Prop */}
-      <section className="container mx-auto px-4 py-12">
-        <div className="bg-primary/5 rounded-[3rem] p-12 lg:p-20 border border-primary/10">
-          <div className="max-w-3xl mb-16">
-            <h2 className="font-headline text-4xl font-bold mb-6 italic text-primary">Price discovery for brilliance.</h2>
-            <p className="text-xl text-muted-foreground">We've replaced the exhaustive agency pitch dance with a transparent, market-driven environment for high-end professional results.</p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <div className="space-y-8">
-              <h3 className="text-2xl font-bold flex items-center gap-3 text-foreground">
-                <div className="bg-primary text-white p-2 rounded-lg shadow-lg">
-                  <Briefcase className="w-5 h-5" />
-                </div>
-                For Founders & CEOs
-              </h3>
-              <ul className="space-y-6">
-                <li className="flex gap-4">
-                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary font-bold text-xs border border-primary/20">01</div>
-                  <div>
-                    <p className="font-bold">Zero-Cost Discovery</p>
-                    <p className="text-muted-foreground">Post your mission-critical requirements for free. Receive deep strategic proposals from the world's best operators without a retainer.</p>
-                  </div>
-                </li>
-                <li className="flex gap-4">
-                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary font-bold text-xs border border-primary/20">02</div>
-                  <div>
-                    <p className="font-bold">Guaranteed Outcomes</p>
-                    <p className="text-muted-foreground">Payments are held in escrow. Funds are only released when the pre-defined strategic deliverables are met via the RFP process.</p>
-                  </div>
-                </li>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div className="space-y-6">
+              <div className="bg-foreground text-background p-4 rounded-2xl w-fit"><Cpu className="w-8 h-8" /></div>
+              <h4 className="text-2xl font-bold">AAO</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed italic">"Autonomous Agentic Orchestrator: End-to-end enterprise proposal synthesis & sub-agent swarm management."</p>
+              <ul className="space-y-2 text-xs font-bold text-foreground">
+                <li className="flex items-center gap-2"><BarChart3 className="w-3 h-3 text-primary" /> Win-Loss Telemetry Lookup</li>
+                <li className="flex items-center gap-2"><Sparkles className="w-3 h-3 text-primary" /> Persona-Based ROI Shaping</li>
               </ul>
             </div>
-
-            <div className="space-y-8">
-              <h3 className="text-2xl font-bold flex items-center gap-3 text-foreground">
-                <div className="bg-accent text-white p-2 rounded-lg shadow-lg">
-                  <Gavel className="w-5 h-5" />
-                </div>
-                For Strategic Experts
-              </h3>
-              <ul className="space-y-6">
-                <li className="flex gap-4">
-                  <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center shrink-0 text-accent font-bold text-xs border border-accent/20">01</div>
-                  <div>
-                    <p className="font-bold">Free to Tender</p>
-                    <p className="text-muted-foreground">Stop paying for "Connects" or leads. Submit your highest-performance proposals for free. We win only when you win.</p>
-                  </div>
-                </li>
-                <li className="flex gap-4">
-                  <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center shrink-0 text-accent font-bold text-xs border border-accent/20">02</div>
-                  <div>
-                    <p className="font-bold">Auction Your Yield</p>
-                    <p className="text-muted-foreground">Maximize the value of your limited monthly bandwidth. Let exclusivity drive your price floor via our auction engine.</p>
-                  </div>
-                </li>
+            <div className="space-y-6">
+              <div className="bg-foreground text-background p-4 rounded-2xl w-fit"><ShieldAlert className="w-8 h-8" /></div>
+              <h4 className="text-2xl font-bold">APO</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed italic">"Autonomous Procurement Orchestrator: Requirement harvesting, bid interrogation, & global logistics risk monitoring."</p>
+              <ul className="space-y-2 text-xs font-bold text-foreground">
+                <li className="flex items-center gap-2"><ShieldCheck className="w-3 h-3 text-accent" /> ESG Standards Validation</li>
+                <li className="flex items-center gap-2"><Scale className="w-3 h-3 text-accent" /> Should-Cost Simulation</li>
+              </ul>
+            </div>
+            <div className="space-y-6">
+              <div className="bg-foreground text-background p-4 rounded-2xl w-fit"><Zap className="w-8 h-8" /></div>
+              <h4 className="text-2xl font-bold">AMO</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed italic">"Autonomous Monetization Orchestrator: Value-based yield optimization & autonomous escrow adjudication."</p>
+              <ul className="space-y-2 text-xs font-bold text-foreground">
+                <li className="flex items-center gap-2"><DollarSign className="w-3 h-3 text-green-500" /> Dynamic Win-Fee Calculation</li>
+                <li className="flex items-center gap-2"><Waves className="w-3 h-3 text-green-500" /> Yield Window Analysis</li>
               </ul>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Roster Verification Section */}
-      <section className="container mx-auto px-4 py-12">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <h3 className="text-sm font-bold uppercase tracking-widest text-primary mb-2">Our Standards</h3>
-          <h2 className="text-4xl font-extrabold">The 4% Acceptance Roster</h2>
-          <p className="text-muted-foreground mt-4">We hand-vet every expert on RFPCentral to ensure only top-tier strategic outcomes are delivered.</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+      {/* Roster Standards */}
+      <section className="container mx-auto px-4">
+        <div className="bg-card border-2 border-dashed rounded-[3rem] p-16 text-center space-y-10">
           <div className="space-y-4">
-            <div className="bg-primary/10 w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-6 rotate-3">
-              <ShieldCheck className="w-10 h-10 text-primary" />
-            </div>
-            <h3 className="text-xl font-bold">Deep Vetting</h3>
-            <p className="text-muted-foreground text-sm">Every expert undergoes identity verification and a rigorous review of past client outcomes.</p>
+            <h3 className="text-sm font-bold uppercase tracking-widest text-primary">The 4% Roster</h3>
+            <h2 className="text-5xl font-extrabold tracking-tight italic">Outcome Certainty, Guaranteed.</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              We hand-vet every expert through a rigorous professional portfolio review and identity audit. No discovery fees. No billing for hours. Only results.
+            </p>
           </div>
-          <div className="space-y-4">
-            <div className="bg-primary/10 w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-6 -rotate-3">
-              <Zap className="w-10 h-10 text-primary" />
-            </div>
-            <h3 className="text-xl font-bold">Instant Capacity</h3>
-            <p className="text-muted-foreground text-sm">Secure urgent strategic audits or project sprints in minutes. No weeks-long procurement cycles.</p>
-          </div>
-          <div className="space-y-4">
-            <div className="bg-primary/10 w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-6 rotate-6">
-              <Award className="w-10 h-10 text-primary" />
-            </div>
-            <h3 className="text-xl font-bold">Proven Performance</h3>
-            <p className="text-muted-foreground text-sm">Our roster includes former Big 4 partners, YC-backed founders, and boutique agency leads focused on results.</p>
+          <div className="flex flex-col sm:flex-row justify-center gap-6">
+            <Button size="lg" className="rounded-full px-12" asChild>
+              <Link href="/rfp/create">Post Mission-Critical RFP</Link>
+            </Button>
+            <Button size="lg" variant="ghost" className="rounded-full px-12 font-bold" asChild>
+              <Link href="/about">Our Philosophy <ArrowRight className="ml-2 w-4 h-4" /></Link>
+            </Button>
           </div>
         </div>
       </section>
     </div>
+  );
+}
+
+function Scale({ className }: { className?: string }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h18"/>
+    </svg>
+  );
+}
+
+function DollarSign({ className }: { className?: string }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+    </svg>
   );
 }

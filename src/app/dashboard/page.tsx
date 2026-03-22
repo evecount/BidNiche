@@ -2,7 +2,7 @@ import { getMockUserAuctions, getMockUserBids, getCorpusItems } from '@/lib/db-m
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Plus, Gavel, ShoppingBag, Clock, ArrowRight, ExternalLink, Briefcase, Sparkles, Brain, DollarSign } from 'lucide-react';
+import { Plus, Gavel, ShoppingBag, Clock, ArrowRight, ExternalLink, Briefcase, Sparkles, Brain, DollarSign, Cpu, ShieldAlert, Zap, Globe } from 'lucide-react';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 
@@ -20,7 +20,7 @@ export default async function DashboardPage() {
             Operational Hub
           </h1>
           <p className="text-muted-foreground mt-2">
-            Manage your strategic service acquisitions, expert listings, and AI knowledge base.
+            Manage your strategic service acquisitions, expert listings, and Tier-0 orchestrators.
           </p>
         </div>
         <div className="flex flex-wrap gap-3">
@@ -42,23 +42,28 @@ export default async function DashboardPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-12">
+      {/* Tier-0 System Status */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
         <Card className="bg-primary/5 border-primary/20 overflow-hidden relative group">
-          <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">
-             <Briefcase className="w-12 h-12" />
-          </div>
           <CardHeader className="pb-2">
-            <CardDescription className="text-[10px] font-bold uppercase tracking-widest">Active Acquisitions</CardDescription>
-            <CardTitle className="text-3xl font-bold">{myBids.length}</CardTitle>
+            <CardDescription className="text-[10px] font-bold uppercase tracking-widest flex items-center gap-1">
+              <Cpu className="w-3 h-3" /> AAO Status
+            </CardDescription>
+            <div className="flex items-center gap-2 mt-1">
+               <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+               <CardTitle className="text-xl font-bold">Proposal Active</CardTitle>
+            </div>
           </CardHeader>
         </Card>
         <Card className="bg-accent/5 border-accent/20 overflow-hidden relative group">
-          <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">
-             <Gavel className="w-12 h-12" />
-          </div>
           <CardHeader className="pb-2">
-            <CardDescription className="text-[10px] font-bold uppercase tracking-widest">Capacity Yielding</CardDescription>
-            <CardTitle className="text-3xl font-bold">{myAuctions.length}</CardTitle>
+            <CardDescription className="text-[10px] font-bold uppercase tracking-widest flex items-center gap-1">
+              <ShieldAlert className="w-3 h-3" /> APO Status
+            </CardDescription>
+            <div className="flex items-center gap-2 mt-1">
+               <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+               <CardTitle className="text-xl font-bold">Risk Watch ON</CardTitle>
+            </div>
           </CardHeader>
         </Card>
         <Card className="bg-muted border-border overflow-hidden relative group lg:col-span-2">
@@ -68,9 +73,9 @@ export default async function DashboardPage() {
           </div>
           <CardHeader className="pb-2">
             <CardDescription className="text-[10px] font-bold uppercase tracking-widest text-accent flex items-center gap-1">
-              <Sparkles className="w-3 h-3" /> Strategic DNA Fragments
+              <Sparkles className="w-3 h-3" /> Strategic DNA Corpus
             </CardDescription>
-            <CardTitle className="text-3xl font-bold">{dnaItems.length}</CardTitle>
+            <CardTitle className="text-2xl font-bold">{dnaItems.length} Strategic Fragments</CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-xs text-muted-foreground flex items-center gap-1 mt-1">
