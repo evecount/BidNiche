@@ -1,8 +1,9 @@
+
 'use client';
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { FileText, Sparkles, Target, DollarSign, Calendar, ArrowRight, ShieldCheck, Zap } from 'lucide-react';
+import { FileText, Sparkles, Target, DollarSign, Calendar, ArrowRight, ShieldCheck, Zap, Lightbulb } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -12,6 +13,24 @@ import { rfpConsultant, type RFPConsultantOutput } from '@/ai/flows/rfp-consulta
 import { createMockRFP } from '@/lib/db-mock';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+
+const SUGGESTED_BOUNTIES = [
+  {
+    title: "Outbound Sales Machine Setup",
+    description: "Build an outbound sales motion including lead lists, email sequences, and SDR CRM setup for a B2B SaaS product.",
+    budget: "$5k - $10k"
+  },
+  {
+    title: "Product Launch PR Sprint",
+    description: "Full communications strategy for a Q4 product launch. Includes press release, journalist outreach, and media kit design.",
+    budget: "$3k - $7k"
+  },
+  {
+    title: "Enterprise Legal Infrastructure",
+    description: "Design and vet a suite of Master Sales Agreements, NDAs, and DPAs for high-ticket enterprise sales cycles.",
+    budget: "$4k - $8k"
+  }
+];
 
 export default function SubmitRFPPage() {
   const router = useRouter();
@@ -26,6 +45,16 @@ export default function SubmitRFPPage() {
     budgetRange: '',
     timeline: ''
   });
+
+  const applyTemplate = (template: typeof SUGGESTED_BOUNTIES[0]) => {
+    setFormData({
+      ...formData,
+      title: template.title,
+      description: template.description,
+      budgetRange: template.budget,
+    });
+    toast({ title: "Template Applied", description: "You can now refine the details before submitting." });
+  };
 
   const handleRunAnalysis = async () => {
     if (!formData.title || !formData.description) {
@@ -80,12 +109,30 @@ export default function SubmitRFPPage() {
         <div className="lg:col-span-7 space-y-8">
           <div className="space-y-2">
             <h1 className="text-4xl font-extrabold tracking-tight">Post a Strategic Bounty</h1>
-            <p className="text-muted-foreground text-lg">Define your elite outcome and have verified experts compete for the execution.</p>
+            <p className="text-muted-foreground text-lg">Define your fractional outcome and have verified experts compete for the execution.</p>
+          </div>
+
+          <div className="space-y-4">
+            <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-2">
+              <Lightbulb className="w-3.5 h-3.5 text-primary" /> Popular Bounties
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              {SUGGESTED_BOUNTIES.map((t, i) => (
+                <button 
+                  key={i} 
+                  onClick={() => applyTemplate(t)}
+                  className="text-left p-3 rounded-xl border bg-card hover:border-primary hover:bg-primary/5 transition-all group"
+                >
+                  <p className="text-xs font-bold group-hover:text-primary transition-colors truncate">{t.title}</p>
+                  <p className="text-[10px] text-muted-foreground mt-1 line-clamp-2">{t.description}</p>
+                </button>
+              ))}
+            </div>
           </div>
 
           <Card className="border-primary/20 shadow-2xl overflow-hidden">
             <CardHeader className="bg-primary/5 border-b px-8 py-6">
-              <CardTitle className="flex items-center gap-2">
+              <CardTitle className="flex items-center gap-2 text-xl font-bold">
                 <FileText className="w-5 h-5 text-primary" />
                 RFP Definition
               </CardTitle>
@@ -104,7 +151,7 @@ export default function SubmitRFPPage() {
               <div className="space-y-2">
                 <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Requirements & Deliverables</label>
                 <Textarea 
-                  placeholder="Describe the high-ticket outcome you need. Be specific about the 'What' and 'Why'." 
+                  placeholder="Describe the fractional outcome you need. Be specific about the 'What' and 'Why'." 
                   className="min-h-[200px] focus-visible:ring-primary text-base"
                   value={formData.description}
                   onChange={e => setFormData({...formData, description: e.target.value})}
@@ -226,7 +273,7 @@ export default function SubmitRFPPage() {
             <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10 flex gap-4 items-start">
               <ShieldCheck className="w-6 h-6 text-primary shrink-0" />
               <p className="text-xs text-muted-foreground leading-relaxed">
-                By launching this bounty, you authorize RFPCentral to reach out to our network of verified elite experts. Your funds will be held in escrow upon awarding the contract.
+                By launching this bounty, you authorize RFPCentral to reach out to our network of verified experts. Your funds will be held in escrow upon awarding the contract.
               </p>
             </div>
           </div>

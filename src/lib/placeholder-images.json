@@ -53,6 +53,18 @@
       "description": "Legal Contract Suite",
       "imageUrl": "https://picsum.photos/seed/legal1/600/400",
       "imageHint": "legal gavel"
+    },
+    {
+      "id": "sales",
+      "description": "Outbound Sales Machine",
+      "imageUrl": "https://picsum.photos/seed/sales1/600/400",
+      "imageHint": "sales calls"
+    },
+    {
+      "id": "comms",
+      "description": "Communications & PR Strategy",
+      "imageUrl": "https://picsum.photos/seed/comms1/600/400",
+      "imageHint": "public relations"
     }
   ]
 }

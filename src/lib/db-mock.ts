@@ -1,3 +1,4 @@
+
 import { Auction, Bid, UserProfile, RFP, Proposal } from './types';
 import { PlaceHolderImages } from './placeholder-images';
 
@@ -54,6 +55,40 @@ let auctions: Auction[] = [
     status: 'active'
   },
   {
+    id: '10',
+    sellerId: 'user-seller-10',
+    sellerName: 'Growth Engine Sales',
+    sellerRating: 4.9,
+    sellerSales: 34,
+    isVerified: true,
+    title: 'Outbound Sales Machine: 40-Hour Sprint',
+    description: 'We build your outbound sales motion from scratch. Includes lead list building (500 qualified leads), email sequence design, and SDR training. Guaranteed lead-gen infrastructure for B2B startups.',
+    imageUrl: PlaceHolderImages[9].imageUrl,
+    startingPrice: 4500,
+    currentPrice: 5100,
+    reservePrice: 5500,
+    createdAt: Date.now() - 100000,
+    endAt: Date.now() + 345600000,
+    status: 'active'
+  },
+  {
+    id: '11',
+    sellerId: 'user-seller-11',
+    sellerName: 'Veritas PR',
+    sellerRating: 5.0,
+    sellerSales: 21,
+    isVerified: true,
+    title: 'Product Launch Communications Block',
+    description: '15 hours of direct PR capacity. Includes drafting your announcement press release, journalist list curation, and 3 high-impact media pitches. Secure the narrative for your next launch.',
+    imageUrl: PlaceHolderImages[10].imageUrl,
+    startingPrice: 3000,
+    currentPrice: 3800,
+    reservePrice: 4000,
+    createdAt: Date.now() - 200000,
+    endAt: Date.now() + 518400000,
+    status: 'active'
+  },
+  {
     id: '4',
     sellerId: 'user-seller-4',
     sellerName: 'Lexington Strategic Advisors',
@@ -69,97 +104,12 @@ let auctions: Auction[] = [
     createdAt: Date.now() - 200000,
     endAt: Date.now() + 259200000, 
     status: 'active'
-  },
-  {
-    id: '5',
-    sellerId: 'user-seller-5',
-    sellerName: 'SecuredOps Elite',
-    sellerRating: 4.8,
-    sellerSales: 29,
-    isVerified: true,
-    title: 'Enterprise Security Compliance Audit',
-    description: 'A 40-hour deep-dive security audit designed for companies facing mission-critical compliance hurdles. Delivers a verified roadmap for SOC2/ISO readiness. Stop sweating the audit.',
-    imageUrl: PlaceHolderImages[5].imageUrl,
-    startingPrice: 8000,
-    currentPrice: 9500,
-    reservePrice: 10000,
-    createdAt: Date.now() - 100000,
-    endAt: Date.now() + 86400000,
-    status: 'active'
-  },
-  {
-    id: '6',
-    sellerId: 'user-seller-6',
-    sellerName: 'DesignSprint Collective',
-    sellerRating: 4.9,
-    sellerSales: 56,
-    isVerified: true,
-    title: 'MVP UI/UX Refresh: 2-Week Sprint',
-    description: 'Stop losing users to clunky interfaces. This 2-week high-intensity sprint delivers a full UI/UX overhaul of your core product flow, specifically for startups looking to improve retention before their next round.',
-    imageUrl: PlaceHolderImages[1].imageUrl,
-    startingPrice: 4000,
-    currentPrice: 4800,
-    reservePrice: 5500,
-    createdAt: Date.now() - 150000,
-    endAt: Date.now() + 432000000,
-    status: 'active'
-  },
-  {
-    id: '7',
-    sellerId: 'user-seller-7',
-    sellerName: 'ScaleTech Partners',
-    sellerRating: 5.0,
-    sellerSales: 22,
-    isVerified: true,
-    title: 'Fractional CTO: 3-Month Architecture Roadmap',
-    description: 'For startups scaling from MVP to Enterprise. A dedicated fractional CTO block to audit your stack, mentor your lead engineer, and design a scalable multi-region cloud architecture.',
-    imageUrl: PlaceHolderImages[2].imageUrl,
-    startingPrice: 15000,
-    currentPrice: 18500,
-    reservePrice: 20000,
-    createdAt: Date.now() - 300000,
-    endAt: Date.now() + 604800000,
-    status: 'active'
-  },
-  {
-    id: '8',
-    sellerId: 'user-seller-8',
-    sellerName: 'GrowthOps Strategy',
-    sellerRating: 4.7,
-    sellerSales: 31,
-    isVerified: true,
-    title: 'GTM Launch Sprint: 20-Hour Growth Audit',
-    description: 'Launching a new product or feature? This outcome package includes a full customer acquisition cost (CAC) audit and a 90-day multi-channel growth roadmap. Data-driven certainty for your next launch.',
-    imageUrl: PlaceHolderImages[3].imageUrl,
-    startingPrice: 6000,
-    currentPrice: 7200,
-    reservePrice: 8000,
-    createdAt: Date.now() - 500000,
-    endAt: Date.now() + 345600000,
-    status: 'active'
-  },
-  {
-    id: '9',
-    sellerId: 'user-seller-9',
-    sellerName: 'MainStreet Legal',
-    sellerRating: 5.0,
-    sellerSales: 12,
-    isVerified: true,
-    title: 'Sales Contract Suite: MSA & NDA Design',
-    description: 'Enterprise-ready legal infrastructure. We design your Master Sales Agreement (MSA), NDA, and Data Processing Addendum (DPA) tailored for high-ticket B2B sales cycles. Close deals faster with vetted contracts.',
-    imageUrl: PlaceHolderImages[8].imageUrl,
-    startingPrice: 3000,
-    currentPrice: 3500,
-    reservePrice: 4000,
-    createdAt: Date.now() - 10000,
-    endAt: Date.now() + 604800000,
-    status: 'active'
   }
 ];
 
 let bids: Bid[] = [
   { id: 'b1', auctionId: '1', bidderId: 'b-1', bidderName: 'TechScale Founders', amount: 6200, createdAt: Date.now() - 50000 },
-  { id: 'b2', auctionId: '7', bidderId: 'b-2', bidderName: 'VentureReady SaaS', amount: 18500, createdAt: Date.now() - 100000 },
+  { id: 'b2', auctionId: '10', bidderId: 'b-2', bidderName: 'VentureReady SaaS', amount: 5100, createdAt: Date.now() - 100000 },
 ];
 
 let rfps: RFP[] = [
