@@ -112,7 +112,7 @@ const estimateOutcomeCertainty = ai.defineTool(
 );
 
 /**
- * The Master Strategic Orchestrator
+ * The Master Strategic Orchestrator Prompt
  */
 const orchestratorPrompt = ai.definePrompt({
   name: 'strategicOrchestratorPrompt',
@@ -141,23 +141,25 @@ History:
 User: {{{message}}}`,
 });
 
+/**
+ * The Onboarding Assistant Flow
+ */
+const onboardingAssistantFlow = ai.defineFlow(
+  {
+    name: 'onboardingAssistantFlow',
+    inputSchema: OnboardingAssistantInputSchema,
+    outputSchema: OnboardingAssistantOutputSchema,
+  },
+  async (input) => {
+    const { output } = await orchestratorPrompt(input);
+    if (!output) throw new Error('Strategic Orchestration failed');
+    return output;
+  }
+);
+
+/**
+ * Exported Wrapper for Next.js Server Actions
+ */
 export async function onboardingAssistant(input: OnboardingAssistantInput): Promise<OnboardingAssistantOutput> {
-  const flow = ai.defineFlow(
-    {
-      name: 'onboardingAssistantFlow',
-      inputSchema: OnboardingAssistantInputSchema,
-      outputSchema: OnboardingAssistantOutputSchema,
-    },
-    async (input) => {
-      const { output } = await ai.generate({
-        prompt: orchestratorPrompt(input),
-      });
-
-      if (!output) throw new Error('Strategic Orchestration failed');
-
-      return output;
-    }
-  );
-
-  return flow(input);
+  return onboardingAssistantFlow(input);
 }

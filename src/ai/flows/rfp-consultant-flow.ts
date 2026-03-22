@@ -25,7 +25,7 @@ const RFPConsultantOutputSchema = z.object({
 export type RFPConsultantInput = z.infer<typeof RFPConsultantInputSchema>;
 export type RFPConsultantOutput = z.infer<typeof RFPConsultantOutputSchema>;
 
-const prompt = ai.definePrompt({
+const rfpConsultantPrompt = ai.definePrompt({
   name: 'rfpConsultantPrompt',
   input: { schema: RFPConsultantInputSchema },
   output: { schema: RFPConsultantOutputSchema },
@@ -45,19 +45,22 @@ Provide:
 Tone: Professional, Insightful, Executive-level. Focus on outcome certainty.`,
 });
 
-export async function rfpConsultant(input: RFPConsultantInput): Promise<RFPConsultantOutput> {
-  const flow = ai.defineFlow(
-    {
-      name: 'rfpConsultantFlow',
-      inputSchema: RFPConsultantInputSchema,
-      outputSchema: RFPConsultantOutputSchema,
-    },
-    async (input) => {
-      const { output } = await prompt(input);
-      if (!output) throw new Error('AI Strategic Analysis failed');
-      return output;
-    }
-  );
+const rfpConsultantFlow = ai.defineFlow(
+  {
+    name: 'rfpConsultantFlow',
+    inputSchema: RFPConsultantInputSchema,
+    outputSchema: RFPConsultantOutputSchema,
+  },
+  async (input) => {
+    const { output } = await rfpConsultantPrompt(input);
+    if (!output) throw new Error('AI Strategic Analysis failed');
+    return output;
+  }
+);
 
-  return flow(input);
+/**
+ * Exported Wrapper for Next.js Server Actions
+ */
+export async function rfpConsultant(input: RFPConsultantInput): Promise<RFPConsultantOutput> {
+  return rfpConsultantFlow(input);
 }
