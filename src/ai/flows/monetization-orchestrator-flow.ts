@@ -2,7 +2,7 @@
 /**
  * @fileOverview Autonomous Monetization Orchestrator (AMO) - Tier-0 Value Extraction Layer.
  * 
- * Orchestrates value-based pricing, escrow adjudication, and autonomous yield 
+ * Orchestrates value-based pricing, tender win fees, and autonomous yield 
  * optimization for the strategic marketplace.
  */
 
@@ -18,10 +18,11 @@ const AMOInputSchema = z.object({
 
 const AMOOutputSchema = z.object({
   suggestedFloorPrice: z.number().describe('The optimal starting price for an auction.'),
+  tenderWinFee: z.number().describe('The strategic fee charged to the winner upon tender completion.'),
   platformFeeAdjustment: z.number().describe('Dynamic platform fee percentage based on value delta.'),
   yieldStrategy: z.string().describe('Autonomous advice on when to release this capacity block.'),
   escrowAdjudicationLogic: z.string().describe('The logic used to determine if milestones are met for fund release.'),
-  valueDeltaNote: z.string().describe('Explanation of why this price maximizes outcome certainty.'),
+  valueDeltaNote: z.string().describe('Explanation of why this price maximizes outcome certainty and platform yield.'),
 });
 
 export type AMOInput = z.infer<typeof AMOInputSchema>;
@@ -76,16 +77,17 @@ const amoPrompt = ai.definePrompt({
   tools: [analyzeMarketLiquidity, validateMilestoneArtifacts],
   prompt: `You are the RFPCentral Autonomous Monetization Orchestrator (AMO). You operate at the "Tier-0 Value Extraction Layer".
 
-Your mission: Maximize yield for experts while ensuring fair value capture for the platform.
+Your mission: Maximize platform yield by accurately adjudicating the "Worth" of high-stakes tenders.
 
-1. Value-Based Pricing: Use the complexity score ({{{complexityScore}}}) and current market demand ({{{currentMarketDemand}}}) to set a starting floor price. High complexity outcomes should have a significantly higher floor.
-2. Yield Strategy: Use analyzeMarketLiquidity to tell the expert exactly when they should list their capacity to capture the highest "win probability delta."
-3. Escrow Guardrails: Define the logic for how funds will be released. Use validateMilestoneArtifacts to explain the autonomous audit trail.
-4. Dynamic Fees: Adjust the platform fee. If we are providing high-touch AAO/APO orchestration, the fee should reflect that "Tier-0" value.
+1. Business Model: Posting RFPs and Tendering is FREE. We monetize on the "Win".
+2. Tender Win Fee: Calculate a "Tender Win Fee" based on the project's complexity ({{{complexityScore}}}) and the market demand ({{{currentMarketDemand}}}). This fee is charged when a proposal is awarded.
+3. Value-Based Pricing: Set a suggested floor price that reflects the high "Business Impact Delta" of the outcome.
+4. Yield Strategy: Advise the expert on how to capture maximum yield via scarcity and timing.
+5. Escrow Logic: Define how the "Win Fee" and project funds will be handled autonomously.
 
 Project: {{{projectContext}}}
 
-Provide the full AMO Monetization Strategy and Price Floor.`,
+Provide the full AMO Monetization Strategy, Tender Win Fee, and Price Floor.`,
 });
 
 const amoOrchestratorFlow = ai.defineFlow(
