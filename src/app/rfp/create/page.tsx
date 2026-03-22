@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { FileText, Sparkles, Target, DollarSign, Calendar, ArrowRight, ShieldCheck, Zap, Lightbulb } from 'lucide-react';
+import { FileText, Sparkles, Target, DollarSign, Calendar, ArrowRight, ShieldCheck, Zap, Lightbulb, Bot } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -15,29 +15,28 @@ import { cn } from '@/lib/utils';
 
 const SUGGESTED_BOUNTIES = [
   {
+    title: "Agentic Support Orchestration",
+    description: "Design a 3-agent orchestration to handle tier-1 support, internal technical documentation search, and auto-routing of complex tickets.",
+    budget: "$8k - $15k",
+    icon: Bot
+  },
+  {
     title: "Short-Form Video Engine",
-    description: "Chop 10 long-form podcasts into 40 high-engagement YouTube Shorts/TikToks. Includes captions and B-roll.",
-    budget: "$2k - $4k"
-  },
-  {
-    title: "Bookkeeping & Payroll Setup",
-    description: "Reconcile 6 months of backlogged transactions in Xero, setup Gusto payroll, and design monthly reporting dashboard.",
-    budget: "$3k - $5k"
-  },
-  {
-    title: "Performance Ad Overhaul",
-    description: "Deep audit of Meta/Google ad accounts. Create 10 new high-converting ad creatives and landing page wireframes.",
-    budget: "$5k - $10k"
+    description: "Chop 10 long-form podcasts into 40 high-engagement YouTube Shorts/TikToks. Includes AI captions and B-roll.",
+    budget: "$2k - $4k",
+    icon: Zap
   },
   {
     title: "SOC2 Compliance Roadmap",
     description: "Full gap analysis and evidence collection roadmap for SOC2 Type 1 readiness. Includes policy drafting.",
-    budget: "$10k - $20k"
+    budget: "$10k - $20k",
+    icon: ShieldCheck
   },
   {
     title: "Zapier/Make Automation Sprint",
     description: "Connect HubSpot, Slack, and Stripe into a seamless automated lead-to-cash workflow to reduce manual data entry.",
-    budget: "$2k - $6k"
+    budget: "$2k - $6k",
+    icon: Target
   }
 ];
 
@@ -98,7 +97,8 @@ export default function SubmitRFPPage() {
         budgetRange: formData.budgetRange,
         timeline: formData.timeline,
         expiresAt: Date.now() + (7 * 86400000), // 7 days
-        aiAssessment: analysis?.strategicAssessment
+        aiAssessment: analysis?.strategicAssessment,
+        status: 'open'
       });
 
       toast({ title: "Bounty Live", description: "Your strategic bounty has been broadcast to verified experts." });
@@ -125,15 +125,16 @@ export default function SubmitRFPPage() {
             <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-2">
               <Lightbulb className="w-3.5 h-3.5 text-primary" /> Popular Bounties
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {SUGGESTED_BOUNTIES.map((t, i) => (
                 <button 
                   key={i} 
                   onClick={() => applyTemplate(t)}
-                  className="text-left p-3 rounded-xl border bg-card hover:border-primary hover:bg-primary/5 transition-all group"
+                  className="text-left p-4 rounded-xl border bg-card hover:border-primary hover:bg-primary/5 transition-all group relative overflow-hidden"
                 >
-                  <p className="text-xs font-bold group-hover:text-primary transition-colors truncate">{t.title}</p>
-                  <p className="text-[10px] text-muted-foreground mt-1 line-clamp-2">{t.description}</p>
+                  <t.icon className="absolute -right-2 -top-2 w-12 h-12 text-primary/5 group-hover:text-primary/10 transition-colors" />
+                  <p className="text-sm font-bold group-hover:text-primary transition-colors">{t.title}</p>
+                  <p className="text-xs text-muted-foreground mt-1 line-clamp-2">{t.description}</p>
                 </button>
               ))}
             </div>
@@ -150,7 +151,7 @@ export default function SubmitRFPPage() {
               <div className="space-y-2">
                 <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Bounty Title</label>
                 <Input 
-                  placeholder="e.g. Enterprise Data Privacy Audit & Compliance Roadmap" 
+                  placeholder="e.g. Multi-Agent System for Automated Sales Prospecting" 
                   value={formData.title}
                   onChange={e => setFormData({...formData, title: e.target.value})}
                   className="h-12 text-lg focus-visible:ring-primary"
@@ -160,7 +161,7 @@ export default function SubmitRFPPage() {
               <div className="space-y-2">
                 <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Requirements & Deliverables</label>
                 <Textarea 
-                  placeholder="Describe the fractional outcome you need. Be specific about the 'What' and 'Why'." 
+                  placeholder="Describe the outcome you need. For AI work, specify if you need agent orchestration, fine-tuning, or a custom RAG system." 
                   className="min-h-[200px] focus-visible:ring-primary text-base"
                   value={formData.description}
                   onChange={e => setFormData({...formData, description: e.target.value})}
@@ -173,7 +174,7 @@ export default function SubmitRFPPage() {
                     <DollarSign className="w-3.5 h-3.5" /> Budget Range
                   </label>
                   <Input 
-                    placeholder="e.g. $5k - $10k" 
+                    placeholder="e.g. $5k - $15k" 
                     value={formData.budgetRange}
                     onChange={e => setFormData({...formData, budgetRange: e.target.value})}
                   />
@@ -183,7 +184,7 @@ export default function SubmitRFPPage() {
                     <Calendar className="w-3.5 h-3.5" /> Expected Timeline
                   </label>
                   <Input 
-                    placeholder="e.g. 4 Weeks" 
+                    placeholder="e.g. 3 Weeks" 
                     value={formData.timeline}
                     onChange={e => setFormData({...formData, timeline: e.target.value})}
                   />

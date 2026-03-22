@@ -3,6 +3,40 @@ import { PlaceHolderImages } from './placeholder-images';
 
 let auctions: Auction[] = [
   {
+    id: 'ai-1',
+    sellerId: 'user-seller-ai-1',
+    sellerName: 'NeuralOps Architects',
+    sellerRating: 5.0,
+    sellerSales: 12,
+    isVerified: true,
+    title: 'Agentic Workflow Orchestration (3-Agent System)',
+    description: 'Deploy a custom multi-agent system using LangGraph or CrewAI. Includes lead research agent, content generation agent, and quality audit agent specialized for your industry.',
+    imageUrl: PlaceHolderImages[5].imageUrl,
+    startingPrice: 8000,
+    currentPrice: 9500,
+    reservePrice: 12000,
+    createdAt: Date.now() - 3600000,
+    endAt: Date.now() + 259200000,
+    status: 'active'
+  },
+  {
+    id: 'ai-2',
+    sellerId: 'user-seller-ai-2',
+    sellerName: 'LogicStream AI',
+    sellerRating: 4.9,
+    sellerSales: 24,
+    isVerified: true,
+    title: 'Custom RAG Implementation & LLM Fine-Tuning',
+    description: 'Connect your internal documentation to a private, secure LLM. Includes vector database setup (Pinecone/Weaviate) and custom system prompt engineering for proprietary data.',
+    imageUrl: PlaceHolderImages[11].imageUrl,
+    startingPrice: 6000,
+    currentPrice: 7200,
+    reservePrice: 8000,
+    createdAt: Date.now() - 7200000,
+    endAt: Date.now() + 172800000,
+    status: 'active'
+  },
+  {
     id: '1',
     sellerId: 'user-seller-1',
     sellerName: 'FractionalCMO Group',
@@ -54,23 +88,6 @@ let auctions: Auction[] = [
     status: 'active'
   },
   {
-    id: '13',
-    sellerId: 'user-seller-13',
-    sellerName: 'AuditForce Security',
-    sellerRating: 4.9,
-    sellerSales: 28,
-    isVerified: true,
-    title: 'Penetration Test & Security Audit',
-    description: 'Mission-critical security audit for your web application. Includes vulnerability scanning, manual pen-testing, and a remediation roadmap for SOC2 compliance.',
-    imageUrl: PlaceHolderImages[11].imageUrl,
-    startingPrice: 4000,
-    currentPrice: 4500,
-    reservePrice: 5000,
-    createdAt: Date.now() - 200000,
-    endAt: Date.now() + 172800000,
-    status: 'active'
-  },
-  {
     id: '3',
     sellerId: 'user-seller-3',
     sellerName: 'PeopleFirst Ops',
@@ -86,27 +103,11 @@ let auctions: Auction[] = [
     createdAt: Date.now() - 30000,
     endAt: Date.now() + 172800000,
     status: 'active'
-  },
-  {
-    id: '4',
-    sellerId: 'user-seller-4',
-    sellerName: 'Lexington Strategic Advisors',
-    sellerRating: 5.0,
-    sellerSales: 15,
-    isVerified: true,
-    title: 'Series A Investor Roadshow Preparation',
-    description: 'Mission-critical capacity for founders preparing for a Series A raise. Includes pitch deck narrative audit and financial model stress-testing.',
-    imageUrl: PlaceHolderImages[4].imageUrl,
-    startingPrice: 12000,
-    currentPrice: 14500,
-    reservePrice: 15000,
-    createdAt: Date.now() - 200000,
-    endAt: Date.now() + 259200000, 
-    status: 'active'
   }
 ];
 
 let bids: Bid[] = [
+  { id: 'b-ai-1', auctionId: 'ai-1', bidderId: 'b-101', bidderName: 'Global SaaS Co', amount: 9500, createdAt: Date.now() - 3600000 },
   { id: 'b1', auctionId: '1', bidderId: 'b-1', bidderName: 'TechScale Founders', amount: 6200, createdAt: Date.now() - 50000 },
   { id: 'b2', auctionId: '12', bidderId: 'b-2', bidderName: 'CreatorX Studio', amount: 1850, createdAt: Date.now() - 10000 },
 ];
