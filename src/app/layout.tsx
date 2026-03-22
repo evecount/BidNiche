@@ -1,4 +1,4 @@
-import type {Metadata} from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { Navbar } from '@/components/Navbar';
 import { Toaster } from '@/components/ui/toaster';
@@ -6,9 +6,50 @@ import { AiOnboardingAssistant } from '@/components/AiOnboardingAssistant';
 import Link from 'next/link';
 import { Gavel, Heart, Mail, Twitter, Instagram, ArrowRight, Award } from 'lucide-react';
 
+export const viewport: Viewport = {
+  themeColor: '#4f46e5',
+  width: 'device-width',
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
-  title: 'RFPCentral | Human-in-the-Loop Expertise for the Agentic Shift',
-  description: 'Providing founders with the "human-in-the-loop" expertise needed to navigate the agentic shift. Secure guaranteed project outcomes with total confidence.',
+  title: {
+    default: 'RFPCentral | Outsource Mission-Critical Projects with Confidence',
+    template: '%s | RFPCentral',
+  },
+  description: 'Providing founders with the "human-in-the-loop" expertise needed to navigate the agentic shift. Secure fractional capacity for marketing rollouts, roadshows, and AI orchestrations.',
+  keywords: [
+    'fractional capacity',
+    'agentic shift',
+    'outsource marketing',
+    'startup founder tools',
+    'mission critical projects',
+    'human in the loop ai',
+    'strategic outsourcing',
+    'bidding marketplace',
+    'vetted experts',
+    'AI orchestration',
+  ],
+  authors: [{ name: 'RFPCentral Team' }],
+  creator: 'RFPCentral',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://rfpcentral.com',
+    title: 'RFPCentral | Navigating the Agentic Shift',
+    description: 'Providing founders with the "human-in-the-loop" expertise needed to navigate the agentic shift.',
+    siteName: 'RFPCentral',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'RFPCentral | Navigating the Agentic Shift',
+    description: 'Secure fractional capacity for mission-critical projects.',
+    creator: '@rfpcentral',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

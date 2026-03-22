@@ -22,7 +22,7 @@ export default async function Home() {
               Secure <span className="text-primary italic">Strategic Capacity</span> for the Agentic Shift.
             </h1>
             <h2 className="text-xl text-muted-foreground mb-10 leading-relaxed max-w-2xl">
-              Providing founders with the <span className="text-foreground font-bold">"human-in-the-loop"</span> expertise needed to navigate the new economy. Secure guaranteed outcomes for the projects you normally sweat about.
+              Providing founders with the <span className="text-foreground font-bold">"human-in-the-loop"</span> expertise needed to navigate the new economy. Secure guaranteed outcomes for mission-critical projects.
             </h2>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" className="h-14 px-10 text-lg rounded-full shadow-2xl shadow-primary/30 font-bold" asChild>
@@ -42,7 +42,7 @@ export default async function Home() {
       <section className="container mx-auto px-4">
         <div className="flex justify-between items-end mb-10 border-b pb-6">
           <div>
-            <h2 className="font-headline text-3xl font-bold mb-2 text-foreground italic">Available Capacity</h2>
+            <h2 className="font-headline text-3xl font-bold mb-2 text-foreground italic">Available Fractional Capacity</h2>
             <p className="text-muted-foreground">Immediate strategic blocks from our verified partners.</p>
           </div>
           <Button variant="ghost" asChild className="text-primary hover:text-primary/80 font-bold flex items-center">
