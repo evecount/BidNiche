@@ -52,11 +52,63 @@ let auctions: Auction[] = [
     createdAt: Date.now() - 100000,
     endAt: Date.now() + 86400000,
     status: 'active'
+  },
+  {
+    id: '6',
+    sellerId: 'user-seller-6',
+    sellerName: 'DesignSprint Collective',
+    sellerRating: 4.9,
+    sellerSales: 56,
+    isVerified: true,
+    title: 'MVP UI/UX Refresh: 2-Week Sprint',
+    description: 'Stop losing users to clunky interfaces. This 2-week high-intensity sprint delivers a full UI/UX overhaul of your core product flow, specifically for startups looking to improve retention before their next round.',
+    imageUrl: PlaceHolderImages[1].imageUrl,
+    startingPrice: 4000,
+    currentPrice: 4800,
+    reservePrice: 5500,
+    createdAt: Date.now() - 150000,
+    endAt: Date.now() + 432000000,
+    status: 'active'
+  },
+  {
+    id: '7',
+    sellerId: 'user-seller-7',
+    sellerName: 'ScaleTech Partners',
+    sellerRating: 5.0,
+    sellerSales: 22,
+    isVerified: true,
+    title: 'Fractional CTO: 3-Month Architecture Roadmap',
+    description: 'For startups scaling from MVP to Enterprise. A dedicated fractional CTO block to audit your stack, mentor your lead engineer, and design a scalable multi-region cloud architecture.',
+    imageUrl: PlaceHolderImages[2].imageUrl,
+    startingPrice: 15000,
+    currentPrice: 18500,
+    reservePrice: 20000,
+    createdAt: Date.now() - 300000,
+    endAt: Date.now() + 604800000,
+    status: 'active'
+  },
+  {
+    id: '8',
+    sellerId: 'user-seller-8',
+    sellerName: 'GrowthOps Strategy',
+    sellerRating: 4.7,
+    sellerSales: 31,
+    isVerified: true,
+    title: 'GTM Launch Sprint: 20-Hour Growth Audit',
+    description: 'Launching a new product or feature? This outcome package includes a full customer acquisition cost (CAC) audit and a 90-day multi-channel growth roadmap. Data-driven certainty for your next launch.',
+    imageUrl: PlaceHolderImages[3].imageUrl,
+    startingPrice: 6000,
+    currentPrice: 7200,
+    reservePrice: 8000,
+    createdAt: Date.now() - 500000,
+    endAt: Date.now() + 345600000,
+    status: 'active'
   }
 ];
 
 let bids: Bid[] = [
-  { id: 'b1', auctionId: '1', bidderId: 'b-1', bidderName: 'TechScale Founders', amount: 16500, createdAt: Date.now() - 50000 },
+  { id: 'b1', auctionId: '1', bidderId: 'b-1', bidderName: 'TechScale Founders', amount: 6200, createdAt: Date.now() - 50000 },
+  { id: 'b2', auctionId: '7', bidderId: 'b-2', bidderName: 'VentureReady SaaS', amount: 18500, createdAt: Date.now() - 100000 },
 ];
 
 let rfps: RFP[] = [
@@ -72,6 +124,19 @@ let rfps: RFP[] = [
     createdAt: Date.now() - 43200000,
     expiresAt: Date.now() + 86400000,
     aiAssessment: 'Mission-critical infrastructure task. Requires AWS/GCP certification and CUDA optimization experience.'
+  },
+  {
+    id: 'rfp-2',
+    buyerId: 'buyer-2',
+    buyerName: 'Series B FinTech',
+    title: 'Regulatory Compliance & SOC2 Readiness',
+    description: 'Need a fractional compliance officer to lead our SOC2 Type 2 audit preparation and vendor risk management framework.',
+    budgetRange: '$20k - $40k',
+    timeline: '2 Months',
+    status: 'open',
+    createdAt: Date.now() - 21600000,
+    expiresAt: Date.now() + 604800000,
+    aiAssessment: 'High-stakes compliance audit. Requires experience in FinTech regulatory environments and SOC2 frameworks.'
   }
 ];
 
