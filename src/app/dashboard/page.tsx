@@ -1,9 +1,8 @@
-
 import { getMockUserAuctions, getMockUserBids, getCorpusItems } from '@/lib/db-mock';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Plus, Gavel, ShoppingBag, Clock, ArrowRight, ExternalLink, Briefcase, Sparkles, Brain } from 'lucide-react';
+import { Plus, Gavel, ShoppingBag, Clock, ArrowRight, ExternalLink, Briefcase, Sparkles, Brain, DollarSign } from 'lucide-react';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 
@@ -24,7 +23,12 @@ export default async function DashboardPage() {
             Manage your strategic service acquisitions, expert listings, and AI knowledge base.
           </p>
         </div>
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-3">
+          <Button variant="outline" className="rounded-full px-6 border-green-500/50 text-green-600 hover:bg-green-50" asChild>
+            <Link href="/dashboard/yield">
+              <DollarSign className="w-4 h-4 mr-2" /> Yield Optimization
+            </Link>
+          </Button>
           <Button variant="outline" className="rounded-full px-8 border-accent text-accent" asChild>
             <Link href="/dashboard/dna">
               <Sparkles className="w-4 h-4 mr-2" /> Strategic DNA ({dnaItems.length})

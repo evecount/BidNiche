@@ -6,8 +6,8 @@ RFPCentral is a strategic "Human-in-the-Loop" marketplace designed for the new e
 In an era of rapid AI iteration, linear human time is the only remaining constant. RFPCentral allows high-performance independent operators to auction their **Fractional Capacity Blocks**, enabling founders to buy guaranteed outcomes rather than just billable hours.
 
 ### Key Pillars
-- **Outsource the Anxiety**: High-stakes projects (GTM launches, technical audits, compliance) are pre-packaged as discrete outcome auctions.
-- **Human-in-the-Loop**: We bridge the gap between AI potential and business reality by providing vetted strategic experts to orchestrate the shift.
+- **Outsource the Anxiety**: High-stakes projects are pre-packaged as discrete outcome auctions.
+- **Human-in-the-Loop**: We bridge the gap between AI potential and business reality.
 - **Price Discovery for Brilliance**: Real-time bidding ensures that elite fractional capacity is valued based on its true business impact.
 
 ## Core Agentic Logic (Tier-0)
@@ -15,14 +15,9 @@ The platform is powered by a suite of specialized Autonomous Orchestrators built
 
 - **AAO (Autonomous Agentic Orchestrator)**: Handles end-to-end enterprise proposal synthesis, spawning specialist sub-agents for Legal, Security, and Pricing.
 - **APO (Autonomous Procurement Orchestrator)**: Architects and adjudicates high-stakes tenders, stress-testing bids for "Total Value of Ownership" (TVO).
-- **Strategic DNA**: A private, persistent AI corpus that remembers the founder's specific risk appetite, preferences, and technical context across sessions.
+- **AMO (Autonomous Monetization Orchestrator)**: Adjudicates project value delta, dynamic fee structures, and autonomous escrow release based on milestone completion.
+- **Strategic DNA**: A private, persistent AI corpus that remembers the founder's specific risk appetite, preferences, and technical context.
 - **Visual Outcome Generator**: Uses Imagen to render "Success Blueprints," helping founders visualize the anxiety-free future of their projects.
-
-## Features
-- **Outcome Auctions**: Bid on dedicated blocks of expert capacity (e.g., "40-Hour Technical Audit").
-- **Strategic Project RFPs**: Post bespoke project needs and receive AI-analyzed strategic briefs.
-- **Vetted Roster**: A rigorous 4.2% acceptance rate ensuring only top-tier strategic operators list their capacity.
-- **Escrow Protection**: High-ticket trust via milestone-based payment release.
 
 ## Tech Stack
 - **Framework**: Next.js 15 (App Router)
