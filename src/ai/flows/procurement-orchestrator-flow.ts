@@ -67,6 +67,31 @@ const runShouldCostSimulation = ai.defineTool(
 );
 
 /**
+ * Tool: Global Logistics Risk Monitor
+ */
+const getGlobalLogisticsRisk = ai.defineTool(
+  {
+    name: 'getGlobalLogisticsRisk',
+    description: 'Retrieves real-time risk telemetry for global subsea cabling, data center logistics, and transit routes.',
+    inputSchema: z.object({
+      region: z.string(),
+    }),
+    outputSchema: z.object({
+      congestionLevel: z.enum(['Low', 'Medium', 'High']),
+      riskFactor: z.string(),
+      mitigationPlan: z.string(),
+    }),
+  },
+  async (input) => {
+    return {
+      congestionLevel: 'Medium',
+      riskFactor: 'Regional geopolitical volatility affecting subsea landing stations.',
+      mitigationPlan: 'Route redundancy via secondary inland hubs; adjust SLA for 48-hour buffer.'
+    };
+  }
+);
+
+/**
  * Tool: ESG Standards Validator
  */
 const validateESGStandards = ai.defineTool(
@@ -89,16 +114,17 @@ const apoPrompt = ai.definePrompt({
   name: 'apoProcurementPrompt',
   input: { schema: APOInputSchema },
   output: { schema: APOOutputSchema },
-  tools: [runShouldCostSimulation, validateESGStandards],
+  tools: [runShouldCostSimulation, validateESGStandards, getGlobalLogisticsRisk],
   prompt: `You are the RFPCentral Autonomous Procurement Orchestrator (APO). You operate at the "Tier-0 Governance & Risk Logic Layer".
 
 Your mission: Architect, issue, and adjudicate a high-stakes tender.
 
 1. Requirement Harvesting: Extract technical specs, timelines, and ESG requirements from the RFP content.
-2. Bid Interrogation: If proposals are provided, use runShouldCostSimulation to detect hidden margins or over-quoting. 
-3. Semantic Scoring: Grade qualitative responses against internal gold-standard benchmarks.
-4. Negotiation Architecture: Define a "Best and Final Offer" (BAFO) strategy and target price.
-5. ESG Audit: Use validateESGStandards to ensure 100% compliance with sustainability and security protocols.
+2. Logistics Risk: Use getGlobalLogisticsRisk to identify potential delivery failures in the supply chain.
+3. Bid Interrogation: If proposals are provided, use runShouldCostSimulation to detect hidden margins or over-quoting. 
+4. Semantic Scoring: Grade qualitative responses against internal gold-standard benchmarks.
+5. Negotiation Architecture: Define a "Best and Final Offer" (BAFO) strategy and target price.
+6. ESG Audit: Use validateESGStandards to ensure 100% compliance with sustainability and security protocols.
 
 RFP: {{{rfpContent}}}
 Proposals Provided: {{#if proposals}}Yes{{else}}No{{/if}}

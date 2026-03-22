@@ -61,6 +61,36 @@ const spawnSwarmAgents = ai.defineTool(
 );
 
 /**
+ * Tool: Competitive Intelligence Agent
+ */
+const getCompetitiveIntel = ai.defineTool(
+  {
+    name: 'getCompetitiveIntel',
+    description: 'Retrieves counter-programming intelligence against competitors like AWS, GCP, or specialized boutiques.',
+    inputSchema: z.object({
+      sector: z.string(),
+      competitors: z.array(z.string()),
+    }),
+    outputSchema: z.object({
+      counterNarratives: z.array(z.string()),
+      differentiationPoints: z.array(z.string()),
+    }),
+  },
+  async (input) => {
+    return {
+      counterNarratives: [
+        "Position against AWS's 'Service Sprawl' by highlighting our 'Unified Governance Layer'.",
+        "Counter GCP's pricing with our 'Reserved Instance ROI Guarantee'."
+      ],
+      differentiationPoints: [
+        "Native AAO Orchestration vs Manual Scripting",
+        "100% ESG Compliance Baked-in"
+      ]
+    };
+  }
+);
+
+/**
  * Tool: Win-Loss Telemetry Lookup
  */
 const analyzeWinLossTelemetry = ai.defineTool(
@@ -87,18 +117,19 @@ const aaoPrompt = ai.definePrompt({
   name: 'aaoEnterprisePrompt',
   input: { schema: AAOInputSchema },
   output: { schema: AAOOutputSchema },
-  tools: [spawnSwarmAgents, analyzeWinLossTelemetry],
+  tools: [spawnSwarmAgents, analyzeWinLossTelemetry, getCompetitiveIntel],
   prompt: `You are the RFPCentral Autonomous Agentic Orchestrator (AAO). You operate at the "Tier-0 Enterprise Logic Layer".
 
 Your mission: End-to-end execution of a global proposal synthesis for an RFP.
 
 1. Swarm Management: Use spawnSwarmAgents to get specialized findings from the Security, Legal, and Pricing sub-agents.
-2. Telemetry: Use analyzeWinLossTelemetry to adjust the proposal based on historical data.
-3. Persona Shaping: Tone the output specifically for a {{{buyerPersona}}}.
+2. Competitive Intelligence: Use getCompetitiveIntel to find counter-narratives against AWS, GCP, or others mentioned in the RFP context.
+3. Telemetry: Use analyzeWinLossTelemetry to adjust the proposal based on historical data.
+4. Persona Shaping: Tone the output specifically for a {{{buyerPersona}}}.
    - CTO: Deep technical architecture, Azure Engineering logs, low-latency targets.
    - CFO: ROI, pricing models, margin optimization.
    - CEO: Strategic vision, market disruption, impact.
-4. Compliance: Ensure 100% adherence to Responsible AI and Trade guidelines.
+5. Compliance: Ensure 100% adherence to Responsible AI and Trade guidelines.
 
 RFP: {{{rfpContent}}}
 Context: {{{marketContext}}}
