@@ -1,259 +1,83 @@
+
 {
   "entities": {
     "UserProfile": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "UserProfile",
+      "description": "Represents a user within the BidNiche marketplace.",
       "type": "object",
-      "description": "Represents a user within the BidNiche marketplace, holding personal details and roles (buyer/seller).",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the UserProfile entity."
-        },
-        "username": {
-          "type": "string",
-          "description": "A unique username chosen by the user."
-        },
-        "email": {
-          "type": "string",
-          "description": "The user's unique email address.",
-          "format": "email"
-        },
-        "firstName": {
-          "type": "string",
-          "description": "The first name of the user."
-        },
-        "lastName": {
-          "type": "string",
-          "description": "The last name of the user."
-        },
-        "address": {
-          "type": "string",
-          "description": "The physical address of the user, used for shipping or billing."
-        },
-        "phone": {
-          "type": "string",
-          "description": "The user's phone number."
-        },
-        "role": {
-          "type": "string",
-          "description": "The role of the user within the platform (e.g., 'buyer', 'seller', 'admin').",
-          "items": {
-            "type": "string"
-          }
-        },
-        "createdAt": {
-          "type": "string",
-          "description": "Timestamp when the user profile was created.",
-          "format": "date-time"
-        },
-        "updatedAt": {
-          "type": "string",
-          "description": "Timestamp when the user profile was last updated.",
-          "format": "date-time"
-        }
+        "id": { "type": "string" },
+        "username": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "firstName": { "type": "string" },
+        "lastName": { "type": "string" },
+        "role": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
       },
-      "required": [
-        "id",
-        "username",
-        "email",
-        "role",
-        "createdAt"
-      ]
+      "required": ["id", "username", "email", "role", "createdAt"]
+    },
+    "AICorpusItem": {
+      "title": "AICorpusItem",
+      "description": "A strategic fragment stored in the user's private AI knowledge base.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "category": { "type": "string", "enum": ["preference", "fact", "risk_appetite", "technical_debt", "past_win"] },
+        "content": { "type": "string" },
+        "source": { "type": "string", "description": "Context where this insight was derived." },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "category", "content", "createdAt"]
     },
     "Auction": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "Auction",
+      "description": "Represents an auction listing.",
       "type": "object",
-      "description": "Represents an auction listing created by a seller in the BidNiche marketplace.",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the Auction entity."
-        },
-        "title": {
-          "type": "string",
-          "description": "The title of the auction listing."
-        },
-        "description": {
-          "type": "string",
-          "description": "A detailed description of the item being auctioned."
-        },
-        "imageUrls": {
-          "type": "array",
-          "description": "An array of URLs pointing to images of the item.",
-          "items": {
-            "type": "string"
-          }
-        },
-        "startingPrice": {
-          "type": "number",
-          "description": "The initial price from which bidding starts."
-        },
-        "reservePrice": {
-          "type": "number",
-          "description": "The minimum price the seller is willing to accept for the item. If not met, the item may not be sold."
-        },
-        "currentHighestBid": {
-          "type": "number",
-          "description": "The current highest bid amount for this auction."
-        },
-        "endTimestamp": {
-          "type": "string",
-          "description": "The date and time when the auction is scheduled to end.",
-          "format": "date-time"
-        },
-        "sellerId": {
-          "type": "string",
-          "description": "Reference to the UserProfile of the seller who created this auction. (Relationship: UserProfile 1:N Auction)"
-        },
-        "status": {
-          "type": "string",
-          "description": "The current status of the auction (e.g., 'active', 'closed', 'cancelled')."
-        },
-        "winnerId": {
-          "type": "string",
-          "description": "Reference to the UserProfile of the winning bidder, if the auction has closed with a winner. (Relationship: UserProfile 1:1 Auction)"
-        },
-        "winningBidId": {
-          "type": "string",
-          "description": "Reference to the winning Bid for this auction, if applicable. (Relationship: Bid 1:1 Auction)"
-        },
-        "createdAt": {
-          "type": "string",
-          "description": "Timestamp when the auction listing was created.",
-          "format": "date-time"
-        },
-        "updatedAt": {
-          "type": "string",
-          "description": "Timestamp when the auction listing was last updated.",
-          "format": "date-time"
-        }
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "currentHighestBid": { "type": "number" },
+        "endTimestamp": { "type": "string", "format": "date-time" },
+        "sellerId": { "type": "string" },
+        "status": { "type": "string" }
       },
-      "required": [
-        "id",
-        "title",
-        "description",
-        "startingPrice",
-        "currentHighestBid",
-        "endTimestamp",
-        "sellerId",
-        "status",
-        "createdAt"
-      ]
+      "required": ["id", "title", "description", "currentHighestBid", "endTimestamp", "sellerId", "status"]
     },
     "Bid": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "Bid",
+      "description": "Represents a bid.",
       "type": "object",
-      "description": "Represents a bid placed by a buyer on an auction listing.",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the Bid entity."
-        },
-        "auctionId": {
-          "type": "string",
-          "description": "Reference to the Auction this bid was placed on. (Relationship: Auction 1:N Bid)"
-        },
-        "bidderId": {
-          "type": "string",
-          "description": "Reference to the UserProfile of the bidder. (Relationship: UserProfile 1:N Bid)"
-        },
-        "amount": {
-          "type": "number",
-          "description": "The monetary amount of the bid."
-        },
-        "timestamp": {
-          "type": "string",
-          "description": "The date and time when the bid was placed.",
-          "format": "date-time"
-        }
+        "id": { "type": "string" },
+        "auctionId": { "type": "string" },
+        "bidderId": { "type": "string" },
+        "amount": { "type": "number" },
+        "timestamp": { "type": "string", "format": "date-time" }
       },
-      "required": [
-        "id",
-        "auctionId",
-        "bidderId",
-        "amount",
-        "timestamp"
-      ]
+      "required": ["id", "auctionId", "bidderId", "amount", "timestamp"]
     }
   },
   "auth": {
-    "providers": [
-      "password",
-      "anonymous"
-    ]
+    "providers": ["password", "anonymous"]
   },
   "firestore": {
-    "structure": [
-      {
-        "path": "/users/{userId}",
-        "definition": {
-          "entityName": "UserProfile",
-          "schema": {
-            "$ref": "#/backend/entities/UserProfile"
-          },
-          "description": "Stores individual user profiles. The `userId` in the path ensures that only the authenticated user (`request.auth.uid`) can access their own profile data, adhering to private data access modeling."
-        }
-      },
-      {
-        "path": "/users/{userId}/aiCorpus/{corpusItemId}",
-        "definition": {
-          "entityName": "AICorpusItem",
-          "schema": {
-            "$ref": "#/backend/entities/AICorpusItem"
-          },
-          "description": "Private collection for each user's AI assistant, storing research or fact-finding data to build a personal knowledge base. Includes denormalized 'userId' in the document for authorization independence.",
-          "params": [
-            {
-              "name": "userId",
-              "description": "The unique identifier of the user who owns this AI corpus data."
-            },
-            {
-              "name": "corpusItemId",
-              "description": "The unique identifier for a specific item within the user's AI corpus."
-            }
-          ]
-        }
-      },
-      {
-        "path": "/auctions/{auctionId}",
-        "definition": {
-          "entityName": "Auction",
-          "schema": {
-            "$ref": "#/backend/entities/Auction"
-          },
-          "description": "Stores public auction listings. Each document includes the 'sellerId' for authorization independence and 'status' for explicit state modeling, allowing for public reads and seller-specific writes. Supports listing of active auctions (QAPs).",
-          "params": [
-            {
-              "name": "auctionId",
-              "description": "The unique identifier for an auction listing."
-            }
-          ]
-        }
-      },
-      {
-        "path": "/auctions/{auctionId}/bids/{bidId}",
-        "definition": {
-          "entityName": "Bid",
-          "schema": {
-            "$ref": "#/backend/entities/Bid"
-          },
-          "description": "Stores individual bids placed on a specific auction. Each bid document includes 'auctionId' and 'bidderId' for authorization independence and efficient querying of bid history for a given auction. Supports real-time updates and QAPs for bid history within an auction.",
-          "params": [
-            {
-              "name": "auctionId",
-              "description": "The unique identifier of the auction to which this bid belongs."
-            },
-            {
-              "name": "bidId",
-              "description": "The unique identifier for a specific bid."
-            }
-          ]
-        }
-      }
-    ],
-    "reasoning": "The Firestore structure for BidNiche is designed with a strong emphasis on Authorization Independence, Structural Segregation, and Queryable Access Patterns (QAPs) to ensure security, scalability, and debuggability. \n\n1.  **UserProfile:** User profiles are stored in the `/users/{userId}` collection. This leverages path-based authorization, where `userId` directly corresponds to `request.auth.uid`, making user-specific data access straightforward and secure without any `get()` calls. This adheres to the 'Private Data' access modeling principle.\n\n2.  **AI Corpus:** To address the user's request for an AI to have its own dataset, a subcollection `/users/{userId}/aiCorpus/{corpusItemId}` is introduced. This path structure ensures that AI corpus data is strictly private and owned by the `userId` in the path. The `AICorpusItem` document itself will also include `userId` as a denormalized field, providing **Authorization Independence**. Rules can directly check `request.auth.uid == resource.data.userId` for granular write access, while the path itself restricts `list` operations to the owning user, supporting QAPs.\n\n3.  **Auctions:** Public auction listings are stored in the `/auctions/{auctionId}` collection. Each `Auction` document includes `sellerId` and `status`. This is crucial for **Authorization Independence**: the `sellerId` field within the document allows security rules to instantly verify ownership (e.g., `request.auth.uid == resource.data.sellerId`) for update/delete operations without needing to fetch the seller's `UserProfile` document. The `status` field (`active`, `closed`) provides **Explicit State Modeling**, which enables robust **QAPs**. For example, rules can permit public read access to documents where `resource.data.status == 'active'`, efficiently supporting the 'Public Auction Display' feature. This also exemplifies **Structural Segregation** as it defines a homogenous security posture for *published* auctions, allowing public listing. Draft auctions, if introduced, would be segregated into a different, private collection.\n\n4.  **Bids:** Bids are stored as a subcollection under their respective auctions: `/auctions/{auctionId}/bids/{bidId}`. Each `Bid` document contains `auctionId` and `bidderId`. This design ensures **Authorization Independence** as rules can directly check `request.auth.uid == resource.data.bidderId` for a bidder's own bids, and `resource.data.auctionId == auctionId` (from the path wildcard) to verify context, again without any `get()` calls to parent documents or other collections. This hierarchical structure naturally supports **QAPs** for 'Bid History' by allowing efficient listing of all bids for a specific auction (`/auctions/{auctionId}/bids`), with rules dictating read permissions (e.g., all authenticated users can read, only the bidder can create)."
+    "/users/{userId}": {
+      "schema": "#/backend/entities/UserProfile",
+      "description": "User profile data."
+    },
+    "/users/{userId}/aiCorpus/{corpusItemId}": {
+      "schema": "#/backend/entities/AICorpusItem",
+      "description": "Private strategic knowledge base for the user's AI assistant."
+    },
+    "/auctions/{auctionId}": {
+      "schema": "#/backend/entities/Auction",
+      "description": "Public auction listings."
+    },
+    "/auctions/{auctionId}/bids/{bidId}": {
+      "schema": "#/backend/entities/Bid",
+      "description": "Bid history for auctions."
+    }
   }
 }

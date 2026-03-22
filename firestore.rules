@@ -1,107 +1,27 @@
+
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-
-    /**
-     * BidNiche Marketplace Security Rules
-     *
-     * CORE PHILOSOPHY:
-     * This ruleset implements a hybrid security model. Personal user data and AI research datasets 
-     * (the "AI Corpus") are strictly private, accessible only by the owner via path-based and 
-     * attribute-based authorization. Marketplace data (Auctions and Bids) is publicly readable 
-     * to facilitate discovery, but strictly controlled for write operations based on ownership fields.
-     *
-     * DATA STRUCTURE:
-     * - /users/{userId}: Private user profiles and personal subcollections.
-     * - /users/{userId}/aiCorpus/{itemId}: A private knowledge base for the user's AI assistant.
-     * - /auctions/{auctionId}: Publicly visible auction listings.
-     * - /auctions/{auctionId}/bids/{bidId}: Publicly visible bid history for specific auctions.
-     *
-     * KEY SECURITY DECISIONS:
-     * 1. Authorization Independence: Critical IDs (userId, sellerId, bidderId) are denormalized 
-     *    directly onto documents. This allows rules to perform fast, single-document checks 
-     *    without expensive cross-document lookups (get() calls).
-     * 2. Relational Integrity: During creation and updates, the rules enforce that internal 
-     *    ownership fields match the authenticated user and remain immutable.
-     * 3. Prototyping Flexibility: While authorization is strictly enforced, the specific 
-     *    schema (data types, optional fields) is not validated to allow for rapid iteration.
-     */
-
-    // --- Helper Functions ---
-
-    /** Checks if the request is from an authenticated user. */
-    function isSignedIn() {
-      return request.auth != null;
-    }
-
-    /** Checks if the provided ID matches the authenticated user's UID. */
-    function isOwner(userId) {
-      return isSignedIn() && request.auth.uid == userId;
-    }
-
-    /** Combined check for existence and ownership for updates/deletes. */
-    function isExistingOwner(ownerId) {
-      return resource != null && isSignedIn() && request.auth.uid == ownerId;
-    }
-
-    // --- Collection Rules ---
+    function isSignedIn() { return request.auth != null; }
+    function isOwner(userId) { return isSignedIn() && request.auth.uid == userId; }
 
     match /users/{userId} {
-      /**
-       * @description Rules for the UserProfile entity. Users can only manage their own profile.
-       * @path /users/{userId}
-       * @allow (get, list, create, update) if the authenticated user's UID matches {userId}.
-       * @deny (get, list, update) if the authenticated user's UID does not match {userId}.
-       * @principle Enforces strict path-based ownership and self-creation logic.
-       */
-      allow get, list: if isOwner(userId);
-      allow create: if isOwner(userId) && request.resource.data.id == userId;
-      allow update: if isExistingOwner(userId) && request.resource.data.id == resource.data.id;
-      allow delete: if false; // Profiles are generally kept for record integrity in a marketplace.
-    }
-
-    match /users/{userId}/aiCorpus/{corpusItemId} {
-      /**
-       * @description Rules for the personal AI Corpus. Stores private research and context data.
-       * @path /users/{userId}/aiCorpus/{corpusItemId}
-       * @allow (get, list, create, update, delete) if the user owns the parent path.
-       * @deny (all) if the user is not the owner of the path.
-       * @principle Restricts access to a user's own private knowledge tree.
-       */
-      allow get, list: if isOwner(userId);
-      allow create: if isOwner(userId) && request.resource.data.userId == userId;
-      allow update: if isExistingOwner(resource.data.userId) && request.resource.data.userId == resource.data.userId;
-      allow delete: if isExistingOwner(resource.data.userId);
+      allow get, list, create, update: if isOwner(userId);
+      
+      match /aiCorpus/{itemId} {
+        allow read, write: if isOwner(userId);
+      }
     }
 
     match /auctions/{auctionId} {
-      /**
-       * @description Public auction listings. Anyone can view; only the seller can manage.
-       * @path /auctions/{auctionId}
-       * @allow (get, list) for any user.
-       * @allow (create) if the sellerId matches the auth UID.
-       * @deny (update, delete) if the user is not the seller designated in the document.
-       * @principle Public Read with Owner-Only Writes using denormalized 'sellerId'.
-       */
-      allow get, list: if true;
+      allow read: if true;
       allow create: if isSignedIn() && request.resource.data.sellerId == request.auth.uid;
-      allow update: if isExistingOwner(resource.data.sellerId) && request.resource.data.sellerId == resource.data.sellerId;
-      allow delete: if isExistingOwner(resource.data.sellerId);
-    }
+      allow update, delete: if isSignedIn() && resource.data.sellerId == request.auth.uid;
 
-    match /auctions/{auctionId}/bids/{bidId} {
-      /**
-       * @description Individual bids on an auction. History is public; only the bidder can place a bid.
-       * @path /auctions/{auctionId}/bids/{bidId}
-       * @allow (get, list) for any user to see bid history.
-       * @allow (create) if the bidderId matches the auth UID.
-       * @deny (update, delete) for all users to preserve marketplace integrity.
-       * @principle Enforces relational integrity and auditability of bids.
-       */
-      allow get, list: if true;
-      allow create: if isSignedIn() && request.resource.data.bidderId == request.auth.uid && request.resource.data.auctionId == auctionId;
-      allow update: if false; // Bids are immutable records.
-      allow delete: if false; // Bids cannot be removed once placed to prevent marketplace manipulation.
+      match /bids/{bidId} {
+        allow read: if true;
+        allow create: if isSignedIn() && request.resource.data.bidderId == request.auth.uid;
+      }
     }
   }
 }

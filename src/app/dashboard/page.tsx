@@ -1,16 +1,17 @@
-import { getMockUserAuctions, getMockUserBids } from '@/lib/db-mock';
+
+import { getMockUserAuctions, getMockUserBids, getCorpusItems } from '@/lib/db-mock';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Plus, Gavel, ShoppingBag, Clock, ArrowRight, ExternalLink, Briefcase } from 'lucide-react';
+import { Plus, Gavel, ShoppingBag, Clock, ArrowRight, ExternalLink, Briefcase, Sparkles, Brain } from 'lucide-react';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 
 export default async function DashboardPage() {
-  // Simulating the current logged-in user
   const currentUserId = 'current-user'; 
   const myAuctions = await getMockUserAuctions(currentUserId);
   const myBids = await getMockUserBids(currentUserId);
+  const dnaItems = await getCorpusItems(currentUserId);
 
   return (
     <div className="container mx-auto px-4 py-12 max-w-6xl">
@@ -20,14 +21,59 @@ export default async function DashboardPage() {
             Operational Hub
           </h1>
           <p className="text-muted-foreground mt-2">
-            Manage your strategic service acquisitions and expert capacity listings.
+            Manage your strategic service acquisitions, expert listings, and AI knowledge base.
           </p>
         </div>
-        <Button size="lg" className="rounded-full px-8 shadow-lg shadow-primary/20" asChild>
-          <Link href="/dashboard/create">
-            <Plus className="w-5 h-5 mr-2" /> List New Outcome
-          </Link>
-        </Button>
+        <div className="flex gap-3">
+          <Button variant="outline" className="rounded-full px-8 border-accent text-accent" asChild>
+            <Link href="/dashboard/dna">
+              <Sparkles className="w-4 h-4 mr-2" /> Strategic DNA ({dnaItems.length})
+            </Link>
+          </Button>
+          <Button className="rounded-full px-8 shadow-lg shadow-primary/20" asChild>
+            <Link href="/dashboard/create">
+              <Plus className="w-5 h-5 mr-2" /> List New Outcome
+            </Link>
+          </Button>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-12">
+        <Card className="bg-primary/5 border-primary/20 overflow-hidden relative group">
+          <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">
+             <Briefcase className="w-12 h-12" />
+          </div>
+          <CardHeader className="pb-2">
+            <CardDescription className="text-[10px] font-bold uppercase tracking-widest">Active Acquisitions</CardDescription>
+            <CardTitle className="text-3xl font-bold">{myBids.length}</CardTitle>
+          </CardHeader>
+        </Card>
+        <Card className="bg-accent/5 border-accent/20 overflow-hidden relative group">
+          <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">
+             <Gavel className="w-12 h-12" />
+          </div>
+          <CardHeader className="pb-2">
+            <CardDescription className="text-[10px] font-bold uppercase tracking-widest">Capacity Yielding</CardDescription>
+            <CardTitle className="text-3xl font-bold">{myAuctions.length}</CardTitle>
+          </CardHeader>
+        </Card>
+        <Card className="bg-muted border-border overflow-hidden relative group lg:col-span-2">
+          <Link href="/dashboard/dna" className="absolute inset-0 z-10" />
+          <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">
+             <Brain className="w-12 h-12" />
+          </div>
+          <CardHeader className="pb-2">
+            <CardDescription className="text-[10px] font-bold uppercase tracking-widest text-accent flex items-center gap-1">
+              <Sparkles className="w-3 h-3" /> Strategic DNA Fragments
+            </CardDescription>
+            <CardTitle className="text-3xl font-bold">{dnaItems.length}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-xs text-muted-foreground flex items-center gap-1 mt-1">
+              Explore your personal AI knowledge base <ArrowRight className="w-3 h-3" />
+            </p>
+          </CardContent>
+        </Card>
       </div>
 
       <Tabs defaultValue="buying" className="space-y-8">

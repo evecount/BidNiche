@@ -9,6 +9,15 @@ export interface UserProfile {
   avatarUrl?: string;
 }
 
+export interface AICorpusItem {
+  id: string;
+  userId: string;
+  category: 'preference' | 'fact' | 'risk_appetite' | 'technical_debt' | 'past_win';
+  content: string;
+  source: string;
+  createdAt: number;
+}
+
 export interface Auction {
   id: string;
   sellerId: string;
