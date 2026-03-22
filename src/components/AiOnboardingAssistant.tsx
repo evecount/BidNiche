@@ -18,7 +18,10 @@ export function AiOnboardingAssistant() {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'model', text: 'Hi! I\'m your RFPCentral assistant. How can I help you get started with our premium auctions today?' }
+    { 
+      role: 'model', 
+      text: "Hi! I'm your RFPCentral Strategic Orchestrator. I can help you draft a mission-critical RFP, analyze a complex tender, or find the right fractional capacity block for your next sprint. How can I help you outsource your anxiety today?" 
+    }
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -59,7 +62,7 @@ export function AiOnboardingAssistant() {
           <CardHeader className="bg-primary px-4 py-3 flex flex-row justify-between items-center text-primary-foreground rounded-t-lg">
             <CardTitle className="text-sm font-bold flex items-center gap-2">
               <Sparkles className="w-4 h-4" />
-              RFPCentral Guide
+              RFPCentral Orchestrator
             </CardTitle>
             <Button 
               variant="ghost" 
@@ -111,7 +114,7 @@ export function AiOnboardingAssistant() {
           <CardFooter className="p-3 border-t bg-muted/20">
             <form onSubmit={handleSendMessage} className="flex w-full gap-2">
               <Input 
-                placeholder="Ask me anything..." 
+                placeholder="Ask me to help write an RFP..." 
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 className="bg-background focus-visible:ring-primary"
