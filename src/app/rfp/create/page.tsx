@@ -1,0 +1,240 @@
+
+'use client';
+
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { FileText, Sparkles, Target, DollarSign, Calendar, ArrowRight, ShieldCheck, Zap } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Button } from '@/components/ui/button';
+import { useToast } from '@/hooks/use-toast';
+import { rfpConsultant, type RFPConsultantOutput } from '@/ai/flows/rfp-consultant-flow';
+import { createMockRFP } from '@/lib/db-mock';
+import Link from 'next/link';
+
+export default function SubmitRFPPage() {
+  const router = useRouter();
+  const { toast } = useToast();
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [analysis, setAnalysis] = useState<RFPConsultantOutput | null>(null);
+
+  const [formData, setFormData] = useState({
+    title: '',
+    description: '',
+    budgetRange: '',
+    timeline: ''
+  });
+
+  const handleRunAnalysis = async () => {
+    if (!formData.title || !formData.description) {
+      toast({ title: "Missing Information", description: "Please provide a title and description for analysis.", variant: "destructive" });
+      return;
+    }
+
+    setIsAnalyzing(true);
+    try {
+      const result = await rfpConsultant({
+        title: formData.title,
+        description: formData.description,
+        budgetRange: formData.budgetRange || 'Not Specified',
+      });
+      setAnalysis(result);
+      toast({ title: "Analysis Complete", description: "The AI Strategic Consultant has reviewed your RFP." });
+    } catch (err: any) {
+      toast({ title: "Analysis Failed", description: err.message, variant: "destructive" });
+    } finally {
+      setIsAnalyzing(false);
+    }
+  };
+
+  const handleSubmit = async () => {
+    setIsSubmitting(true);
+    try {
+      const rfpId = await createMockRFP({
+        buyerId: 'current-user',
+        buyerName: 'Elite Founder',
+        title: formData.title,
+        description: formData.description,
+        budgetRange: formData.budgetRange,
+        timeline: formData.timeline,
+        expiresAt: Date.now() + (7 * 86400000), // 7 days
+        aiAssessment: analysis?.strategicAssessment
+      });
+
+      toast({ title: "RFP Live", description: "Your strategic bounty has been broadcast to verified experts." });
+      router.push(`/rfp/${rfpId}`);
+    } catch (err: any) {
+      toast({ title: "Error", description: err.message, variant: "destructive" });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="container mx-auto px-4 py-12 max-w-5xl">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        
+        {/* Form Column */}
+        <div className="lg:col-span-7 space-y-8">
+          <div className="space-y-2">
+            <h1 className="text-4xl font-extrabold tracking-tight">Post a Strategic Bounty</h1>
+            <p className="text-muted-foreground text-lg">Define your elite outcome and have verified experts compete for the execution.</p>
+          </div>
+
+          <Card className="border-primary/20 shadow-2xl overflow-hidden">
+            <CardHeader className="bg-primary/5 border-b px-8 py-6">
+              <CardTitle className="flex items-center gap-2">
+                <FileText className="w-5 h-5 text-primary" />
+                RFP Definition
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-8 space-y-6">
+              <div className="space-y-2">
+                <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Bounty Title</label>
+                <Input 
+                  placeholder="e.g. Enterprise Data Privacy Audit & Compliance Roadmap" 
+                  value={formData.title}
+                  onChange={e => setFormData({...formData, title: e.target.value})}
+                  className="h-12 text-lg focus-visible:ring-primary"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Requirements & Deliverables</label>
+                <Textarea 
+                  placeholder="Describe the high-ticket outcome you need. Be specific about the 'What' and 'Why'." 
+                  className="min-h-[200px] focus-visible:ring-primary text-base"
+                  value={formData.description}
+                  onChange={e => setFormData({...formData, description: e.target.value})}
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-1.5">
+                    <DollarSign className="w-3.5 h-3.5" /> Budget Range
+                  </label>
+                  <Input 
+                    placeholder="e.g. $10k - $25k" 
+                    value={formData.budgetRange}
+                    onChange={e => setFormData({...formData, budgetRange: e.target.value})}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-1.5">
+                    <Calendar className="w-3.5 h-3.5" /> Expected Timeline
+                  </label>
+                  <Input 
+                    placeholder="e.g. 4 Weeks" 
+                    value={formData.timeline}
+                    onChange={e => setFormData({...formData, timeline: e.target.value})}
+                  />
+                </div>
+              </div>
+
+              <Button 
+                variant="outline" 
+                className="w-full h-12 border-dashed border-primary/40 text-primary hover:bg-primary/5 font-bold"
+                onClick={handleRunAnalysis}
+                disabled={isAnalyzing}
+              >
+                {isAnalyzing ? "AI Consultant Analyzing..." : (
+                  <span className="flex items-center gap-2">
+                    <Sparkles className="w-4 h-4" /> Consult with AI Strategic Assistant
+                  </span>
+                )}
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* AI Consultant Column */}
+        <div className="lg:col-span-5">
+          <div className="sticky top-28 space-y-6">
+            <Card className={cn(
+              "border-2 transition-all duration-500",
+              analysis ? "border-accent shadow-accent/20 shadow-2xl" : "border-dashed border-muted-foreground/20 opacity-50"
+            )}>
+              <CardHeader className="bg-accent/5 border-b flex flex-row items-center justify-between">
+                <div>
+                  <CardTitle className="text-sm font-bold flex items-center gap-2">
+                    <Zap className="w-4 h-4 text-accent" />
+                    Strategic Assessment
+                  </CardTitle>
+                </div>
+                {analysis && (
+                  <div className="bg-accent text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">
+                    Complexity: {analysis.complexityScore}/10
+                  </div>
+                )}
+              </CardHeader>
+              <CardContent className="p-6">
+                {!analysis ? (
+                  <div className="py-12 text-center space-y-4">
+                    <div className="bg-muted w-12 h-12 rounded-full flex items-center justify-center mx-auto">
+                      <Sparkles className="w-6 h-6 text-muted-foreground" />
+                    </div>
+                    <p className="text-sm text-muted-foreground px-4">
+                      Submit your requirements to receive a professional AI-driven strategic assessment and complexity score.
+                    </p>
+                  </div>
+                ) : (
+                  <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-500">
+                    <div className="space-y-2">
+                      <p className="text-[10px] font-bold uppercase text-muted-foreground tracking-widest">Executive Summary</p>
+                      <p className="text-sm leading-relaxed text-foreground italic">"{analysis.strategicAssessment}"</p>
+                    </div>
+
+                    <div className="space-y-2">
+                      <p className="text-[10px] font-bold uppercase text-muted-foreground tracking-widest">Required Expert Profile</p>
+                      <div className="flex flex-wrap gap-2">
+                        {analysis.expertMatchingCriteria.map((tag, i) => (
+                          <div key={i} className="bg-accent/10 text-accent px-2.5 py-1 rounded-md text-[10px] font-bold border border-accent/20">
+                            {tag}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="bg-muted/50 p-4 rounded-xl border border-dashed border-muted-foreground/30">
+                      <p className="text-[10px] font-bold uppercase text-muted-foreground tracking-widest mb-2 flex items-center gap-1">
+                        <Target className="w-3 h-3" /> Consultant's Note
+                      </p>
+                      <p className="text-xs text-muted-foreground leading-relaxed">
+                        {analysis.aiConsultantNote}
+                      </p>
+                    </div>
+
+                    <Button 
+                      className="w-full h-14 bg-accent hover:bg-accent/90 text-white font-bold text-lg rounded-xl shadow-xl shadow-accent/30"
+                      onClick={handleSubmit}
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? "Broadcasting..." : (
+                        <span className="flex items-center gap-2">
+                          Launch Strategic Bounty <ArrowRight className="w-5 h-5" />
+                        </span>
+                      )}
+                    </Button>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+
+            <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10 flex gap-4 items-start">
+              <ShieldCheck className="w-6 h-6 text-primary shrink-0" />
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                By launching this bounty, you authorize BidNiche to reach out to our network of verified elite experts. Your funds will be held in escrow upon awarding the contract.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+}
+
+import { cn } from '@/lib/utils';

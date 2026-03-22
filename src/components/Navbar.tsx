@@ -3,7 +3,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Gavel, Plus, User, Search, Menu } from 'lucide-react';
+import { Gavel, Plus, User, Search, Menu, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
@@ -13,9 +13,10 @@ export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { name: 'Browse', href: '/auctions', icon: Search },
-    { name: 'Create', href: '/dashboard/create', icon: Plus },
-    { name: 'Dashboard', href: '/dashboard', icon: User },
+    { name: 'Services', href: '/auctions', icon: Search },
+    { name: 'Bounties', href: '/rfp', icon: FileText },
+    { name: 'Post Outcome', href: '/dashboard/create', icon: Plus },
+    { name: 'Operational Hub', href: '/dashboard', icon: User },
   ];
 
   return (
@@ -45,8 +46,8 @@ export function Navbar() {
               {item.name}
             </Link>
           ))}
-          <Button variant="outline" className="rounded-full px-6 border-primary text-primary hover:bg-primary hover:text-white transition-all">
-            Connect Wallet
+          <Button variant="outline" className="rounded-full px-6 border-accent text-accent hover:bg-accent hover:text-white transition-all font-bold">
+            Submit RFP
           </Button>
         </div>
 
@@ -73,7 +74,7 @@ export function Navbar() {
               {item.name}
             </Link>
           ))}
-          <Button className="w-full rounded-full">Connect Wallet</Button>
+          <Button className="w-full rounded-full bg-accent hover:bg-accent/90">Post Project RFP</Button>
         </div>
       )}
     </nav>

@@ -1,8 +1,7 @@
 
-import { Auction, Bid, UserProfile } from './types';
+import { Auction, Bid, UserProfile, RFP, Proposal } from './types';
 import { PlaceHolderImages } from './placeholder-images';
 
-// We simulate a real-time reactive store for the mock implementation
 let auctions: Auction[] = [
   {
     id: '1',
@@ -12,7 +11,7 @@ let auctions: Auction[] = [
     sellerSales: 42,
     isVerified: true,
     title: '1-Month Fractional CMO Strategy Block',
-    description: 'A dedicated 20-hour package including brand positioning, GTM strategy, and performance marketing oversight for Series A startups. We handle the "What" and "How" of your next growth phase.',
+    description: 'A dedicated 20-hour package including brand positioning, GTM strategy, and performance marketing oversight for Series A startups.',
     imageUrl: PlaceHolderImages[0].imageUrl,
     startingPrice: 5000,
     currentPrice: 6200,
@@ -29,7 +28,7 @@ let auctions: Auction[] = [
     sellerSales: 15,
     isVerified: true,
     title: 'General Counsel 40-Hour Retainer Block',
-    description: 'High-level legal oversight for contract negotiations, IP strategy, and regulatory compliance. Perfect for scaling startups needing elite legal advice without the $1k/hr billable friction. Binding outcomes, not just hours.',
+    description: 'High-level legal oversight for contract negotiations, IP strategy, and regulatory compliance.',
     imageUrl: PlaceHolderImages[4].imageUrl,
     startingPrice: 12000,
     currentPrice: 14500,
@@ -37,48 +36,39 @@ let auctions: Auction[] = [
     createdAt: Date.now() - 200000,
     endAt: Date.now() + 259200000, 
     status: 'active'
-  },
-  {
-    id: '2',
-    sellerId: 'user-seller-2',
-    sellerName: 'PixelPerfect Labs',
-    sellerRating: 5.0,
-    sellerSales: 112,
-    isVerified: true,
-    title: 'High-Intensity 1-Week UX Design Sprint',
-    description: 'Complete UI overhaul for a core product feature. Includes user research, wireframing, high-fidelity prototypes, and developer handoff. One week of concentrated elite talent.',
-    imageUrl: PlaceHolderImages[1].imageUrl,
-    startingPrice: 3500,
-    currentPrice: 4800,
-    reservePrice: 5000,
-    createdAt: Date.now() - 43200000,
-    endAt: Date.now() + 3600000, 
-    status: 'active'
-  },
-  {
-    id: '3',
-    sellerId: 'user-seller-3',
-    sellerName: 'CloudArchitects Elite',
-    sellerRating: 4.8,
-    sellerSales: 89,
-    isVerified: true,
-    title: 'Enterprise AI Infrastructure Audit',
-    description: 'Deep-dive assessment of your current data pipeline and AI readiness. Full report with security, scalability, and cost optimization roadmap. We define the future of your AI stack.',
-    imageUrl: PlaceHolderImages[5].imageUrl,
-    startingPrice: 8000,
-    currentPrice: 8000,
-    reservePrice: 10000,
-    createdAt: Date.now() - 10000,
-    endAt: Date.now() + 600000, 
-    status: 'active'
   }
 ];
 
 let bids: Bid[] = [
   { id: 'b1', auctionId: '1', bidderId: 'b-1', bidderName: 'TechScale Inc', amount: 5500, createdAt: Date.now() - 50000 },
-  { id: 'b2', auctionId: '1', bidderId: 'b-2', bidderName: 'Venture Partners', amount: 6200, createdAt: Date.now() - 10000 },
-  { id: 'b4', auctionId: '4', bidderId: 'b-4', bidderName: 'NeoBank Corp', amount: 14500, createdAt: Date.now() - 5000 },
-  { id: 'b3', auctionId: '2', bidderId: 'b-3', bidderName: 'SaaS Founder', amount: 4800, createdAt: Date.now() - 20000 },
+];
+
+let rfps: RFP[] = [
+  {
+    id: 'rfp-1',
+    buyerId: 'buyer-1',
+    buyerName: 'Stealth AI Startup',
+    title: 'Infrastructure Architecture for LLM Scaling',
+    description: 'We need an elite DevOps architect to design our multi-region Kubernetes deployment specifically for GPU-intensive workloads.',
+    budgetRange: '$15k - $25k',
+    timeline: '3 Weeks',
+    status: 'open',
+    createdAt: Date.now() - 43200000,
+    expiresAt: Date.now() + 86400000,
+    aiAssessment: 'High-complexity infrastructure task. Requires AWS/GCP elite certification and CUDA optimization experience.'
+  }
+];
+
+let proposals: Proposal[] = [
+  {
+    id: 'p-1',
+    rfpId: 'rfp-1',
+    expertId: 'expert-1',
+    expertName: 'CloudArchitects Elite',
+    amount: 18000,
+    coverLetter: 'We have built similar pipelines for three YC companies in the last year.',
+    createdAt: Date.now() - 10000
+  }
 ];
 
 export const getMockAuctions = async (): Promise<Auction[]> => {
@@ -93,51 +83,42 @@ export const getMockBids = async (auctionId: string): Promise<Bid[]> => {
   return bids.filter(b => b.auctionId === auctionId).sort((a, b) => b.amount - a.amount);
 };
 
-export const getMockUserAuctions = async (userId: string): Promise<Auction[]> => {
-  return auctions.filter(a => a.sellerId === userId);
+export const getMockRFPs = async (): Promise<RFP[]> => {
+  return [...rfps];
 };
 
-export const getMockUserBids = async (userId: string): Promise<(Bid & { auctionTitle: string })[]> => {
-  return bids
-    .filter(b => b.bidderId === userId)
-    .map(b => ({
-      ...b,
-      auctionTitle: auctions.find(a => a.id === b.auctionId)?.title || 'Unknown Service'
-    }))
-    .sort((a, b) => b.createdAt - a.createdAt);
+export const getMockRFP = async (id: string): Promise<RFP | undefined> => {
+  return rfps.find(r => r.id === id);
+};
+
+export const getMockProposals = async (rfpId: string): Promise<Proposal[]> => {
+  return proposals.filter(p => p.rfpId === rfpId).sort((a, b) => a.amount - b.amount);
 };
 
 export const placeMockBid = async (auctionId: string, bidder: UserProfile, amount: number): Promise<void> => {
   const auction = auctions.find(a => a.id === auctionId);
   if (!auction) throw new Error('Service auction not found');
-  if (auction.status === 'closed' || auction.endAt < Date.now()) throw new Error('Auction is closed');
-  if (amount <= auction.currentPrice) throw new Error('Bid must be higher than current price');
-
-  const newBid: Bid = {
-    id: `b-${Date.now()}`,
-    auctionId,
-    bidderId: bidder.id,
-    bidderName: bidder.name,
-    amount,
-    createdAt: Date.now()
-  };
-
-  bids.push(newBid);
   auction.currentPrice = amount;
+  bids.push({ id: `b-${Date.now()}`, auctionId, bidderId: bidder.id, bidderName: bidder.name, amount, createdAt: Date.now() });
 };
 
-export const createMockAuction = async (data: Omit<Auction, 'id' | 'currentPrice' | 'status' | 'createdAt' | 'sellerRating' | 'sellerSales' | 'isVerified'>): Promise<string> => {
+export const createMockAuction = async (data: any): Promise<string> => {
   const id = `a-${Date.now()}`;
-  const newAuction: Auction = {
-    ...data,
-    id,
-    sellerRating: 5.0,
-    sellerSales: 1,
-    isVerified: true,
-    currentPrice: data.startingPrice,
-    status: 'active',
-    createdAt: Date.now()
-  };
-  auctions.push(newAuction);
+  auctions.push({ ...data, id, status: 'active', createdAt: Date.now(), currentPrice: data.startingPrice, sellerRating: 5.0, sellerSales: 1, isVerified: true });
   return id;
 };
+
+export const createMockRFP = async (data: Omit<RFP, 'id' | 'status' | 'createdAt'>): Promise<string> => {
+  const id = `rfp-${Date.now()}`;
+  rfps.push({ ...data, id, status: 'open', createdAt: Date.now() });
+  return id;
+};
+
+export const submitProposal = async (data: Omit<Proposal, 'id' | 'createdAt'>): Promise<string> => {
+  const id = `p-${Date.now()}`;
+  proposals.push({ ...data, id, createdAt: Date.now() });
+  return id;
+};
+
+export const getMockUserAuctions = async (userId: string) => auctions.filter(a => a.sellerId === userId);
+export const getMockUserBids = async (userId: string) => bids.filter(b => b.bidderId === userId).map(b => ({ ...b, auctionTitle: auctions.find(a => a.id === b.auctionId)?.title || 'Service' }));

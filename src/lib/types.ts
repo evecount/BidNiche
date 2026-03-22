@@ -37,3 +37,27 @@ export interface Bid {
   amount: number;
   createdAt: number;
 }
+
+export interface RFP {
+  id: string;
+  buyerId: string;
+  buyerName: string;
+  title: string;
+  description: string;
+  budgetRange: string;
+  timeline: string;
+  status: 'open' | 'awarded' | 'closed';
+  createdAt: number;
+  expiresAt: number;
+  aiAssessment?: string;
+}
+
+export interface Proposal {
+  id: string;
+  rfpId: string;
+  expertId: string;
+  expertName: string;
+  amount: number;
+  coverLetter: string;
+  createdAt: number;
+}
