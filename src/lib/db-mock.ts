@@ -7,16 +7,16 @@ let auctions: Auction[] = [
   {
     id: '1',
     sellerId: 'user-seller-1',
-    sellerName: 'Global Collectibles',
+    sellerName: 'FractionalCMO Group',
     sellerRating: 4.9,
-    sellerSales: 124,
+    sellerSales: 42,
     isVerified: true,
-    title: 'Vintage 1960s Leica M3 Camera',
-    description: 'A beautifully preserved Leica M3 from 1962. Minimal wear, fully functional shutter speeds. A collector\'s dream.',
-    imageUrl: PlaceHolderImages[3].imageUrl,
-    startingPrice: 1500,
-    currentPrice: 1850,
-    reservePrice: 2000,
+    title: '1-Month Fractional CMO Strategy Block',
+    description: 'A dedicated 20-hour package including brand positioning, GTM strategy, and performance marketing oversight for Series A startups.',
+    imageUrl: PlaceHolderImages[0].imageUrl,
+    startingPrice: 5000,
+    currentPrice: 6200,
+    reservePrice: 7500,
     createdAt: Date.now() - 86400000,
     endAt: Date.now() + 172800000,
     status: 'active'
@@ -24,33 +24,33 @@ let auctions: Auction[] = [
   {
     id: '2',
     sellerId: 'user-seller-2',
-    sellerName: 'Retro Wheels',
+    sellerName: 'PixelPerfect Labs',
     sellerRating: 5.0,
-    sellerSales: 18,
+    sellerSales: 112,
     isVerified: true,
-    title: '1974 Porsche 911 Carrera',
-    description: 'Fully restored 911 Carrera in guards red. 45,000 original miles. Showroom condition.',
+    title: 'High-Intensity 1-Week UX Design Sprint',
+    description: 'Complete UI overhaul for a core product feature. Includes user research, wireframing, high-fidelity prototypes, and developer handoff.',
     imageUrl: PlaceHolderImages[1].imageUrl,
-    startingPrice: 45000,
-    currentPrice: 52000,
-    reservePrice: 60000,
+    startingPrice: 3500,
+    currentPrice: 4800,
+    reservePrice: 5000,
     createdAt: Date.now() - 43200000,
     endAt: Date.now() + 3600000, // 1 hour left
     status: 'active'
   },
   {
     id: '3',
-    sellerId: 'user-seller-1',
-    sellerName: 'Global Collectibles',
-    sellerRating: 4.9,
-    sellerSales: 124,
+    sellerId: 'user-seller-3',
+    sellerName: 'CloudArchitects Elite',
+    sellerRating: 4.8,
+    sellerSales: 89,
     isVerified: true,
-    title: 'Handmade Swiss Chronograph',
-    description: 'Exquisite timepiece with 72-hour power reserve. Sapphire crystal, genuine leather strap.',
-    imageUrl: PlaceHolderImages[0].imageUrl,
-    startingPrice: 2500,
-    currentPrice: 2500,
-    reservePrice: 3000,
+    title: 'Enterprise AI Infrastructure Audit',
+    description: 'Deep-dive assessment of your current data pipeline and AI readiness. Full report with security, scalability, and cost optimization roadmap.',
+    imageUrl: PlaceHolderImages[5].imageUrl,
+    startingPrice: 8000,
+    currentPrice: 8000,
+    reservePrice: 10000,
     createdAt: Date.now() - 10000,
     endAt: Date.now() + 600000, // 10 mins left
     status: 'active'
@@ -58,9 +58,9 @@ let auctions: Auction[] = [
 ];
 
 let bids: Bid[] = [
-  { id: 'b1', auctionId: '1', bidderId: 'b-1', bidderName: 'John Doe', amount: 1600, createdAt: Date.now() - 50000 },
-  { id: 'b2', auctionId: '1', bidderId: 'b-2', bidderName: 'Jane Smith', amount: 1850, createdAt: Date.now() - 10000 },
-  { id: 'b3', auctionId: '2', bidderId: 'b-3', bidderName: 'Car Enthusiast', amount: 52000, createdAt: Date.now() - 20000 },
+  { id: 'b1', auctionId: '1', bidderId: 'b-1', bidderName: 'TechScale Inc', amount: 5500, createdAt: Date.now() - 50000 },
+  { id: 'b2', auctionId: '1', bidderId: 'b-2', bidderName: 'Venture Partners', amount: 6200, createdAt: Date.now() - 10000 },
+  { id: 'b3', auctionId: '2', bidderId: 'b-3', bidderName: 'SaaS Founder', amount: 4800, createdAt: Date.now() - 20000 },
 ];
 
 export const getMockAuctions = async (): Promise<Auction[]> => {
@@ -84,14 +84,14 @@ export const getMockUserBids = async (userId: string): Promise<(Bid & { auctionT
     .filter(b => b.bidderId === userId)
     .map(b => ({
       ...b,
-      auctionTitle: auctions.find(a => a.id === b.auctionId)?.title || 'Unknown Auction'
+      auctionTitle: auctions.find(a => a.id === b.auctionId)?.title || 'Unknown Service'
     }))
     .sort((a, b) => b.createdAt - a.createdAt);
 };
 
 export const placeMockBid = async (auctionId: string, bidder: UserProfile, amount: number): Promise<void> => {
   const auction = auctions.find(a => a.id === auctionId);
-  if (!auction) throw new Error('Auction not found');
+  if (!auction) throw new Error('Service auction not found');
   if (auction.status === 'closed' || auction.endAt < Date.now()) throw new Error('Auction is closed');
   if (amount <= auction.currentPrice) throw new Error('Bid must be higher than current price');
 

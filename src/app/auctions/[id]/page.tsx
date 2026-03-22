@@ -2,7 +2,7 @@
 import { getMockAuction, getMockBids } from '@/lib/db-mock';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
-import { Gavel, History, Info, User, Tag, ShieldCheck, Star, Award } from 'lucide-react';
+import { History, Info, User, ShieldCheck, Star, Award, Target, Clock } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { AuctionCountdown } from '@/components/AuctionCountdown';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -23,7 +23,7 @@ export default async function AuctionPage({ params }: { params: Promise<{ id: st
     <div className="container mx-auto px-4 py-8">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
         
-        {/* Left Column: Media & Details */}
+        {/* Left Column: Expert Details & Scope */}
         <div className="lg:col-span-7 space-y-8">
           <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border">
             <Image
@@ -32,24 +32,24 @@ export default async function AuctionPage({ params }: { params: Promise<{ id: st
               fill
               className="object-cover"
               priority
-              data-ai-hint="auction item hero"
+              data-ai-hint="service expert portfolio"
             />
           </div>
 
           <div className="space-y-6">
             <div className="flex flex-wrap gap-2">
               <Badge variant="outline" className="text-primary border-primary/20 bg-primary/5 px-3 py-1">
-                <Tag className="w-3.5 h-3.5 mr-1" /> Collectibles
+                <Target className="w-3.5 h-3.5 mr-1" /> Strategic Services
               </Badge>
               <Badge variant="outline" className="px-3 py-1">
-                <Info className="w-3.5 h-3.5 mr-1" /> {auction.status === 'active' ? 'Ends in' : 'Status'}: 
+                <Info className="w-3.5 h-3.5 mr-1" /> {auction.status === 'active' ? 'Auction Ends' : 'Status'}: 
                 <span className="ml-1 font-mono">
                   {auction.status === 'active' ? <AuctionCountdown endAt={auction.endAt} className="inline-flex" /> : 'Closed'}
                 </span>
               </Badge>
               {auction.isVerified && (
                 <Badge variant="secondary" className="bg-accent/10 text-accent border-accent/20 px-3 py-1">
-                  <ShieldCheck className="w-3.5 h-3.5 mr-1" /> Authenticity Guaranteed
+                  <ShieldCheck className="w-3.5 h-3.5 mr-1" /> Verified Professional
                 </Badge>
               )}
             </div>
@@ -60,8 +60,8 @@ export default async function AuctionPage({ params }: { params: Promise<{ id: st
 
             <div className="flex items-center justify-between gap-4 py-6 border-y">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                  <User className="w-6 h-6 text-primary" />
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xl">
+                  {auction.sellerName.charAt(0)}
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
@@ -72,34 +72,34 @@ export default async function AuctionPage({ params }: { params: Promise<{ id: st
                     <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
                     <span className="font-bold text-foreground">{auction.sellerRating}</span>
                     <span>•</span>
-                    <span>{auction.sellerSales} successful sales</span>
+                    <span>{auction.sellerSales} services completed</span>
                   </div>
                 </div>
               </div>
               <Badge variant="outline" className="h-8 border-primary/20 text-primary">
-                Top Rated Seller
+                Elite Partner
               </Badge>
             </div>
 
             <div className="prose max-w-none text-muted-foreground leading-relaxed">
-              <h3 className="text-foreground font-bold text-xl mb-4">Item Description</h3>
-              <p className="text-lg">{auction.description}</p>
+              <h3 className="text-foreground font-bold text-xl mb-4">Service Scope & Outcomes</h3>
+              <p className="text-lg whitespace-pre-wrap">{auction.description}</p>
             </div>
 
             {/* Business Trust Section */}
             <div className="bg-muted/30 rounded-2xl p-6 border border-border/50">
               <h4 className="font-bold text-foreground flex items-center gap-2 mb-4">
                 <ShieldCheck className="w-5 h-5 text-accent" />
-                The BidNiche Promise
+                The BidNiche Service Guarantee
               </h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                 <div className="space-y-1">
-                  <p className="font-bold">Identity Verification</p>
-                  <p className="text-muted-foreground">This seller has completed our multi-step identity verification process.</p>
+                  <p className="font-bold">Credential Verification</p>
+                  <p className="text-muted-foreground">This expert has been verified through professional portfolio review and identity check.</p>
                 </div>
                 <div className="space-y-1">
-                  <p className="font-bold">Insured Shipping</p>
-                  <p className="text-muted-foreground">White-glove delivery with full insurance included for purchases over $5,000.</p>
+                  <p className="font-bold">Escrow-Backed Delivery</p>
+                  <p className="text-muted-foreground">Payment is only released to the expert once the pre-defined project milestones are met.</p>
                 </div>
               </div>
             </div>
@@ -120,7 +120,7 @@ export default async function AuctionPage({ params }: { params: Promise<{ id: st
             <CardHeader className="pb-3 border-b mb-4">
               <CardTitle className="text-lg flex items-center gap-2">
                 <History className="w-5 h-5 text-muted-foreground" />
-                Live Bid History
+                Bid Activity
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -148,7 +148,7 @@ export default async function AuctionPage({ params }: { params: Promise<{ id: st
                     </div>
                   ))
                 ) : (
-                  <p className="text-sm text-center text-muted-foreground py-8">No bids yet. Be the first!</p>
+                  <p className="text-sm text-center text-muted-foreground py-8">No bids yet. Be the first to secure this expertise.</p>
                 )}
               </div>
             </CardContent>

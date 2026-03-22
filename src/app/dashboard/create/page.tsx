@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Gavel, Image as ImageIcon, Calendar, DollarSign, ArrowLeft } from 'lucide-react';
+import { Briefcase, Image as ImageIcon, Calendar, DollarSign, ArrowLeft, Target } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -12,7 +12,7 @@ import { useToast } from '@/hooks/use-toast';
 import Link from 'next/link';
 import { createMockAuction } from '@/lib/db-mock';
 
-export default function CreateAuctionPage() {
+export default function CreateServicePackagePage() {
   const router = useRouter();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -35,21 +35,21 @@ export default function CreateAuctionPage() {
       const endTimestamp = new Date(`${formData.endDate}T${formData.endTime}`).getTime();
       
       if (isNaN(endTimestamp) || endTimestamp < Date.now()) {
-        throw new Error('Please select a valid future end date and time');
+        throw new Error('Please select a valid future auction end date and time');
       }
 
       const auctionId = await createMockAuction({
         sellerId: 'current-user',
-        sellerName: 'Modern Collector',
+        sellerName: 'Elite Strategist',
         title: formData.title,
         description: formData.description,
-        imageUrl: formData.imageUrl || 'https://picsum.photos/seed/newitem/600/400',
+        imageUrl: formData.imageUrl || 'https://picsum.photos/seed/newservice/600/400',
         startingPrice: Number(formData.startingPrice),
         reservePrice: Number(formData.reservePrice),
         endAt: endTimestamp,
       });
 
-      toast({ title: "Listing Created!", description: "Your auction is now live for bidders." });
+      toast({ title: "Service Auction Live!", description: "Bidders can now offer for your expertise." });
       router.push(`/auctions/${auctionId}`);
     } catch (err: any) {
       toast({ title: "Error", description: err.message, variant: "destructive" });
@@ -68,21 +68,21 @@ export default function CreateAuctionPage() {
         <CardHeader className="border-b bg-muted/20 px-8 py-6">
           <CardTitle className="text-3xl font-headline font-extrabold flex items-center gap-3">
             <div className="bg-primary/10 p-2 rounded-lg">
-              <Gavel className="w-6 h-6 text-primary" />
+              <Briefcase className="w-6 h-6 text-primary" />
             </div>
-            Create New Auction
+            Auction Your Expertise
           </CardTitle>
           <CardDescription className="text-base mt-2">
-            Fill in the details below to list your item. Make sure to be as descriptive as possible.
+            Define your service package outcomes and let the market decide the value of your time.
           </CardDescription>
         </CardHeader>
         <CardContent className="px-8 py-10">
           <form onSubmit={handleSubmit} className="space-y-8">
             <div className="space-y-6">
               <div className="space-y-2">
-                <label className="text-sm font-bold uppercase tracking-wider text-muted-foreground">Item Title</label>
+                <label className="text-sm font-bold uppercase tracking-wider text-muted-foreground">Service Package Title</label>
                 <Input 
-                  placeholder="e.g. Rare 1960s Chronograph Watch" 
+                  placeholder="e.g. Fractional CTO Strategy (20-Hour Block)" 
                   value={formData.title}
                   onChange={e => setFormData({...formData, title: e.target.value})}
                   required
@@ -91,9 +91,11 @@ export default function CreateAuctionPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-bold uppercase tracking-wider text-muted-foreground">Description</label>
+                <label className="text-sm font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
+                   <Target className="w-4 h-4" /> Scope & Deliverables
+                </label>
                 <Textarea 
-                  placeholder="Describe the condition, history, and unique features of your item..." 
+                  placeholder="Clearly define what is included in this package, your methodology, and expected outcomes..." 
                   className="min-h-[150px] focus-visible:ring-primary"
                   value={formData.description}
                   onChange={e => setFormData({...formData, description: e.target.value})}
@@ -104,7 +106,7 @@ export default function CreateAuctionPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-sm font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
-                    <ImageIcon className="w-4 h-4" /> Image URL
+                    <ImageIcon className="w-4 h-4" /> Portfolio Image URL
                   </label>
                   <Input 
                     placeholder="https://images.unsplash.com/..." 
@@ -112,12 +114,11 @@ export default function CreateAuctionPage() {
                     onChange={e => setFormData({...formData, imageUrl: e.target.value})}
                     className="focus-visible:ring-primary"
                   />
-                  <p className="text-[10px] text-muted-foreground">Tip: High-quality images increase bid rates by 40%.</p>
                 </div>
 
                 <div className="space-y-2">
                   <label className="text-sm font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
-                    <DollarSign className="w-4 h-4" /> Starting Price ($)
+                    <DollarSign className="w-4 h-4" /> Minimum Starting Bid ($)
                   </label>
                   <Input 
                     type="number" 
@@ -144,7 +145,7 @@ export default function CreateAuctionPage() {
 
                 <div className="space-y-2 md:col-span-2">
                   <label className="text-sm font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
-                    <Calendar className="w-4 h-4" /> End Date & Time
+                    <Calendar className="w-4 h-4" /> Auction End Time
                   </label>
                   <div className="flex gap-2">
                     <Input 
@@ -171,7 +172,7 @@ export default function CreateAuctionPage() {
               className="w-full h-14 text-lg font-bold rounded-xl transition-all shadow-xl shadow-primary/20" 
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Launching Auction..." : "Launch Auction"}
+              {isSubmitting ? "Launching Auction..." : "Launch Service Auction"}
             </Button>
           </form>
         </CardContent>
