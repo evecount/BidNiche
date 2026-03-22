@@ -1,4 +1,3 @@
-
 import { getMockRFPs } from '@/lib/db-mock';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -12,11 +11,11 @@ export default async function RFPBrowsePage() {
   return (
     <div className="container mx-auto px-4 py-16">
       <div className="max-w-4xl mx-auto text-center mb-16 space-y-4">
-        <h1 className="font-headline text-5xl font-extrabold tracking-tight">The <span className="text-accent italic">Bounty</span> Board</h1>
-        <p className="text-xl text-muted-foreground">Strategic requests from elite founders looking for guaranteed delivery outcomes.</p>
+        <h1 className="font-headline text-5xl font-extrabold tracking-tight">The <span className="text-accent italic">Strategic RFP</span> Board</h1>
+        <p className="text-xl text-muted-foreground">Requests for Proposals from elite founders looking for guaranteed delivery outcomes.</p>
         <div className="pt-4">
           <Button size="lg" className="rounded-full px-8 shadow-xl shadow-primary/20" asChild>
-            <Link href="/rfp/create">Post Your Outcome Needs</Link>
+            <Link href="/rfp/create">Post Your Project RFP</Link>
           </Button>
         </div>
       </div>
@@ -27,7 +26,7 @@ export default async function RFPBrowsePage() {
             <Card className="group border-accent/20 hover:border-accent hover:shadow-2xl transition-all duration-300 overflow-hidden h-full flex flex-col">
               <div className="bg-accent/5 p-4 border-b flex justify-between items-center">
                 <Badge variant="outline" className="border-accent/40 text-accent bg-accent/5">
-                  Strategic Bounty
+                  Strategic RFP
                 </Badge>
                 <div className="flex items-center gap-1.5 text-xs text-muted-foreground font-mono">
                   <Clock className="w-3.5 h-3.5" />
@@ -82,8 +81,8 @@ export default async function RFPBrowsePage() {
       {rfps.length === 0 && (
         <div className="text-center py-32 bg-card rounded-[2rem] border-2 border-dashed">
           <FileText className="w-16 h-16 text-muted-foreground mx-auto mb-6 opacity-20" />
-          <h3 className="text-xl font-bold">No active bounties found</h3>
-          <p className="text-muted-foreground max-w-xs mx-auto mt-2">Check back soon for new strategic service requirements from our network.</p>
+          <h3 className="text-xl font-bold">No active RFPs found</h3>
+          <p className="text-muted-foreground max-w-xs mx-auto mt-2">Check back soon for new strategic project requirements from our network.</p>
         </div>
       )}
     </div>

@@ -13,7 +13,7 @@ export function Navbar() {
 
   const navItems = [
     { name: 'Services', href: '/auctions', icon: Search },
-    { name: 'Bounties', href: '/rfp', icon: FileText },
+    { name: 'RFPs', href: '/rfp', icon: FileText },
     { name: 'Post Outcome', href: '/dashboard/create', icon: Plus },
     { name: 'Operational Hub', href: '/dashboard', icon: User },
   ];

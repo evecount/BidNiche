@@ -29,6 +29,7 @@ export const metadata: Metadata = {
     'bidding marketplace',
     'vetted experts',
     'AI orchestration',
+    'RFP marketplace',
   ],
   authors: [{ name: 'RFPCentral Team' }],
   creator: 'RFPCentral',
@@ -104,7 +105,7 @@ export default function RootLayout({
                 <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-foreground">Founder Hub</h4>
                 <ul className="space-y-4 text-sm text-muted-foreground">
                   <li><Link href="/auctions" className="hover:text-primary transition-colors flex items-center gap-2">Browse Roster Capacity <ArrowRight className="w-3 h-3" /></Link></li>
-                  <li><Link href="/rfp/create" className="hover:text-primary transition-colors">Post Project Bounty</Link></li>
+                  <li><Link href="/rfp/create" className="hover:text-primary transition-colors">Post Project RFP</Link></li>
                   <li><Link href="#" className="hover:text-primary transition-colors">Escrow Protection</Link></li>
                   <li><Link href="#" className="hover:text-primary transition-colors">Project Outcomes</Link></li>
                 </ul>

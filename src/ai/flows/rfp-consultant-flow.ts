@@ -1,6 +1,6 @@
 'use server';
 /**
- * @fileOverview AI Strategic Consultant Flow for Project Bounty Analysis.
+ * @fileOverview AI Strategic Consultant Flow for Project RFP Analysis.
  * 
  * Analyzes mission-critical project requirements to provide a strategic assessment,
  * complexity score, and ideal provider matching profile.
@@ -10,7 +10,7 @@ import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
 
 const RFPConsultantInputSchema = z.object({
-  title: z.string().describe('The title of the project or strategic bounty.'),
+  title: z.string().describe('The title of the project or strategic RFP.'),
   description: z.string().describe('The detailed requirements of the project.'),
   budgetRange: z.string().describe('The intended budget range.'),
 });
@@ -29,9 +29,9 @@ const prompt = ai.definePrompt({
   name: 'rfpConsultantPrompt',
   input: { schema: RFPConsultantInputSchema },
   output: { schema: RFPConsultantOutputSchema },
-  prompt: `You are the RFPCentral AI Strategic Consultant. Your role is to take a founder's mission-critical project requirements (like a roadshow or marketing rollout) and transform it into a professional strategic brief.
+  prompt: `You are the RFPCentral AI Strategic Consultant. Your role is to take a founder's mission-critical project requirements (like a roadshow or marketing rollout) and transform it into a professional Strategic RFP brief.
 
-Analyze the following project bounty:
+Analyze the following Project RFP:
 Title: {{{title}}}
 Description: {{{description}}}
 Budget: {{{budgetRange}}}

@@ -13,7 +13,7 @@ import { createMockRFP } from '@/lib/db-mock';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
-const SUGGESTED_BOUNTIES = [
+const SUGGESTED_RFPS = [
   {
     title: "Agentic Support Orchestration",
     description: "Design a 3-agent orchestration to handle tier-1 support, internal technical documentation search, and auto-routing of complex tickets.",
@@ -54,14 +54,14 @@ export default function SubmitRFPPage() {
     timeline: ''
   });
 
-  const applyTemplate = (template: typeof SUGGESTED_BOUNTIES[0]) => {
+  const applyTemplate = (template: typeof SUGGESTED_RFPS[0]) => {
     setFormData({
       ...formData,
       title: template.title,
       description: template.description,
       budgetRange: template.budget,
     });
-    toast({ title: "Template Applied", description: "You can now refine the details before submitting." });
+    toast({ title: "Template Applied", description: "You can now refine the RFP details before submitting." });
   };
 
   const handleRunAnalysis = async () => {
@@ -101,7 +101,7 @@ export default function SubmitRFPPage() {
         status: 'open'
       });
 
-      toast({ title: "Bounty Live", description: "Your strategic bounty has been broadcast to verified experts." });
+      toast({ title: "Project RFP Live", description: "Your strategic request has been broadcast to verified experts." });
       router.push(`/rfp/${rfpId}`);
     } catch (err: any) {
       toast({ title: "Error", description: err.message, variant: "destructive" });
@@ -117,16 +117,16 @@ export default function SubmitRFPPage() {
         {/* Form Column */}
         <div className="lg:col-span-7 space-y-8">
           <div className="space-y-2">
-            <h1 className="text-4xl font-extrabold tracking-tight">Post a Strategic Bounty</h1>
+            <h1 className="text-4xl font-extrabold tracking-tight">Post a Project RFP</h1>
             <p className="text-muted-foreground text-lg">Define your fractional outcome and have verified experts compete for the execution.</p>
           </div>
 
           <div className="space-y-4">
             <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-2">
-              <Lightbulb className="w-3.5 h-3.5 text-primary" /> Popular Bounties
+              <Lightbulb className="w-3.5 h-3.5 text-primary" /> Popular RFP Templates
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {SUGGESTED_BOUNTIES.map((t, i) => (
+              {SUGGESTED_RFPS.map((t, i) => (
                 <button 
                   key={i} 
                   onClick={() => applyTemplate(t)}
@@ -144,12 +144,12 @@ export default function SubmitRFPPage() {
             <CardHeader className="bg-primary/5 border-b px-8 py-6">
               <CardTitle className="flex items-center gap-2 text-xl font-bold">
                 <FileText className="w-5 h-5 text-primary" />
-                Bounty Definition
+                RFP Definition
               </CardTitle>
             </CardHeader>
             <CardContent className="p-8 space-y-6">
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Bounty Title</label>
+                <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Project Title</label>
                 <Input 
                   placeholder="e.g. Multi-Agent System for Automated Sales Prospecting" 
                   value={formData.title}
@@ -271,7 +271,7 @@ export default function SubmitRFPPage() {
                     >
                       {isSubmitting ? "Broadcasting..." : (
                         <span className="flex items-center gap-2">
-                          Launch Strategic Bounty <ArrowRight className="w-5 h-5" />
+                          Launch Strategic RFP <ArrowRight className="w-5 h-5" />
                         </span>
                       )}
                     </Button>
@@ -283,7 +283,7 @@ export default function SubmitRFPPage() {
             <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10 flex gap-4 items-start">
               <ShieldCheck className="w-6 h-6 text-primary shrink-0" />
               <p className="text-xs text-muted-foreground leading-relaxed">
-                By launching this bounty, you authorize RFPCentral to reach out to our network of verified experts. Your funds will be held in escrow upon awarding the contract.
+                By launching this RFP, you authorize RFPCentral to reach out to our network of verified experts. Your funds will be held in escrow upon awarding the contract.
               </p>
             </div>
           </div>

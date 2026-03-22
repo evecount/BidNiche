@@ -31,7 +31,7 @@ export default async function Home() {
                 </Link>
               </Button>
               <Button size="lg" variant="outline" className="h-14 px-10 text-lg rounded-full border-primary/50 text-primary hover:bg-primary/5 font-bold" asChild>
-                <Link href="/rfp/create">Post a Strategic Bounty</Link>
+                <Link href="/rfp/create">Post a Project RFP</Link>
               </Button>
             </div>
           </div>
@@ -87,7 +87,7 @@ export default async function Home() {
                   <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary font-bold text-xs border border-primary/20">02</div>
                   <div>
                     <p className="font-bold">Guaranteed Outcomes</p>
-                    <p className="text-muted-foreground">Payments are held in escrow. Funds are only released when the pre-defined strategic deliverables are met.</p>
+                    <p className="text-muted-foreground">Payments are held in escrow. Funds are only released when the pre-defined strategic deliverables are met via the RFP process.</p>
                   </div>
                 </li>
               </ul>
@@ -112,7 +112,7 @@ export default async function Home() {
                   <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center shrink-0 text-accent font-bold text-xs border border-accent/20">02</div>
                   <div>
                     <p className="font-bold">No More Proposals</p>
-                    <p className="text-muted-foreground">Stop writing RFPs for free. We bring qualified, high-intent founders directly to your capacity auctions.</p>
+                    <p className="text-muted-foreground">Stop writing RFPs for free. We bring qualified, high-intent founders directly to your capacity auctions or RFP requests.</p>
                   </div>
                 </li>
               </ul>

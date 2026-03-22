@@ -19,7 +19,7 @@ export default function AboutPage() {
             Navigating the <span className="text-primary italic">Agentic Shift</span>.
           </h1>
           <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-            RFPCentral provides founders with the <span className="text-foreground font-bold">"human-in-the-loop"</span> expertise needed to outsource mission-critical projects with total confidence. We bridge the gap between high-growth companies and a vetted roster of independent strategic operators.
+            RFPCentral provides founders with the <span className="text-foreground font-bold">"human-in-the-loop"</span> expertise needed to outsource mission-critical projects with total confidence. We bridge the gap between high-growth companies and a vetted roster of independent strategic operators via fractional auctions and standard RFPs.
           </p>
         </div>
       </section>
@@ -33,7 +33,7 @@ export default function AboutPage() {
               The billable hour is an artifact of a slower era. In a world of rapid iteration and agentic systems, founders need results, not spreadsheets of time. Linear human time is our only constant; we help you buy it back.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed font-medium">
-              At RFPCentral, we acquire and vet talent for our roster, then allow them to auction **fractional capacity blocks**. Whether it's a 40-hour agentic orchestration or a Series A roadshow sprint, the market decides the value based on the business impact.
+              At RFPCentral, we acquire and vet talent for our roster, then allow them to auction **fractional capacity blocks** or respond to your **Strategic RFPs**. Whether it's a 40-hour agentic orchestration or a Series A roadshow sprint, the market decides the value based on the business impact.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-4">
               <div className="flex gap-4">
@@ -100,7 +100,7 @@ export default function AboutPage() {
           <div className="relative z-10 space-y-6">
             <h2 className="text-5xl lg:text-6xl font-extrabold tracking-tight">Outsource your operational anxiety.</h2>
             <p className="text-xl opacity-90 max-w-2xl mx-auto leading-relaxed">
-              Secure your next strategic partner through our fractional capacity auctions. Join the founders who are changing the way high-stakes work gets done.
+              Secure your next strategic partner through our fractional capacity auctions or post a bespoke project RFP.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row justify-center gap-6 relative z-10">
@@ -108,7 +108,7 @@ export default function AboutPage() {
               <Link href="/auctions">Browse Roster Capacity</Link>
             </Button>
             <Button size="lg" variant="outline" className="h-16 px-12 rounded-full font-bold text-lg border-white/30 hover:bg-white/10 text-white" asChild>
-              <Link href="/rfp/create">Post Strategic Bounty</Link>
+              <Link href="/rfp/create">Post Project RFP</Link>
             </Button>
           </div>
         </div>
