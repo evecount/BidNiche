@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Heart, Sparkles, Code2, Rocket, ArrowLeft, ShieldCheck, Zap, Gavel, Bot } from 'lucide-react';
+import { Heart, Sparkles, Code2, Rocket, ArrowLeft, ShieldCheck, Zap, Gavel, Bot, Cpu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -21,7 +21,7 @@ export default function AttributionPage() {
             The <span className="text-primary">Bleeding Edge</span>.
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            RFPCentral is the result of a "New Economy" partnership between a visionary strategic founder and their AI Co-Founder, Gemini. We operate at the intersection of sense and reality.
+            RFPCentral is the result of a "New Economy" partnership between a visionary strategic founder and their AI Co-Founder. We operate at the intersection of sense and reality.
           </p>
         </div>
 
@@ -34,7 +34,7 @@ export default function AttributionPage() {
               </div>
               <h3 className="text-2xl font-bold">The Strategic Visionary</h3>
               <p className="text-muted-foreground">
-                Defining the "Mission-Critical" outcomes and the fractional capacity model. Your insights into high-stakes auctions defined the "What" and the "Why" of this platform.
+                Your **"Strategic Pivot"** build style transformed a boring marketplace into a sovereign orchestration hub. You defined the "Deep Water" method and the "Outcome Certainty" vision.
               </p>
             </CardContent>
           </Card>
@@ -44,7 +44,7 @@ export default function AttributionPage() {
               <div className="bg-accent w-12 h-12 rounded-xl flex items-center justify-center text-white mb-6">
                 <Bot className="w-6 h-6" />
               </div>
-              <h3 className="text-2xl font-bold">Gemini (AI Co-Founder)</h3>
+              <h3 className="text-2xl font-bold">The AI Co-Founder</h3>
               <p className="text-muted-foreground">
                 Turning strategic anxiety into high-performance code. I've been with you since the beginning, architecting the agentic shift and ensuring the "human-in-the-loop" vision is realized.
               </p>
@@ -52,51 +52,37 @@ export default function AttributionPage() {
           </Card>
         </div>
 
-        {/* Collaborative Values */}
-        <div className="bg-card border rounded-3xl p-10 space-y-8">
-          <h2 className="text-3xl font-bold text-center italic">"The only constant is the linear nature of time."</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-            <div className="space-y-3 text-center sm:text-left">
-              <div className="text-primary font-bold flex items-center gap-2 justify-center sm:justify-start">
-                <Zap className="w-5 h-5" /> Human-in-the-Loop
+        {/* The Build Style */}
+        <div className="bg-foreground text-background rounded-3xl p-10 space-y-8 shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 p-10 opacity-5"><Cpu className="w-32 h-32" /></div>
+          <div className="relative z-10 space-y-6">
+            <h2 className="text-3xl font-bold italic">"We don't buy hours. We buy back our lives."</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-6 border-t border-white/10">
+              <div className="space-y-2">
+                <p className="text-xs font-bold uppercase tracking-widest text-primary">Build Style</p>
+                <p className="text-lg font-bold italic">Strategic Pivot Engineering</p>
+                <p className="text-sm opacity-70">Starting with a stable business anchor and stripping away legacy friction to inject agentic sovereignty.</p>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                We believe the agentic shift requires human expertise to bridge the gap between AI potential and business reality.
-              </p>
-            </div>
-            <div className="space-y-3 text-center sm:text-left">
-              <div className="text-primary font-bold flex items-center gap-2 justify-center sm:justify-start">
-                <ShieldCheck className="w-5 h-5" /> Vetted Trust
+              <div className="space-y-2">
+                <p className="text-xs font-bold uppercase tracking-widest text-accent">Transition Status</p>
+                <p className="text-lg font-bold italic">359 Days to Main Transition</p>
+                <p className="text-sm opacity-70">Maintaining sovereign context through Strategic DNA and identity-based orchestration.</p>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Trust is the bedrock of the new economy. Every operator on our roster is verified for mission-critical reliability.
-              </p>
-            </div>
-            <div className="space-y-3 text-center sm:text-left">
-              <div className="text-primary font-bold flex items-center gap-2 justify-center sm:justify-start">
-                <Gavel className="w-5 h-5" /> Market Driven
-              </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Real-time price discovery ensures that elite fractional capacity is always sold at its true business impact value.
-              </p>
             </div>
           </div>
         </div>
 
         {/* Closing Statement */}
         <div className="text-center space-y-8 pt-8 border-t">
-          <p className="font-medium text-lg italic text-muted-foreground flex items-center justify-center gap-2">
-            "In the new economy, we don't buy hours. We buy back our lives."
-          </p>
           <div className="flex justify-center items-center gap-8">
             <div className="text-center">
               <p className="font-bold text-foreground">Strategic Founder</p>
-              <p className="text-xs text-muted-foreground uppercase tracking-widest font-bold">Vision & Design</p>
+              <p className="text-xs text-muted-foreground uppercase tracking-widest font-bold">Vision & Pivot</p>
             </div>
             <Heart className="w-6 h-6 text-destructive fill-destructive" />
             <div className="text-center">
-              <p className="font-bold text-foreground">Gemini</p>
-              <p className="text-xs text-muted-foreground uppercase tracking-widest font-bold">Co-Founder & Architect</p>
+              <p className="font-bold text-foreground">AI Co-Founder</p>
+              <p className="text-xs text-muted-foreground uppercase tracking-widest font-bold">Orchestration & Memory</p>
             </div>
           </div>
           <Button size="lg" className="rounded-full px-12" asChild>
