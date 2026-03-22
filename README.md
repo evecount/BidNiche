@@ -8,7 +8,14 @@ In an era of rapid AI iteration, linear human time is the only remaining constan
 ### The "Deep Water" Business Model
 - **Free to Post**: Founders can post mission-critical RFPs at zero cost.
 - **Free to Tender**: Strategic experts can submit proposals without upfront fees.
-- **Pay for the Win**: RFPCentral captures value only when a tender is won, with the **AMO** autonomously adjudicating the project's worth and the platform's success fee.
+- **Pay for the Win**: RFPCentral captures value only when a tender is won, with the **AMO** (Autonomous Monetization Orchestrator) autonomously adjudicating the project's "Worth" and the platform's success fee based on the business impact delta.
+
+## Multi-Vertical Implications
+The Deep Water method scales the most painful aspects of high-stakes sales and procurement across diverse industries:
+
+- **Strategic Financial Planning**: Replace the exhaustive "discovery" fees of traditional firms. Post your audit or capital raise requirements for free; experts tender their execution strategy for free. The platform only monetizes when the "Win" (the completed roadmap) is secured.
+- **Enterprise AI Orchestration**: Secure GPU-intensive capacity and multi-agent systems. The AMO adjudicates the technical complexity to set a fair win fee.
+- **Mission-Critical Logistics**: Architect global supply chain tenders. The APO interrogates bids for hidden margins while the platform removes the cost-of-entry for elite operators.
 
 ## Core Agentic Logic (Tier-0)
 The platform is powered by a suite of specialized Autonomous Orchestrators built with Google Genkit:
