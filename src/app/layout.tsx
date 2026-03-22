@@ -1,8 +1,8 @@
-
 import type {Metadata} from 'next';
 import './globals.css';
 import { Navbar } from '@/components/Navbar';
 import { Toaster } from '@/components/ui/toaster';
+import { AiOnboardingAssistant } from '@/components/AiOnboardingAssistant';
 
 export const metadata: Metadata = {
   title: 'BidNiche | Premium Real-Time Auction Marketplace',
@@ -34,6 +34,7 @@ export default function RootLayout({
           </div>
         </footer>
         <Toaster />
+        <AiOnboardingAssistant />
       </body>
     </html>
   );
