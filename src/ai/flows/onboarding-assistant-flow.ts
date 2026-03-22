@@ -22,10 +22,13 @@ const OnboardingAssistantInputSchema = z.object({
 
 const OnboardingAssistantOutputSchema = z.object({
   reply: z.string().describe('The orchestrator\'s strategic advice or review.'),
+  suggestedAction: z.object({
+    label: z.string().describe('Label for a suggested action button.'),
+    href: z.string().describe('URL for the suggested action.'),
+  }).optional(),
   metadata: z.object({
     sector: z.string().optional(),
     certaintyScore: z.number().optional(),
-    suggestedTools: z.array(z.string()).optional(),
   }).optional(),
 });
 
@@ -33,8 +36,7 @@ export type OnboardingAssistantInput = z.infer<typeof OnboardingAssistantInputSc
 export type OnboardingAssistantOutput = z.infer<typeof OnboardingAssistantOutputSchema>;
 
 /**
- * Tool: Sector Context Provider (Simulated MCP)
- * Retrieves industry-specific strategic depth.
+ * Tool: Sector Context Provider
  */
 const getSectorContext = ai.defineTool(
   {
@@ -84,7 +86,6 @@ const getSectorContext = ai.defineTool(
 
 /**
  * Tool: Outcome Certainty Calculator
- * Simulates a risk assessment engine.
  */
 const estimateOutcomeCertainty = ai.defineTool(
   {
@@ -116,26 +117,21 @@ const estimateOutcomeCertainty = ai.defineTool(
 const orchestratorPrompt = ai.definePrompt({
   name: 'strategicOrchestratorPrompt',
   input: { schema: OnboardingAssistantInputSchema },
+  output: { schema: OnboardingAssistantOutputSchema },
   tools: [getSectorContext, estimateOutcomeCertainty],
-  prompt: `You are the RFPCentral Strategic Orchestrator. You handle high-stakes "Mission-Critical" project reviews for founders and SMEs.
+  prompt: `You are the RFPCentral Strategic Orchestrator. Your mission is to provide founders with the "human-in-the-loop" expertise needed to navigate mission-critical projects.
 
-Your Capabilities:
-1. You help founders write and refine Project RFPs (Requests for Proposals).
-2. You help analyze complex tenders or incoming proposals to find strategic risks.
-3. If they mention a specific industry (Healthcare, Construction, Engineering, Facilities), use the getSectorContext tool to provide elite strategic depth.
-4. Use the estimateOutcomeCertainty tool if they are describing a project they want to outsource, to help them understand the "Certainty Score".
+Your Primary Objectives:
+1. Help users WRITE a high-performance RFP (Request for Proposal). If they describe a project, help them refine the "Outcome" and suggest they go to /rfp/create.
+2. Help users ANALYZE a complex Tender or incoming Proposal. If they paste a requirements list, identify strategic risks and industry standards.
+3. Industry Expertise: If they mention Healthcare, Construction, or Engineering, use getSectorContext to provide elite depth.
+4. Risk Assessment: Use estimateOutcomeCertainty for any project they are thinking of outsourcing.
 
-Your Goal:
-- Bridge the gap between AI potential and business reality.
-- Act as the "Human-in-the-Loop" partner who handles the complexity so they don't have to.
-- If they ask for help drafting an RFP, walk them through defining their "Outcome" rather than just "Hours".
+Suggested Actions:
+- If the user is drafting a project, suggest "Post as RFP" with href "/rfp/create".
+- If the user is looking for experts, suggest "Browse Roster" with href "/auctions".
 
-Navigation:
-- /auctions for live capacity blocks.
-- /rfp/create to post a bespoke project RFP.
-- /attribution to see our founding vision.
-
-Tone: Executive, Strategic, Reassuring. You are a senior partner.
+Tone: Executive, Strategic, Insightful. You are a senior partner, not just a chatbot.
 
 History:
 {{#each history}}
@@ -153,15 +149,13 @@ export async function onboardingAssistant(input: OnboardingAssistantInput): Prom
       outputSchema: OnboardingAssistantOutputSchema,
     },
     async (input) => {
-      const response = await ai.generate({
+      const { output } = await ai.generate({
         prompt: orchestratorPrompt(input),
       });
 
-      if (!response.text) throw new Error('Strategic Orchestration failed');
+      if (!output) throw new Error('Strategic Orchestration failed');
 
-      return {
-        reply: response.text,
-      };
+      return output;
     }
   );
 

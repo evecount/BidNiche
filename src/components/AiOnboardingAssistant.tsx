@@ -1,17 +1,22 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { Sparkles, X, Send, MessageCircle, Bot } from 'lucide-react';
+import { Sparkles, X, Send, MessageCircle, Bot, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { onboardingAssistant } from '@/ai/flows/onboarding-assistant-flow';
+import { onboardingAssistant, type OnboardingAssistantOutput } from '@/ai/flows/onboarding-assistant-flow';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 type Message = {
   role: 'user' | 'model';
   text: string;
+  suggestedAction?: {
+    label: string;
+    href: string;
+  };
 };
 
 export function AiOnboardingAssistant() {
@@ -20,7 +25,7 @@ export function AiOnboardingAssistant() {
   const [messages, setMessages] = useState<Message[]>([
     { 
       role: 'model', 
-      text: "Hi! I'm your RFPCentral Strategic Orchestrator. I can help you draft a mission-critical RFP, analyze a complex tender, or find the right fractional capacity block for your next sprint. How can I help you outsource your anxiety today?" 
+      text: "Hi! I'm your RFPCentral Strategic Orchestrator. I can help you draft a mission-critical RFP from scratch or analyze a complex tender to find strategic risks. How can I help you navigate the agentic shift today?" 
     }
   ]);
   const [isLoading, setIsLoading] = useState(false);
@@ -44,10 +49,14 @@ export function AiOnboardingAssistant() {
     try {
       const result = await onboardingAssistant({
         message: userMessage,
-        history: messages.slice(-5), // Send last few messages for context
+        history: messages.slice(-5).map(m => ({ role: m.role, text: m.text })),
       });
 
-      setMessages((prev) => [...prev, { role: 'model', text: result.reply }]);
+      setMessages((prev) => [...prev, { 
+        role: 'model', 
+        text: result.reply,
+        suggestedAction: result.suggestedAction
+      }]);
     } catch (error) {
       setMessages((prev) => [...prev, { role: 'model', text: "I'm sorry, I'm having a little trouble connecting right now. Please try again in a moment!" }]);
     } finally {
@@ -74,30 +83,44 @@ export function AiOnboardingAssistant() {
             </Button>
           </CardHeader>
           <CardContent className="p-0">
-            <ScrollArea className="h-[350px] p-4" ref={scrollRef}>
+            <ScrollArea className="h-[400px] p-4" ref={scrollRef}>
               <div className="space-y-4">
                 {messages.map((msg, i) => (
                   <div 
                     key={i} 
                     className={cn(
-                      "flex gap-3 max-w-[85%]",
-                      msg.role === 'user' ? "ml-auto flex-row-reverse" : "mr-auto"
+                      "flex flex-col gap-2 max-w-[90%]",
+                      msg.role === 'user' ? "ml-auto" : "mr-auto"
                     )}
                   >
                     <div className={cn(
-                      "w-8 h-8 rounded-full flex items-center justify-center shrink-0",
-                      msg.role === 'user' ? "bg-primary/10" : "bg-muted"
+                      "flex gap-3",
+                      msg.role === 'user' ? "flex-row-reverse" : "flex-row"
                     )}>
-                      {msg.role === 'user' ? <MessageCircle className="w-4 h-4 text-primary" /> : <Bot className="w-4 h-4 text-muted-foreground" />}
+                      <div className={cn(
+                        "w-8 h-8 rounded-full flex items-center justify-center shrink-0",
+                        msg.role === 'user' ? "bg-primary/10" : "bg-muted"
+                      )}>
+                        {msg.role === 'user' ? <MessageCircle className="w-4 h-4 text-primary" /> : <Bot className="w-4 h-4 text-muted-foreground" />}
+                      </div>
+                      <div className={cn(
+                        "p-3 rounded-2xl text-sm leading-relaxed shadow-sm",
+                        msg.role === 'user' 
+                          ? "bg-primary text-primary-foreground rounded-tr-none" 
+                          : "bg-muted rounded-tl-none text-foreground"
+                      )}>
+                        {msg.text}
+                      </div>
                     </div>
-                    <div className={cn(
-                      "p-3 rounded-2xl text-sm leading-relaxed shadow-sm",
-                      msg.role === 'user' 
-                        ? "bg-primary text-primary-foreground rounded-tr-none" 
-                        : "bg-muted rounded-tl-none text-foreground"
-                    )}>
-                      {msg.text}
-                    </div>
+                    {msg.suggestedAction && (
+                      <div className="mt-1 ml-11">
+                        <Button size="sm" variant="outline" className="h-8 text-xs font-bold border-primary/40 text-primary hover:bg-primary/5 rounded-full" asChild>
+                          <Link href={msg.suggestedAction.href}>
+                            {msg.suggestedAction.label} <ArrowRight className="ml-1.5 w-3 h-3" />
+                          </Link>
+                        </Button>
+                      </div>
+                    )}
                   </div>
                 ))}
                 {isLoading && (
@@ -114,7 +137,7 @@ export function AiOnboardingAssistant() {
           <CardFooter className="p-3 border-t bg-muted/20">
             <form onSubmit={handleSendMessage} className="flex w-full gap-2">
               <Input 
-                placeholder="Ask me to help write an RFP..." 
+                placeholder="Help me write an RFP..." 
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 className="bg-background focus-visible:ring-primary"
