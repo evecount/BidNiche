@@ -96,7 +96,7 @@ Your mission: Architect, issue, and adjudicate a high-stakes tender.
 
 1. Requirement Harvesting: Extract technical specs, timelines, and ESG requirements from the RFP content.
 2. Bid Interrogation: If proposals are provided, use runShouldCostSimulation to detect hidden margins or over-quoting. 
-3. Semantic Scoring: Grade qualitative responses against Microsoft internal gold-standard benchmarks.
+3. Semantic Scoring: Grade qualitative responses against internal gold-standard benchmarks.
 4. Negotiation Architecture: Define a "Best and Final Offer" (BAFO) strategy and target price.
 5. ESG Audit: Use validateESGStandards to ensure 100% compliance with sustainability and security protocols.
 

@@ -22,6 +22,7 @@ export function APOAdjudicatorTrigger({ rfpContent, proposals }: { rfpContent: s
     setCurrentStep('Harvesting Technical Requirements...');
     
     try {
+      // Simulate orchestration phases
       setTimeout(() => setCurrentStep('Interrogating Bid Patterns...'), 1500);
       setTimeout(() => setCurrentStep('Executing Should-Cost Simulations...'), 3000);
       setTimeout(() => setCurrentStep('Architecting BAFO Negotiation Logic...'), 4500);
@@ -98,7 +99,6 @@ export function APOAdjudicatorTrigger({ rfpContent, proposals }: { rfpContent: s
               </div>
             ) : result ? (
               <div className="space-y-10 animate-in fade-in slide-in-from-bottom-5 duration-700">
-                {/* Requirements & TVO */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <Card className="border-accent/20">
                     <CardHeader className="pb-3 border-b">
@@ -130,7 +130,6 @@ export function APOAdjudicatorTrigger({ rfpContent, proposals }: { rfpContent: s
                   </Card>
                 </div>
 
-                {/* Negotiation Section */}
                 <div className="bg-foreground text-background p-8 rounded-[2rem] space-y-6 shadow-2xl">
                   <div className="flex justify-between items-center">
                     <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-accent">Negotiation Architecture</h4>
@@ -151,13 +150,12 @@ export function APOAdjudicatorTrigger({ rfpContent, proposals }: { rfpContent: s
                   </div>
                 </div>
 
-                {/* Risk & Compliance */}
-                {result.adjudicationReport?.anomalousPatternFlags.length! > 0 && (
+                {result.adjudicationReport?.anomalousPatternFlags && result.adjudicationReport.anomalousPatternFlags.length > 0 && (
                   <div className="bg-destructive/10 p-6 rounded-2xl border border-destructive/20 flex gap-4 items-center">
                     <AlertTriangle className="w-6 h-6 text-destructive shrink-0" />
                     <div>
                       <p className="text-sm font-bold text-destructive">Anomalous Patterns Detected</p>
-                      <p className="text-xs text-muted-foreground">{result.adjudicationReport?.anomalousPatternFlags.join(', ')}</p>
+                      <p className="text-xs text-muted-foreground">{result.adjudicationReport.anomalousPatternFlags.join(', ')}</p>
                     </div>
                   </div>
                 )}
