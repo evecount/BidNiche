@@ -4,11 +4,11 @@ import { Navbar } from '@/components/Navbar';
 import { Toaster } from '@/components/ui/toaster';
 import { AiOnboardingAssistant } from '@/components/AiOnboardingAssistant';
 import Link from 'next/link';
-import { Gavel, Heart, Mail, Twitter, Instagram, Globe } from 'lucide-react';
+import { Gavel, Heart, Mail, Twitter, Instagram, Globe, Award, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'BidNiche | Elite Service Outcome Auctions',
-  description: 'The world\'s first real-time bidding platform for packaged professional service outcomes. Ending the billable hour friction.',
+  title: 'BidNiche | Elite Strategic Outcome Auctions',
+  description: 'The world\'s premier roster for packaged professional service outcomes. Ending the billable hour friction for global founders.',
 };
 
 export default function RootLayout({
@@ -23,81 +23,81 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
       </head>
-      <body className="font-body antialiased min-h-screen flex flex-col">
+      <body className="font-body antialiased min-h-screen flex flex-col bg-background">
         <Navbar />
         <main className="flex-1">
           {children}
         </main>
         
-        <footer className="border-t bg-card pt-16 pb-8 mt-20">
+        <footer className="border-t bg-card pt-20 pb-10 mt-24">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
               {/* Brand Section: The 'Who' and 'Why' */}
-              <div className="space-y-6">
+              <div className="space-y-8">
                 <Link href="/" className="flex items-center gap-2">
-                  <div className="bg-primary p-1.5 rounded-lg shadow-lg shadow-primary/20">
+                  <div className="bg-primary p-2 rounded-xl shadow-xl shadow-primary/20">
                     <Gavel className="w-5 h-5 text-white" />
                   </div>
-                  <span className="font-headline font-extrabold text-xl tracking-tight text-primary">
+                  <span className="font-headline font-extrabold text-2xl tracking-tighter text-primary">
                     BidNiche
                   </span>
                 </Link>
                 <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-                  The premier auction house for packaged service outcomes. We help elite experts maximize yield and founders secure guaranteed strategic delivery.
+                  The premier outcome roster. We vet the world's most talented independent experts so founders can secure guaranteed strategic capacity in minutes.
                 </p>
-                <div className="flex gap-4">
-                  <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <div className="flex gap-5">
+                  <Link href="#" className="text-muted-foreground hover:text-primary transition-all hover:scale-110">
                     <Twitter className="w-5 h-5" />
                   </Link>
-                  <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                  <Link href="#" className="text-muted-foreground hover:text-primary transition-all hover:scale-110">
                     <Instagram className="w-5 h-5" />
                   </Link>
-                  <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                  <Link href="#" className="text-muted-foreground hover:text-primary transition-all hover:scale-110">
                     <Mail className="w-5 h-5" />
                   </Link>
                 </div>
               </div>
 
-              {/* Marketplace Section: Core Product Routes */}
-              <div className="space-y-6">
-                <h4 className="text-sm font-bold uppercase tracking-widest text-foreground">Marketplace</h4>
+              {/* Founder Tools: Client-Facing Routes */}
+              <div className="space-y-8">
+                <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-foreground">Founder Hub</h4>
                 <ul className="space-y-4 text-sm text-muted-foreground">
-                  <li><Link href="/auctions" className="hover:text-primary transition-colors">Browse Service Blocks</Link></li>
-                  <li><Link href="/dashboard/create" className="hover:text-primary transition-colors">Auction Your Expertise</Link></li>
-                  <li><Link href="#" className="hover:text-primary transition-colors">Active Sprints</Link></li>
-                  <li><Link href="#" className="hover:text-primary transition-colors">Featured Experts</Link></li>
+                  <li><Link href="/auctions" className="hover:text-primary transition-colors flex items-center gap-2">Browse Expert Roster <ArrowRight className="w-3 h-3" /></Link></li>
+                  <li><Link href="/rfp/create" className="hover:text-primary transition-colors">Post Strategic RFP</Link></li>
+                  <li><Link href="#" className="hover:text-primary transition-colors">Escrow Protection</Link></li>
+                  <li><Link href="#" className="hover:text-primary transition-colors">Client Case Studies</Link></li>
                 </ul>
               </div>
 
-              {/* Support Section: Trust-Building Links */}
-              <div className="space-y-6">
-                <h4 className="text-sm font-bold uppercase tracking-widest text-foreground">Support</h4>
+              {/* Expert Entry: Supply-Side Routes */}
+              <div className="space-y-8">
+                <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-foreground">Expert Roster</h4>
                 <ul className="space-y-4 text-sm text-muted-foreground">
-                  <li><Link href="#" className="hover:text-primary transition-colors">Expert Help Center</Link></li>
+                  <li><Link href="/dashboard/create" className="hover:text-primary transition-colors">Apply for Roster</Link></li>
+                  <li><Link href="#" className="hover:text-primary transition-colors">Yield Optimization</Link></li>
                   <li><Link href="#" className="hover:text-primary transition-colors">Vetting Standards</Link></li>
-                  <li><Link href="#" className="hover:text-primary transition-colors">Escrow Protocols</Link></li>
-                  <li><Link href="#" className="hover:text-primary transition-colors">Platform Ethics</Link></li>
+                  <li><Link href="#" className="hover:text-primary transition-colors">Outcome Templates</Link></li>
                 </ul>
               </div>
 
               {/* Company Section: Brand Story and Legal */}
-              <div className="space-y-6">
-                <h4 className="text-sm font-bold uppercase tracking-widest text-foreground">Company</h4>
+              <div className="space-y-8">
+                <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-foreground">Company</h4>
                 <ul className="space-y-4 text-sm text-muted-foreground">
                   <li><Link href="/about" className="hover:text-primary transition-colors">The Outcome Vision</Link></li>
-                  <li><Link href="/attribution" className="font-bold text-primary hover:underline">Co-Founder Attribution</Link></li>
+                  <li><Link href="/attribution" className="font-bold text-primary hover:underline flex items-center gap-1.5"><Award className="w-3.5 h-3.5" /> Co-Founder Attribution</Link></li>
                   <li><Link href="#" className="hover:text-primary transition-colors">Terms of Engagement</Link></li>
-                  <li><Link href="#" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
+                  <li><Link href="#" className="hover:text-primary transition-colors">Privacy Protocols</Link></li>
                 </ul>
               </div>
             </div>
 
-            <div className="pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-6">
-              <p className="text-xs text-muted-foreground">
-                © {new Date().getFullYear()} BidNiche. Disrupting the billable hour. A collaborative venture.
+            <div className="pt-10 border-t flex flex-col md:flex-row justify-between items-center gap-8">
+              <p className="text-xs text-muted-foreground font-medium uppercase tracking-widest">
+                © {new Date().getFullYear()} BidNiche. Ending the Billable Hour. Vetted Roster Model.
               </p>
-              <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                Built with <Heart className="w-3 h-3 text-destructive fill-destructive" /> by the Founders
+              <div className="flex items-center gap-3 text-xs text-muted-foreground bg-muted/50 px-4 py-2 rounded-full border">
+                Built with <Heart className="w-3.5 h-3.5 text-destructive fill-destructive animate-pulse" /> by the Founding Partners
               </div>
             </div>
           </div>
