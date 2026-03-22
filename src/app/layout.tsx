@@ -7,8 +7,8 @@ import Link from 'next/link';
 import { Gavel, Heart, Mail, Twitter, Instagram, Globe, Award, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'RFPCentral | Elite Project Outcome Auctions',
-  description: 'The world\'s premier roster for mission-critical outsourced projects. Secure elite capacity for your next product rollout or strategic roadshow.',
+  title: 'RFPCentral | Elite Strategic Outcome Auctions',
+  description: 'The world\'s premier roster for packaged professional service outcomes. Ending the billable hour friction for global founders.',
 };
 
 export default function RootLayout({

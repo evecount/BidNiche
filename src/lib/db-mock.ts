@@ -9,12 +9,12 @@ let auctions: Auction[] = [
     sellerRating: 4.9,
     sellerSales: 42,
     isVerified: true,
-    title: '1-Month Fractional CMO Strategy Block',
-    description: 'A dedicated 20-hour package including brand positioning, GTM strategy, and performance marketing oversight for Series A startups.',
+    title: 'Q4 Product Launch Marketing Rollout',
+    description: 'A complete, high-intensity marketing rollout package for an enterprise product launch. Includes GTM strategy, asset creation oversight, and a 48-hour performance monitoring sprint.',
     imageUrl: PlaceHolderImages[0].imageUrl,
-    startingPrice: 5000,
-    currentPrice: 6200,
-    reservePrice: 7500,
+    startingPrice: 15000,
+    currentPrice: 18200,
+    reservePrice: 20000,
     createdAt: Date.now() - 86400000,
     endAt: Date.now() + 172800000,
     status: 'active'
@@ -22,12 +22,12 @@ let auctions: Auction[] = [
   {
     id: '4',
     sellerId: 'user-seller-4',
-    sellerName: 'Lexington Legal Partners',
+    sellerName: 'Lexington Strategic Advisors',
     sellerRating: 5.0,
     sellerSales: 15,
     isVerified: true,
-    title: 'General Counsel 40-Hour Retainer Block',
-    description: 'High-level legal oversight for contract negotiations, IP strategy, and regulatory compliance.',
+    title: 'Series A Investor Roadshow Preparation',
+    description: 'Elite strategic block for founders preparing for a Series A raise. Includes pitch deck narrative audit, financial model stress-testing, and 10 hours of direct executive coaching.',
     imageUrl: PlaceHolderImages[4].imageUrl,
     startingPrice: 12000,
     currentPrice: 14500,
@@ -35,11 +35,28 @@ let auctions: Auction[] = [
     createdAt: Date.now() - 200000,
     endAt: Date.now() + 259200000, 
     status: 'active'
+  },
+  {
+    id: '5',
+    sellerId: 'user-seller-5',
+    sellerName: 'SecuredOps Elite',
+    sellerRating: 4.8,
+    sellerSales: 29,
+    isVerified: true,
+    title: 'Enterprise Security Compliance Audit',
+    description: 'A 40-hour deep-dive security audit designed for companies facing mission-critical compliance hurdles. Delivers a verified roadmap for SOC2/ISO readiness.',
+    imageUrl: PlaceHolderImages[5].imageUrl,
+    startingPrice: 8000,
+    currentPrice: 9500,
+    reservePrice: 10000,
+    createdAt: Date.now() - 100000,
+    endAt: Date.now() + 86400000,
+    status: 'active'
   }
 ];
 
 let bids: Bid[] = [
-  { id: 'b1', auctionId: '1', bidderId: 'b-1', bidderName: 'TechScale Founders', amount: 5500, createdAt: Date.now() - 50000 },
+  { id: 'b1', auctionId: '1', bidderId: 'b-1', bidderName: 'TechScale Founders', amount: 16500, createdAt: Date.now() - 50000 },
 ];
 
 let rfps: RFP[] = [
