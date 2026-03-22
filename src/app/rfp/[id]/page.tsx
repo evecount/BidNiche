@@ -11,7 +11,9 @@ import {
   AlertCircle,
   CheckCircle2,
   Users,
-  MessageSquare
+  Cpu,
+  Zap,
+  ShieldAlert
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -19,6 +21,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ProposalForm } from './ProposalForm';
+import { AAOSynthesisTrigger } from '@/components/AAOSynthesisTrigger';
 
 export default async function RFPDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -65,6 +68,7 @@ export default async function RFPDetailPage({ params }: { params: Promise<{ id: 
             <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-1">Target Budget</p>
             <p className="text-2xl font-mono font-bold text-primary">{rfp.budgetRange}</p>
           </Card>
+          <AAOSynthesisTrigger rfpContent={rfp.description} />
         </div>
       </div>
 
@@ -240,7 +244,7 @@ export default async function RFPDetailPage({ params }: { params: Promise<{ id: 
                 </div>
               ) : (
                 <Card className="border-dashed py-20 bg-muted/20 text-center space-y-4">
-                  <MessageSquare className="w-12 h-12 text-muted-foreground/30 mx-auto" />
+                  <Cpu className="w-12 h-12 text-muted-foreground/30 mx-auto" />
                   <p className="text-muted-foreground">No proposals submitted yet. Be the first to secure this project.</p>
                 </Card>
               )}
