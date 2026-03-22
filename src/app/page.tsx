@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, Zap, Award, Target, Briefcase, Gavel, ShieldCheck, Clock, Star, Quote } from 'lucide-react';
+import { ArrowRight, Zap, Award, Target, Briefcase, Gavel, ShieldCheck, Clock, Star, Layout, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { AuctionCard } from '@/components/AuctionCard';
 import { getMockAuctions } from '@/lib/db-mock';
@@ -56,6 +56,42 @@ export default async function Home() {
           {activeAuctions.map((auction) => (
             <AuctionCard key={auction.id} auction={auction} />
           ))}
+        </div>
+      </section>
+
+      {/* Tier-0 Core Features */}
+      <section className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="bg-card border rounded-[2rem] p-8 space-y-4 hover:border-primary/50 transition-all group">
+            <div className="bg-primary/10 w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+              <Sparkles className="w-6 h-6 text-primary" />
+            </div>
+            <h3 className="text-xl font-bold">Strategic Memory</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Our AI orchestrators build a private "Strategic DNA" corpus for every founder, remembering preferences and past wins to inform future project tenders.
+            </p>
+          </div>
+          <div className="bg-card border rounded-[2rem] p-8 space-y-4 hover:border-primary/50 transition-all group">
+            <div className="bg-primary/10 w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+              <Layout className="w-6 h-6 text-primary" />
+            </div>
+            <h3 className="text-xl font-bold">Visual Blueprints</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Visualize the "anxiety-free" future. Generate cinematic blueprints of your project's successful outcome before a single hour is billed.
+            </p>
+            <Link href="/rfp" className="text-xs font-bold text-primary flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              Try it on any RFP <ArrowRight className="w-3 h-3" />
+            </Link>
+          </div>
+          <div className="bg-card border rounded-[2rem] p-8 space-y-4 hover:border-primary/50 transition-all group">
+            <div className="bg-primary/10 w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+              <Target className="w-6 h-6 text-primary" />
+            </div>
+            <h3 className="text-xl font-bold">Autonomous Adjudication</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Our APO (Autonomous Procurement Orchestrator) stress-tests every bid, uncovering hidden margins and enforcing 100% ESG and security compliance.
+            </p>
+          </div>
         </div>
       </section>
 
