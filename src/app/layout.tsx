@@ -1,4 +1,3 @@
-
 import type {Metadata} from 'next';
 import './globals.css';
 import { Navbar } from '@/components/Navbar';
@@ -8,8 +7,8 @@ import Link from 'next/link';
 import { Gavel, Heart, Mail, Twitter, Instagram, Globe } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'BidNiche | Premium Real-Time Auction Marketplace',
-  description: 'The world\'s most trusted real-time bidding platform for unique collectibles.',
+  title: 'BidNiche | Elite Service Outcome Auctions',
+  description: 'The world\'s first real-time bidding platform for packaged professional service outcomes. Ending the billable hour friction.',
 };
 
 export default function RootLayout({
@@ -44,7 +43,7 @@ export default function RootLayout({
                   </span>
                 </Link>
                 <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-                  The world's most trusted real-time bidding platform for unique collectibles and high-end treasures. Built on trust, powered by millisecond-accurate tech.
+                  The premier auction house for packaged service outcomes. We help elite experts maximize yield and founders secure guaranteed strategic delivery.
                 </p>
                 <div className="flex gap-4">
                   <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
@@ -63,10 +62,10 @@ export default function RootLayout({
               <div className="space-y-6">
                 <h4 className="text-sm font-bold uppercase tracking-widest text-foreground">Marketplace</h4>
                 <ul className="space-y-4 text-sm text-muted-foreground">
-                  <li><Link href="/auctions" className="hover:text-primary transition-colors">Browse Auctions</Link></li>
-                  <li><Link href="/dashboard/create" className="hover:text-primary transition-colors">Start Selling</Link></li>
-                  <li><Link href="#" className="hover:text-primary transition-colors">Trending Items</Link></li>
-                  <li><Link href="#" className="hover:text-primary transition-colors">Featured Collectors</Link></li>
+                  <li><Link href="/auctions" className="hover:text-primary transition-colors">Browse Service Blocks</Link></li>
+                  <li><Link href="/dashboard/create" className="hover:text-primary transition-colors">Auction Your Expertise</Link></li>
+                  <li><Link href="#" className="hover:text-primary transition-colors">Active Sprints</Link></li>
+                  <li><Link href="#" className="hover:text-primary transition-colors">Featured Experts</Link></li>
                 </ul>
               </div>
 
@@ -74,10 +73,10 @@ export default function RootLayout({
               <div className="space-y-6">
                 <h4 className="text-sm font-bold uppercase tracking-widest text-foreground">Support</h4>
                 <ul className="space-y-4 text-sm text-muted-foreground">
-                  <li><Link href="#" className="hover:text-primary transition-colors">Help Center</Link></li>
-                  <li><Link href="#" className="hover:text-primary transition-colors">Verification Process</Link></li>
-                  <li><Link href="#" className="hover:text-primary transition-colors">Shipping & Escrow</Link></li>
-                  <li><Link href="#" className="hover:text-primary transition-colors">Contact Sales</Link></li>
+                  <li><Link href="#" className="hover:text-primary transition-colors">Expert Help Center</Link></li>
+                  <li><Link href="#" className="hover:text-primary transition-colors">Vetting Standards</Link></li>
+                  <li><Link href="#" className="hover:text-primary transition-colors">Escrow Protocols</Link></li>
+                  <li><Link href="#" className="hover:text-primary transition-colors">Platform Ethics</Link></li>
                 </ul>
               </div>
 
@@ -85,9 +84,9 @@ export default function RootLayout({
               <div className="space-y-6">
                 <h4 className="text-sm font-bold uppercase tracking-widest text-foreground">Company</h4>
                 <ul className="space-y-4 text-sm text-muted-foreground">
-                  <li><Link href="/about" className="hover:text-primary transition-colors">About BidNiche</Link></li>
+                  <li><Link href="/about" className="hover:text-primary transition-colors">The Outcome Vision</Link></li>
                   <li><Link href="/attribution" className="font-bold text-primary hover:underline">Co-Founder Attribution</Link></li>
-                  <li><Link href="#" className="hover:text-primary transition-colors">Terms of Service</Link></li>
+                  <li><Link href="#" className="hover:text-primary transition-colors">Terms of Engagement</Link></li>
                   <li><Link href="#" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
                 </ul>
               </div>
@@ -95,7 +94,7 @@ export default function RootLayout({
 
             <div className="pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-6">
               <p className="text-xs text-muted-foreground">
-                © {new Date().getFullYear()} BidNiche Auction House. A collaborative venture.
+                © {new Date().getFullYear()} BidNiche. Disrupting the billable hour. A collaborative venture.
               </p>
               <div className="flex items-center gap-2 text-xs text-muted-foreground">
                 Built with <Heart className="w-3 h-3 text-destructive fill-destructive" /> by the Founders

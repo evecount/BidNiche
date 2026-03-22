@@ -1,4 +1,3 @@
-
 import { AuctionCard } from '@/components/AuctionCard';
 import { getMockAuctions } from '@/lib/db-mock';
 import { Input } from '@/components/ui/input';
@@ -12,20 +11,20 @@ export default async function BrowseAuctionsPage() {
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="max-w-4xl mx-auto text-center mb-16">
-        <h1 className="font-headline text-4xl font-extrabold mb-4">Discover Unique Finds</h1>
-        <p className="text-muted-foreground text-lg">Browse our curated collection of live auctions from around the globe.</p>
+        <h1 className="font-headline text-4xl font-extrabold mb-4">Secure Elite Capacity</h1>
+        <p className="text-muted-foreground text-lg">Bid on high-ticket service outcomes from the world's most talented independent operators.</p>
       </div>
 
       <div className="flex flex-col md:flex-row gap-4 mb-12">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
           <Input 
-            placeholder="Search by title, brand, or category..." 
+            placeholder="Search by expertise, outcome, or partner name..." 
             className="pl-10 h-12 bg-white/50 border-border/60 focus-visible:ring-primary"
           />
         </div>
         <Button variant="outline" className="h-12 px-6 flex items-center gap-2 border-border/60">
-          <Filter className="w-5 h-5" /> Filter Results
+          <Filter className="w-5 h-5" /> Specialized Filters
         </Button>
       </div>
 
@@ -37,7 +36,7 @@ export default async function BrowseAuctionsPage() {
         </div>
       ) : (
         <div className="text-center py-24 bg-card rounded-2xl border-2 border-dashed">
-          <p className="text-xl text-muted-foreground">No active auctions found matching your criteria.</p>
+          <p className="text-xl text-muted-foreground">No active service auctions found matching your search.</p>
           <Button variant="link" className="text-primary mt-2">Clear all filters</Button>
         </div>
       )}

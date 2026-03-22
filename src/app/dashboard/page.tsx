@@ -1,9 +1,8 @@
-
 import { getMockUserAuctions, getMockUserBids } from '@/lib/db-mock';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Plus, Gavel, ShoppingBag, Clock, ArrowRight, ExternalLink } from 'lucide-react';
+import { Plus, Gavel, ShoppingBag, Clock, ArrowRight, ExternalLink, Briefcase } from 'lucide-react';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 
@@ -18,15 +17,15 @@ export default async function DashboardPage() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-10">
         <div>
           <h1 className="font-headline text-4xl font-extrabold tracking-tight text-foreground">
-            My Dashboard
+            Operational Hub
           </h1>
           <p className="text-muted-foreground mt-2">
-            Manage your high-end collections and active bids.
+            Manage your strategic service acquisitions and expert capacity listings.
           </p>
         </div>
         <Button size="lg" className="rounded-full px-8 shadow-lg shadow-primary/20" asChild>
           <Link href="/dashboard/create">
-            <Plus className="w-5 h-5 mr-2" /> Create New Listing
+            <Plus className="w-5 h-5 mr-2" /> List New Outcome
           </Link>
         </Button>
       </div>
@@ -34,10 +33,10 @@ export default async function DashboardPage() {
       <Tabs defaultValue="buying" className="space-y-8">
         <TabsList className="bg-muted/50 p-1 rounded-xl h-14 w-full md:w-auto grid grid-cols-2 md:inline-flex">
           <TabsTrigger value="buying" className="rounded-lg h-full px-10 text-base font-bold data-[state=active]:bg-background data-[state=active]:shadow-sm">
-            <ShoppingBag className="w-4 h-4 mr-2" /> Buying
+            <Briefcase className="w-4 h-4 mr-2" /> Acquiring
           </TabsTrigger>
           <TabsTrigger value="selling" className="rounded-lg h-full px-10 text-base font-bold data-[state=active]:bg-background data-[state=active]:shadow-sm">
-            <Gavel className="w-4 h-4 mr-2" /> Selling
+            <Gavel className="w-4 h-4 mr-2" /> Yielding
           </TabsTrigger>
         </TabsList>
 
@@ -58,7 +57,7 @@ export default async function DashboardPage() {
                         <div className="flex items-center gap-4 mt-1 text-sm text-muted-foreground">
                           <span className="flex items-center gap-1.5">
                             <Clock className="w-4 h-4" /> 
-                            {new Date(bid.createdAt).toLocaleDateString()}
+                            Placed: {new Date(bid.createdAt).toLocaleDateString()}
                           </span>
                           <Badge variant="outline" className="border-primary/20 text-primary bg-primary/5">
                             Active Bid
@@ -68,7 +67,7 @@ export default async function DashboardPage() {
                     </div>
                     <div className="flex items-center justify-between md:justify-end gap-12 w-full md:w-auto border-t md:border-0 pt-4 md:pt-0">
                       <div className="text-right">
-                        <p className="text-xs text-muted-foreground uppercase font-bold tracking-widest">Your Bid</p>
+                        <p className="text-xs text-muted-foreground uppercase font-bold tracking-widest">Your Offer</p>
                         <p className="text-2xl font-mono font-bold text-primary">
                           ${bid.amount.toLocaleString()}
                         </p>
@@ -89,11 +88,11 @@ export default async function DashboardPage() {
                     <ShoppingBag className="w-8 h-8 text-muted-foreground" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold">No active bids</h3>
-                    <p className="text-muted-foreground max-w-sm mx-auto">You haven't placed any bids yet. Explore our curated collections to find your next treasure.</p>
+                    <h3 className="text-xl font-bold">No active acquisitions</h3>
+                    <p className="text-muted-foreground max-w-sm mx-auto">You haven't placed any offers on service blocks yet. Secure the expertise your project needs today.</p>
                   </div>
                   <Button variant="outline" className="rounded-full px-8" asChild>
-                    <Link href="/auctions">Browse Auctions</Link>
+                    <Link href="/auctions">Browse Expertise</Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -122,17 +121,17 @@ export default async function DashboardPage() {
                         <div className="flex items-center gap-4 mt-1 text-sm text-muted-foreground">
                           <span className="flex items-center gap-1.5">
                             <Clock className="w-4 h-4" /> 
-                            Ends: {new Date(auction.endAt).toLocaleDateString()}
+                            Closes: {new Date(auction.endAt).toLocaleDateString()}
                           </span>
                           <Badge className={auction.status === 'active' ? 'bg-green-500/10 text-green-600 border-green-500/20' : 'bg-muted text-muted-foreground'}>
-                            {auction.status === 'active' ? 'Live' : 'Closed'}
+                            {auction.status === 'active' ? 'Auctioning' : 'Completed'}
                           </Badge>
                         </div>
                       </div>
                     </div>
                     <div className="flex items-center justify-between md:justify-end gap-12 w-full md:w-auto border-t md:border-0 pt-4 md:pt-0">
                       <div className="text-right">
-                        <p className="text-xs text-muted-foreground uppercase font-bold tracking-widest">Current Price</p>
+                        <p className="text-xs text-muted-foreground uppercase font-bold tracking-widest">Market Value</p>
                         <p className="text-2xl font-mono font-bold text-primary">
                           ${auction.currentPrice.toLocaleString()}
                         </p>
@@ -153,11 +152,11 @@ export default async function DashboardPage() {
                     <Gavel className="w-8 h-8 text-muted-foreground" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold">No active listings</h3>
-                    <p className="text-muted-foreground max-w-sm mx-auto">Ready to part with a rare piece? List your items on BidNiche and connect with premium collectors worldwide.</p>
+                    <h3 className="text-xl font-bold">No active yields</h3>
+                    <p className="text-muted-foreground max-w-sm mx-auto">Maximize the value of your limited bandwidth. List a specific outcome package to begin price discovery.</p>
                   </div>
                   <Button variant="outline" className="rounded-full px-8" asChild>
-                    <Link href="/dashboard/create">Start Selling</Link>
+                    <Link href="/dashboard/create">Auction Capacity</Link>
                   </Button>
                 </CardContent>
               </Card>
