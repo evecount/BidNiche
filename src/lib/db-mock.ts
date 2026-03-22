@@ -22,6 +22,23 @@ let auctions: Auction[] = [
     status: 'active'
   },
   {
+    id: '4',
+    sellerId: 'user-seller-4',
+    sellerName: 'Lexington Legal Partners',
+    sellerRating: 5.0,
+    sellerSales: 15,
+    isVerified: true,
+    title: 'General Counsel 40-Hour Retainer Block',
+    description: 'High-level legal oversight for contract negotiations, IP strategy, and regulatory compliance. Perfect for scaling startups needing elite legal advice without the $1k/hr billable friction.',
+    imageUrl: PlaceHolderImages[4].imageUrl,
+    startingPrice: 12000,
+    currentPrice: 14500,
+    reservePrice: 15000,
+    createdAt: Date.now() - 200000,
+    endAt: Date.now() + 259200000, // 3 days
+    status: 'active'
+  },
+  {
     id: '2',
     sellerId: 'user-seller-2',
     sellerName: 'PixelPerfect Labs',
@@ -60,6 +77,7 @@ let auctions: Auction[] = [
 let bids: Bid[] = [
   { id: 'b1', auctionId: '1', bidderId: 'b-1', bidderName: 'TechScale Inc', amount: 5500, createdAt: Date.now() - 50000 },
   { id: 'b2', auctionId: '1', bidderId: 'b-2', bidderName: 'Venture Partners', amount: 6200, createdAt: Date.now() - 10000 },
+  { id: 'b4', auctionId: '4', bidderId: 'b-4', bidderName: 'NeoBank Corp', amount: 14500, createdAt: Date.now() - 5000 },
   { id: 'b3', auctionId: '2', bidderId: 'b-3', bidderName: 'SaaS Founder', amount: 4800, createdAt: Date.now() - 20000 },
 ];
 

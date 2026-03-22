@@ -1,11 +1,11 @@
 
-import { Briefcase, ShieldCheck, Zap, Users, Globe, Award, Target } from 'lucide-react';
+import { Briefcase, ShieldCheck, Zap, Users, Globe, Award, Target, Scale } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
 export default function AboutPage() {
   return (
-    <div className="space-y-24 pb-24">
+    <div className="space-y-24 pb-24 text-foreground">
       {/* Hero Section */}
       <section className="relative py-24 bg-primary/5 border-b overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-10">
@@ -13,7 +13,7 @@ export default function AboutPage() {
           <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-accent blur-3xl"></div>
         </div>
         <div className="container mx-auto px-4 text-center max-w-3xl">
-          <h1 className="font-headline text-5xl font-extrabold tracking-tight sm:text-6xl mb-8 text-foreground">
+          <h1 className="font-headline text-5xl font-extrabold tracking-tight sm:text-6xl mb-8">
             The Marketplace for <span className="text-primary">Elite Outcomes</span>
           </h1>
           <p className="text-xl text-muted-foreground leading-relaxed">
@@ -22,38 +22,41 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Mission Section */}
+      {/* Disruption Section */}
       <section className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-6">
-            <h2 className="font-headline text-3xl font-bold">Our Mission</h2>
+            <h2 className="font-headline text-3xl font-bold">Death of the Billable Hour</h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              We empower elite professionals to sell their capacity as premium, packaged outcomes. By using real-time bidding, we ensure that high-demand expertise is allocated to those who value it most, while providing experts with the true market value of their time.
+              Traditional professional services—law, consulting, engineering—are built on the flawed incentive of the billable hour. It rewards inefficiency and creates friction. 
+            </p>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              At BidNiche, we auction **packaged outcomes**. Whether it's a 40-hour legal sprint or a fractional CTO block, the market decides the value based on the results, not the ticking clock.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
               <div className="flex gap-4">
                 <div className="bg-primary/10 p-2 h-fit rounded-lg">
-                  <Award className="w-5 h-5 text-primary" />
+                  <Scale className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-bold">Verified Experts</h4>
-                  <p className="text-sm text-muted-foreground">Rigorous professional vetting.</p>
+                  <h4 className="font-bold">Fair Market Value</h4>
+                  <p className="text-sm text-muted-foreground">True pricing for high-demand talent.</p>
                 </div>
               </div>
               <div className="flex gap-4">
                 <div className="bg-primary/10 p-2 h-fit rounded-lg">
-                  <Target className="w-5 h-5 text-primary" />
+                  <Zap className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-bold">Scope Certainty</h4>
-                  <p className="text-sm text-muted-foreground">Pre-defined service deliverables.</p>
+                  <h4 className="font-bold">Instant Access</h4>
+                  <p className="text-sm text-muted-foreground">Secure urgent talent blocks in minutes.</p>
                 </div>
               </div>
             </div>
           </div>
           <div className="relative aspect-square lg:aspect-video rounded-3xl overflow-hidden shadow-2xl border">
             <img 
-              src="https://picsum.photos/seed/about-service/800/600" 
+              src="https://picsum.photos/seed/legal-audit/800/600" 
               alt="Elite Professional Collaboration" 
               className="object-cover w-full h-full"
             />
@@ -95,7 +98,7 @@ export default function AboutPage() {
               <Link href="/auctions">Browse Services</Link>
             </Button>
             <Button size="lg" variant="outline" className="h-14 px-10 rounded-full font-bold border-white/20 hover:bg-white/10 text-white" asChild>
-              <Link href="/dashboard/create">List a Package</Link>
+              <Link href="/dashboard/create">List Your Expertise</Link>
             </Button>
           </div>
         </div>
