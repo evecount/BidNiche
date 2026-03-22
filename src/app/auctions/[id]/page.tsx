@@ -2,12 +2,12 @@
 import { getMockAuction, getMockBids } from '@/lib/db-mock';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
-import { Gavel, History, Info, User, Tag } from 'lucide-react';
+import { Gavel, History, Info, User, Tag, ShieldCheck, Star, Award } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
 import { AuctionCountdown } from '@/components/AuctionCountdown';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { BiddingInterface } from './BiddingInterface';
+import { cn } from '@/lib/utils';
 
 export default async function AuctionPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -47,27 +47,61 @@ export default async function AuctionPage({ params }: { params: Promise<{ id: st
                   {auction.status === 'active' ? <AuctionCountdown endAt={auction.endAt} className="inline-flex" /> : 'Closed'}
                 </span>
               </Badge>
+              {auction.isVerified && (
+                <Badge variant="secondary" className="bg-accent/10 text-accent border-accent/20 px-3 py-1">
+                  <ShieldCheck className="w-3.5 h-3.5 mr-1" /> Authenticity Guaranteed
+                </Badge>
+              )}
             </div>
 
             <h1 className="font-headline text-4xl font-bold text-foreground">
               {auction.title}
             </h1>
 
-            <div className="flex items-center gap-4 py-4 border-y">
-              <div className="flex items-center gap-2">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                  <User className="w-5 h-5 text-primary" />
+            <div className="flex items-center justify-between gap-4 py-6 border-y">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <User className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground font-semibold uppercase">Seller</p>
-                  <p className="text-sm font-bold">{auction.sellerName}</p>
+                  <div className="flex items-center gap-2">
+                    <p className="text-sm font-bold">{auction.sellerName}</p>
+                    <Award className="w-4 h-4 text-accent" />
+                  </div>
+                  <div className="flex items-center gap-1 text-xs text-muted-foreground mt-0.5">
+                    <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                    <span className="font-bold text-foreground">{auction.sellerRating}</span>
+                    <span>•</span>
+                    <span>{auction.sellerSales} successful sales</span>
+                  </div>
                 </div>
               </div>
+              <Badge variant="outline" className="h-8 border-primary/20 text-primary">
+                Top Rated Seller
+              </Badge>
             </div>
 
             <div className="prose max-w-none text-muted-foreground leading-relaxed">
-              <h3 className="text-foreground font-bold">About this item</h3>
-              <p>{auction.description}</p>
+              <h3 className="text-foreground font-bold text-xl mb-4">Item Description</h3>
+              <p className="text-lg">{auction.description}</p>
+            </div>
+
+            {/* Business Trust Section */}
+            <div className="bg-muted/30 rounded-2xl p-6 border border-border/50">
+              <h4 className="font-bold text-foreground flex items-center gap-2 mb-4">
+                <ShieldCheck className="w-5 h-5 text-accent" />
+                The BidNiche Promise
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div className="space-y-1">
+                  <p className="font-bold">Identity Verification</p>
+                  <p className="text-muted-foreground">This seller has completed our multi-step identity verification process.</p>
+                </div>
+                <div className="space-y-1">
+                  <p className="font-bold">Insured Shipping</p>
+                  <p className="text-muted-foreground">White-glove delivery with full insurance included for purchases over $5,000.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -83,10 +117,10 @@ export default async function AuctionPage({ params }: { params: Promise<{ id: st
           />
 
           <Card className="border-border/50">
-            <CardHeader className="pb-3">
+            <CardHeader className="pb-3 border-b mb-4">
               <CardTitle className="text-lg flex items-center gap-2">
                 <History className="w-5 h-5 text-muted-foreground" />
-                Bid History
+                Live Bid History
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -124,9 +158,4 @@ export default async function AuctionPage({ params }: { params: Promise<{ id: st
       </div>
     </div>
   );
-}
-
-// Helper for conditional classNames since it's not exported globally from @/lib/utils in this context
-function cn(...classes: any[]) {
-  return classes.filter(Boolean).join(' ');
 }

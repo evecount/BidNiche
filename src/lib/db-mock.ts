@@ -8,6 +8,9 @@ let auctions: Auction[] = [
     id: '1',
     sellerId: 'user-seller-1',
     sellerName: 'Global Collectibles',
+    sellerRating: 4.9,
+    sellerSales: 124,
+    isVerified: true,
     title: 'Vintage 1960s Leica M3 Camera',
     description: 'A beautifully preserved Leica M3 from 1962. Minimal wear, fully functional shutter speeds. A collector\'s dream.',
     imageUrl: PlaceHolderImages[3].imageUrl,
@@ -22,6 +25,9 @@ let auctions: Auction[] = [
     id: '2',
     sellerId: 'user-seller-2',
     sellerName: 'Retro Wheels',
+    sellerRating: 5.0,
+    sellerSales: 18,
+    isVerified: true,
     title: '1974 Porsche 911 Carrera',
     description: 'Fully restored 911 Carrera in guards red. 45,000 original miles. Showroom condition.',
     imageUrl: PlaceHolderImages[1].imageUrl,
@@ -36,6 +42,9 @@ let auctions: Auction[] = [
     id: '3',
     sellerId: 'user-seller-1',
     sellerName: 'Global Collectibles',
+    sellerRating: 4.9,
+    sellerSales: 124,
+    isVerified: true,
     title: 'Handmade Swiss Chronograph',
     description: 'Exquisite timepiece with 72-hour power reserve. Sapphire crystal, genuine leather strap.',
     imageUrl: PlaceHolderImages[0].imageUrl,
@@ -85,11 +94,14 @@ export const placeMockBid = async (auctionId: string, bidder: UserProfile, amoun
   auction.currentPrice = amount;
 };
 
-export const createMockAuction = async (data: Omit<Auction, 'id' | 'currentPrice' | 'status' | 'createdAt'>): Promise<string> => {
+export const createMockAuction = async (data: Omit<Auction, 'id' | 'currentPrice' | 'status' | 'createdAt' | 'sellerRating' | 'sellerSales' | 'isVerified'>): Promise<string> => {
   const id = `a-${Date.now()}`;
   const newAuction: Auction = {
     ...data,
     id,
+    sellerRating: 5.0,
+    sellerSales: 1,
+    isVerified: true,
     currentPrice: data.startingPrice,
     status: 'active',
     createdAt: Date.now()

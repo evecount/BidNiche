@@ -13,6 +13,9 @@ export interface Auction {
   id: string;
   sellerId: string;
   sellerName: string;
+  sellerRating: number;
+  sellerSales: number;
+  isVerified: boolean;
   title: string;
   description: string;
   imageUrl: string;
