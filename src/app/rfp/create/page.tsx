@@ -91,7 +91,7 @@ export default function SubmitRFPPage() {
     try {
       const rfpId = await createMockRFP({
         buyerId: 'current-user',
-        buyerName: 'Elite Founder',
+        buyerName: 'Operational Founder',
         title: formData.title,
         description: formData.description,
         budgetRange: formData.budgetRange,

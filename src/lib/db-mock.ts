@@ -71,11 +71,11 @@ let auctions: Auction[] = [
     status: 'active'
   },
   {
-    id: '2',
-    sellerId: 'user-seller-2',
-    sellerName: 'Vantage CFO Partners',
+    id: '4',
+    sellerId: 'user-seller-4',
+    sellerName: 'Vantage Finance',
     sellerRating: 5.0,
-    sellerSales: 18,
+    sellerSales: 15,
     isVerified: true,
     title: 'Fractional CFO: Cashflow & Burn Audit',
     description: 'Stop guessing your runway. This 10-hour intensive audit delivers a full 18-month cashflow forecast and unit economics analysis.',
@@ -85,23 +85,6 @@ let auctions: Auction[] = [
     reservePrice: 4500,
     createdAt: Date.now() - 50000,
     endAt: Date.now() + 259200000,
-    status: 'active'
-  },
-  {
-    id: '3',
-    sellerId: 'user-seller-3',
-    sellerName: 'PeopleFirst Ops',
-    sellerRating: 4.8,
-    sellerSales: 25,
-    isVerified: true,
-    title: 'HR Infrastructure Sprint: Scale 5 to 20',
-    description: 'Outsource your HR anxiety. We deliver a complete employee handbook, offer letters, payroll setup, and an automated onboarding flow.',
-    imageUrl: PlaceHolderImages[7].imageUrl,
-    startingPrice: 2500,
-    currentPrice: 3100,
-    reservePrice: 3500,
-    createdAt: Date.now() - 30000,
-    endAt: Date.now() + 172800000,
     status: 'active'
   }
 ];
