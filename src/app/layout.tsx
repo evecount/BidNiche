@@ -7,8 +7,8 @@ import Link from 'next/link';
 import { Gavel, Heart, Mail, Twitter, Instagram, ArrowRight, Award } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'RFPCentral | Outsource Mission-Critical Projects with Confidence',
-  description: 'The strategic outcome marketplace for fractional capacity. Secure guaranteed results for the projects you normally sweat about.',
+  title: 'RFPCentral | Human-in-the-Loop Expertise for the Agentic Shift',
+  description: 'Providing founders with the "human-in-the-loop" expertise needed to navigate the agentic shift. Secure guaranteed project outcomes with total confidence.',
 };
 
 export default function RootLayout({
@@ -43,7 +43,7 @@ export default function RootLayout({
                   </span>
                 </Link>
                 <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-                  Auctioning mission-critical project outcomes. Secure fractional capacity from a vetted roster of operators so you can outsource with total confidence.
+                  Providing founders with "human-in-the-loop" expertise. Secure fractional capacity for mission-critical outcomes.
                 </p>
                 <div className="flex gap-5">
                   <Link href="#" className="text-muted-foreground hover:text-primary transition-all hover:scale-110">
@@ -94,7 +94,7 @@ export default function RootLayout({
 
             <div className="pt-10 border-t flex flex-col md:flex-row justify-between items-center gap-8">
               <p className="text-xs text-muted-foreground font-medium uppercase tracking-widest">
-                © {new Date().getFullYear()} RFPCentral. Ending the Billable Hour. Fractional Capacity Auctions.
+                © {new Date().getFullYear()} RFPCentral. Navigating the Agentic Shift.
               </p>
               <div className="flex items-center gap-3 text-xs text-muted-foreground bg-muted/50 px-4 py-2 rounded-full border">
                 Built with <Heart className="w-3.5 h-3.5 text-destructive fill-destructive animate-pulse" /> by the Founding Partners

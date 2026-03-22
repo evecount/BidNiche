@@ -1,4 +1,4 @@
-import { Briefcase, ShieldCheck, Zap, Users, Globe, Award, Target, Scale, Star, Bot } from 'lucide-react';
+import { Briefcase, ShieldCheck, Zap, Users, Globe, Award, Target, Scale, Star, Bot, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
@@ -16,10 +16,10 @@ export default function AboutPage() {
             <Zap className="w-3 h-3 fill-primary" /> The New Economy Standard
           </div>
           <h1 className="font-headline text-5xl font-extrabold tracking-tight sm:text-7xl mb-8">
-            The Roster for <span className="text-primary italic">Mission-Critical</span> Outcomes
+            Navigating the <span className="text-primary italic">Agentic Shift</span>.
           </h1>
           <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-            RFPCentral is the operational hub for the new economy. We bridge the gap between high-growth companies and a vetted roster of independent operators who specialize in high-touch AI, strategic marketing, and fractional leadership.
+            RFPCentral provides founders with the <span className="text-foreground font-bold">"human-in-the-loop"</span> expertise needed to outsource mission-critical projects with total confidence. We bridge the gap between high-growth companies and a vetted roster of independent strategic operators.
           </p>
         </div>
       </section>
@@ -30,7 +30,7 @@ export default function AboutPage() {
           <div className="space-y-8">
             <h2 className="font-headline text-4xl font-bold italic text-primary">Outcome Certainty, Not Billable Hours</h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              The billable hour is an artifact of a slower era. It rewards inefficiency and creates friction. In a world of rapid iteration and agentic systems, founders need results, not spreadsheets of time.
+              The billable hour is an artifact of a slower era. In a world of rapid iteration and agentic systems, founders need results, not spreadsheets of time. Linear human time is our only constant; we help you buy it back.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed font-medium">
               At RFPCentral, we acquire and vet talent for our roster, then allow them to auction **fractional capacity blocks**. Whether it's a 40-hour agentic orchestration or a Series A roadshow sprint, the market decides the value based on the business impact.
