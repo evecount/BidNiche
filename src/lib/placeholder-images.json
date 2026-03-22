@@ -35,6 +35,24 @@
       "description": "Enterprise AI Readiness Audit",
       "imageUrl": "https://picsum.photos/seed/ai-audit1/600/400",
       "imageHint": "artificial intelligence"
+    },
+    {
+      "id": "accounting",
+      "description": "Financial Model Audit",
+      "imageUrl": "https://picsum.photos/seed/finance1/600/400",
+      "imageHint": "financial chart"
+    },
+    {
+      "id": "hr-ops",
+      "description": "People Ops Infrastructure",
+      "imageUrl": "https://picsum.photos/seed/hrops1/600/400",
+      "imageHint": "team office"
+    },
+    {
+      "id": "legal",
+      "description": "Legal Contract Suite",
+      "imageUrl": "https://picsum.photos/seed/legal1/600/400",
+      "imageHint": "legal gavel"
     }
   ]
 }
