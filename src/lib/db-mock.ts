@@ -75,6 +75,20 @@ export const getMockBids = async (auctionId: string): Promise<Bid[]> => {
   return bids.filter(b => b.auctionId === auctionId).sort((a, b) => b.amount - a.amount);
 };
 
+export const getMockUserAuctions = async (userId: string): Promise<Auction[]> => {
+  return auctions.filter(a => a.sellerId === userId);
+};
+
+export const getMockUserBids = async (userId: string): Promise<(Bid & { auctionTitle: string })[]> => {
+  return bids
+    .filter(b => b.bidderId === userId)
+    .map(b => ({
+      ...b,
+      auctionTitle: auctions.find(a => a.id === b.auctionId)?.title || 'Unknown Auction'
+    }))
+    .sort((a, b) => b.createdAt - a.createdAt);
+};
+
 export const placeMockBid = async (auctionId: string, bidder: UserProfile, amount: number): Promise<void> => {
   const auction = auctions.find(a => a.id === auctionId);
   if (!auction) throw new Error('Auction not found');
