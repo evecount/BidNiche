@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Briefcase, Image as ImageIcon, Calendar, DollarSign, ArrowLeft, Target } from 'lucide-react';
+import { Briefcase, Image as ImageIcon, Calendar, DollarSign, ArrowLeft, Target, ShieldCheck } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -49,7 +49,7 @@ export default function CreateServicePackagePage() {
         endAt: endTimestamp,
       });
 
-      toast({ title: "Service Auction Live!", description: "Bidders can now offer for your expertise." });
+      toast({ title: "Outcome Auction Live!", description: "Bidders can now offer for your expertise." });
       router.push(`/auctions/${auctionId}`);
     } catch (err: any) {
       toast({ title: "Error", description: err.message, variant: "destructive" });
@@ -73,16 +73,16 @@ export default function CreateServicePackagePage() {
             Auction Your Expertise
           </CardTitle>
           <CardDescription className="text-base mt-2">
-            Define your service package outcomes and let the market decide the value of your time.
+            Define your service package outcomes and let the market decide the value of your time. Exclusivity drives your price.
           </CardDescription>
         </CardHeader>
         <CardContent className="px-8 py-10">
           <form onSubmit={handleSubmit} className="space-y-8">
             <div className="space-y-6">
               <div className="space-y-2">
-                <label className="text-sm font-bold uppercase tracking-wider text-muted-foreground">Service Package Title</label>
+                <label className="text-sm font-bold uppercase tracking-wider text-muted-foreground">Service Outcome Title</label>
                 <Input 
-                  placeholder="e.g. Fractional CTO Strategy (20-Hour Block)" 
+                  placeholder="e.g. 40-Hour Technical Architecture Audit" 
                   value={formData.title}
                   onChange={e => setFormData({...formData, title: e.target.value})}
                   required
@@ -95,7 +95,7 @@ export default function CreateServicePackagePage() {
                    <Target className="w-4 h-4" /> Scope & Deliverables
                 </label>
                 <Textarea 
-                  placeholder="Clearly define what is included in this package, your methodology, and expected outcomes..." 
+                  placeholder="Clearly define what is included in this outcome. What will the buyer have in their hands at completion?" 
                   className="min-h-[150px] focus-visible:ring-primary"
                   value={formData.description}
                   onChange={e => setFormData({...formData, description: e.target.value})}
@@ -118,11 +118,11 @@ export default function CreateServicePackagePage() {
 
                 <div className="space-y-2">
                   <label className="text-sm font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
-                    <DollarSign className="w-4 h-4" /> Minimum Starting Bid ($)
+                    <DollarSign className="w-4 h-4" /> Starting Bid Floor ($)
                   </label>
                   <Input 
                     type="number" 
-                    placeholder="0.00" 
+                    placeholder="Establish your minimum worth" 
                     value={formData.startingPrice}
                     onChange={e => setFormData({...formData, startingPrice: e.target.value})}
                     required
@@ -136,7 +136,7 @@ export default function CreateServicePackagePage() {
                   <label className="text-sm font-bold uppercase tracking-wider text-muted-foreground">Reserve Price ($)</label>
                   <Input 
                     type="number" 
-                    placeholder="Optional" 
+                    placeholder="Min for success" 
                     value={formData.reservePrice}
                     onChange={e => setFormData({...formData, reservePrice: e.target.value})}
                     className="focus-visible:ring-primary"
@@ -167,12 +167,19 @@ export default function CreateServicePackagePage() {
               </div>
             </div>
 
+            <div className="bg-primary/5 p-6 rounded-xl border border-primary/20 flex gap-4 items-start">
+              <ShieldCheck className="w-6 h-6 text-primary shrink-0" />
+              <div className="text-sm text-muted-foreground leading-relaxed">
+                By listing this package, you commit to fulfilling the deliverables defined above. All funds are held in escrow to ensure high-ticket trust between you and the buyer.
+              </div>
+            </div>
+
             <Button 
               type="submit" 
               className="w-full h-14 text-lg font-bold rounded-xl transition-all shadow-xl shadow-primary/20" 
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Launching Auction..." : "Launch Service Auction"}
+              {isSubmitting ? "Launching Outcome Auction..." : "Launch Service Auction"}
             </Button>
           </form>
         </CardContent>

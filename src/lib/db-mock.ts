@@ -12,7 +12,7 @@ let auctions: Auction[] = [
     sellerSales: 42,
     isVerified: true,
     title: '1-Month Fractional CMO Strategy Block',
-    description: 'A dedicated 20-hour package including brand positioning, GTM strategy, and performance marketing oversight for Series A startups.',
+    description: 'A dedicated 20-hour package including brand positioning, GTM strategy, and performance marketing oversight for Series A startups. We handle the "What" and "How" of your next growth phase.',
     imageUrl: PlaceHolderImages[0].imageUrl,
     startingPrice: 5000,
     currentPrice: 6200,
@@ -29,13 +29,13 @@ let auctions: Auction[] = [
     sellerSales: 15,
     isVerified: true,
     title: 'General Counsel 40-Hour Retainer Block',
-    description: 'High-level legal oversight for contract negotiations, IP strategy, and regulatory compliance. Perfect for scaling startups needing elite legal advice without the $1k/hr billable friction.',
+    description: 'High-level legal oversight for contract negotiations, IP strategy, and regulatory compliance. Perfect for scaling startups needing elite legal advice without the $1k/hr billable friction. Binding outcomes, not just hours.',
     imageUrl: PlaceHolderImages[4].imageUrl,
     startingPrice: 12000,
     currentPrice: 14500,
     reservePrice: 15000,
     createdAt: Date.now() - 200000,
-    endAt: Date.now() + 259200000, // 3 days
+    endAt: Date.now() + 259200000, 
     status: 'active'
   },
   {
@@ -46,13 +46,13 @@ let auctions: Auction[] = [
     sellerSales: 112,
     isVerified: true,
     title: 'High-Intensity 1-Week UX Design Sprint',
-    description: 'Complete UI overhaul for a core product feature. Includes user research, wireframing, high-fidelity prototypes, and developer handoff.',
+    description: 'Complete UI overhaul for a core product feature. Includes user research, wireframing, high-fidelity prototypes, and developer handoff. One week of concentrated elite talent.',
     imageUrl: PlaceHolderImages[1].imageUrl,
     startingPrice: 3500,
     currentPrice: 4800,
     reservePrice: 5000,
     createdAt: Date.now() - 43200000,
-    endAt: Date.now() + 3600000, // 1 hour left
+    endAt: Date.now() + 3600000, 
     status: 'active'
   },
   {
@@ -63,30 +63,13 @@ let auctions: Auction[] = [
     sellerSales: 89,
     isVerified: true,
     title: 'Enterprise AI Infrastructure Audit',
-    description: 'Deep-dive assessment of your current data pipeline and AI readiness. Full report with security, scalability, and cost optimization roadmap.',
+    description: 'Deep-dive assessment of your current data pipeline and AI readiness. Full report with security, scalability, and cost optimization roadmap. We define the future of your AI stack.',
     imageUrl: PlaceHolderImages[5].imageUrl,
     startingPrice: 8000,
     currentPrice: 8000,
     reservePrice: 10000,
     createdAt: Date.now() - 10000,
-    endAt: Date.now() + 600000, // 10 mins left
-    status: 'active'
-  },
-  {
-    id: '5',
-    sellerId: 'user-seller-5',
-    sellerName: 'GrowthHackers Collective',
-    sellerRating: 4.7,
-    sellerSales: 215,
-    isVerified: true,
-    title: 'Q3 SEO & Content Growth Package',
-    description: 'Full audit and strategy for the next quarter. Includes keyword mapping, technical SEO fix list, and 10 high-authority content outlines.',
-    imageUrl: PlaceHolderImages[3].imageUrl,
-    startingPrice: 4500,
-    currentPrice: 4500,
-    reservePrice: 6000,
-    createdAt: Date.now() - 5000,
-    endAt: Date.now() + 86400000 * 2, // 2 days
+    endAt: Date.now() + 600000, 
     status: 'active'
   }
 ];

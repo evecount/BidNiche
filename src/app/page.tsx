@@ -17,19 +17,19 @@ export default async function Home() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl">
             <h1 className="font-headline text-5xl font-extrabold tracking-tight sm:text-7xl mb-6 text-foreground">
-              Auction Elite <span className="text-primary">Services</span> & Strategic Expertise
+              The End of the <span className="text-primary">Billable Hour</span>.
             </h1>
             <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
-              The end of the billable hour. Secure world-class talent through real-time auctions for packaged outcomes. BidNiche connects visionary founders with the results they need to scale.
+              Auction elite professional services as packaged outcomes. We connect visionary founders with the world's most talented independent experts through real-time, high-ticket matchmaking.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-primary/25" asChild>
                 <Link href="/auctions">
-                  Browse Services <ArrowRight className="ml-2 w-5 h-5" />
+                  Secure Expertise <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </Button>
               <Button size="lg" variant="outline" className="h-14 px-8 text-lg rounded-full border-primary text-primary hover:bg-primary/5" asChild>
-                <Link href="/dashboard/create">List Your Expertise</Link>
+                <Link href="/dashboard/create">Auction Your Bandwidth</Link>
               </Button>
             </div>
           </div>
@@ -40,12 +40,12 @@ export default async function Home() {
       <section className="container mx-auto px-4">
         <div className="flex justify-between items-end mb-10 border-b pb-6">
           <div>
-            <h2 className="font-headline text-3xl font-bold mb-2">Live Service Auctions</h2>
-            <p className="text-muted-foreground">Limited capacity packages from verified top-tier experts.</p>
+            <h2 className="font-headline text-3xl font-bold mb-2 text-primary italic">Live Outcome Auctions</h2>
+            <p className="text-muted-foreground">Strategic capacity packages from verified elite partners.</p>
           </div>
           <Button variant="ghost" asChild className="text-primary hover:text-primary/80 font-bold">
             <Link href="/auctions" className="flex items-center">
-              View all services <ArrowRight className="ml-1 w-4 h-4" />
+              Browse all services <ArrowRight className="ml-1 w-4 h-4" />
             </Link>
           </Button>
         </div>
@@ -57,12 +57,12 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* How It Works Section */}
+      {/* Philosophy Section */}
       <section className="container mx-auto px-4 py-12">
         <div className="bg-primary/5 rounded-[3rem] p-12 lg:p-20 border border-primary/10">
           <div className="max-w-3xl mb-16">
-            <h2 className="font-headline text-4xl font-bold mb-6 italic text-primary">"The market decides the value of your outcome."</h2>
-            <p className="text-xl text-muted-foreground">We've replaced friction-heavy negotiations with a transparent, real-time bidding environment for high-end professional work.</p>
+            <h2 className="font-headline text-4xl font-bold mb-6 italic text-primary">"Price discovery for brilliance."</h2>
+            <p className="text-xl text-muted-foreground">We've replaced the exhaustive RFP dance and opaque hourly billing with a transparent, real-time bidding environment for high-end professional results.</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -75,22 +75,15 @@ export default async function Home() {
                 <li className="flex gap-4">
                   <span className="font-mono text-primary font-bold">01.</span>
                   <div>
-                    <p className="font-bold">Package Your Result</p>
-                    <p className="text-muted-foreground">Define a specific block of work (e.g., 10 hours of legal audit) with clear deliverables.</p>
+                    <p className="font-bold">Auction Your Yield</p>
+                    <p className="text-muted-foreground">List your monthly retainer slots or specific service blocks. Let the market decide your worth based on your history of outcomes.</p>
                   </div>
                 </li>
                 <li className="flex gap-4">
                   <span className="font-mono text-primary font-bold">02.</span>
                   <div>
-                    <p className="font-bold">Set Your Floor</p>
-                    <p className="text-muted-foreground">Establish a starting price that respects your worth. No more race-to-the-bottom bidding.</p>
-                  </div>
-                </li>
-                <li className="flex gap-4">
-                  <span className="font-mono text-primary font-bold">03.</span>
-                  <div>
-                    <p className="font-bold">Maximize Yield</p>
-                    <p className="text-muted-foreground">Let multiple clients compete for your limited bandwidth, ensuring you're paid true market value.</p>
+                    <p className="font-bold">Eliminate Proposals</p>
+                    <p className="text-muted-foreground">No more chasing leads. Verified buyers compete for your time, ensuring you work with the clients who value you most.</p>
                   </div>
                 </li>
               </ul>
@@ -105,22 +98,15 @@ export default async function Home() {
                 <li className="flex gap-4">
                   <span className="font-mono text-accent font-bold">01.</span>
                   <div>
-                    <p className="font-bold">Access Elite Talent</p>
-                    <p className="text-muted-foreground">Secure time blocks from experts who are normally "unhirable" through traditional channels.</p>
+                    <p className="font-bold">Bypass the Agency Fee</p>
+                    <p className="text-muted-foreground">Secure direct access to elite independent operators. Pay for the execution, not the overhead.</p>
                   </div>
                 </li>
                 <li className="flex gap-4">
                   <span className="font-mono text-accent font-bold">02.</span>
                   <div>
-                    <p className="font-bold">Transparent Pricing</p>
-                    <p className="text-muted-foreground">See exactly what others are willing to pay. No hidden fees or surprise billable hours.</p>
-                  </div>
-                </li>
-                <li className="flex gap-4">
-                  <span className="font-mono text-accent font-bold">03.</span>
-                  <div>
-                    <p className="font-bold">Guaranteed Outcome</p>
-                    <p className="text-muted-foreground">Funds are held in escrow until the defined service package deliverables are fulfilled.</p>
+                    <p className="font-bold">Guaranteed Delivery</p>
+                    <p className="text-muted-foreground">Service outcomes are held in escrow. Funds are only released once the pre-defined deliverables are verified.</p>
                   </div>
                 </li>
               </ul>
@@ -131,27 +117,27 @@ export default async function Home() {
 
       {/* Trust Grid */}
       <section className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          <div className="flex flex-col items-center text-center group">
-            <div className="bg-primary/10 p-4 rounded-2xl mb-6 group-hover:bg-primary/20 transition-colors">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+          <div className="space-y-4">
+            <div className="bg-primary/10 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6">
               <ShieldCheck className="w-8 h-8 text-primary" />
             </div>
-            <h3 className="font-headline text-xl font-bold mb-3 text-foreground">Vetted Expertise</h3>
-            <p className="text-muted-foreground leading-relaxed">We verify professional credentials and portfolios to maintain an elite talent standard.</p>
+            <h3 className="text-xl font-bold">Credential Vetting</h3>
+            <p className="text-muted-foreground">Every expert is vetted for their professional history, past outcomes, and verified identity.</p>
           </div>
-          <div className="flex flex-col items-center text-center group">
-            <div className="bg-primary/10 p-4 rounded-2xl mb-6 group-hover:bg-primary/20 transition-colors">
+          <div className="space-y-4">
+            <div className="bg-primary/10 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6">
               <Clock className="w-8 h-8 text-primary" />
             </div>
-            <h3 className="font-headline text-xl font-bold mb-3 text-foreground">Instant Availability</h3>
-            <p className="text-muted-foreground leading-relaxed">Secure urgent talent blocks in minutes. Perfect for critical strategic needs.</p>
+            <h3 className="text-xl font-bold">Immediate Capacity</h3>
+            <p className="text-muted-foreground">Secure urgent talent blocks in minutes. Perfect for critical strategic pivots or audits.</p>
           </div>
-          <div className="flex flex-col items-center text-center group">
-            <div className="bg-primary/10 p-4 rounded-2xl mb-6 group-hover:bg-primary/20 transition-colors">
+          <div className="space-y-4">
+            <div className="bg-primary/10 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6">
               <Gavel className="w-8 h-8 text-primary" />
             </div>
-            <h3 className="font-headline text-xl font-bold mb-3 text-foreground">Market Fair Pricing</h3>
-            <p className="text-muted-foreground leading-relaxed">Ensure you never overpay or undersell with our dynamic bidding environment.</p>
+            <h3 className="text-xl font-bold">Market Efficient</h3>
+            <p className="text-muted-foreground">Ensure you never overpay or undersell expertise with our competitive bidding environment.</p>
           </div>
         </div>
       </section>
