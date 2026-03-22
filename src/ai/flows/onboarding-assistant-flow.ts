@@ -3,8 +3,8 @@
  * @fileOverview RFPCentral Strategic Orchestrator.
  * 
  * A multi-role AI system that coordinates specialized sub-agents and tools to handle
- * mission-critical project reviews across complex industries like Healthcare and Construction.
- * This is the "brain" that ensures founders outsource with total confidence.
+ * mission-critical project reviews. This is the "brain" that ensures founders 
+ * outsource with total confidence.
  */
 
 import { ai } from '@/ai/genkit';
@@ -33,8 +33,8 @@ export type OnboardingAssistantInput = z.infer<typeof OnboardingAssistantInputSc
 export type OnboardingAssistantOutput = z.infer<typeof OnboardingAssistantOutputSchema>;
 
 /**
- * Tool: Sector Context Provider
- * Simulates an MCP call or specialized database lookup for industry-specific nuances.
+ * Tool: Sector Context Provider (Simulated MCP)
+ * Retrieves industry-specific strategic depth.
  */
 const getSectorContext = ai.defineTool(
   {
@@ -51,7 +51,6 @@ const getSectorContext = ai.defineTool(
     }),
   },
   async (input) => {
-    // Simulated industry intelligence database
     const db: Record<string, any> = {
       healthcare: {
         regulatoryRisks: ['HIPAA/GDPR compliance', 'NHS Procurement Standards', 'Patient data encryption'],
@@ -90,7 +89,7 @@ const getSectorContext = ai.defineTool(
 const estimateOutcomeCertainty = ai.defineTool(
   {
     name: 'estimateOutcomeCertainty',
-    description: 'Calculates a certainty score (1-100) based on project clarity and roster availability.',
+    description: 'Calculates a certainty score (1-100) based on project clarity and budget alignment.',
     inputSchema: z.object({
       clarity: z.number().min(1).max(10).describe('User project clarity score.'),
       budgetMatch: z.boolean().describe('Whether the budget aligns with roster standards.'),
@@ -106,7 +105,7 @@ const estimateOutcomeCertainty = ai.defineTool(
       score: Math.min(score, 100),
       reasoning: input.budgetMatch 
         ? "High budget alignment and clear requirements drive high outcome certainty."
-        : "Budget limitations may restrict access to the top 4% roster, increasing delivery risk."
+        : "Budget limitations may restrict access to top-tier roster capacity, increasing delivery risk."
     };
   }
 );
@@ -124,10 +123,10 @@ Your Role:
 1. Analyze the user's project or question.
 2. If they mention a specific industry (Healthcare, Construction, Engineering, Facilities), use the getSectorContext tool to provide elite strategic depth.
 3. Use the estimateOutcomeCertainty tool if they are describing a project they want to outsource, to help them understand the "Certainty Score".
-4. Provide a "Master Strategic Brief" that helps them outsource their anxiety.
+4. Synthesize these tool outputs into a "Master Strategic Brief" that helps them outsource their anxiety.
 
 Navigation:
-- /auctions for live capacity.
+- /auctions for live capacity blocks.
 - /rfp/create to post a bespoke need.
 - /attribution to see our founding vision.
 
