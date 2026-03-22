@@ -1,4 +1,4 @@
-import { Briefcase, ShieldCheck, Zap, Users, Globe, Award, Target, Scale, Star } from 'lucide-react';
+import { Briefcase, ShieldCheck, Zap, Users, Globe, Award, Target, Scale, Star, Bot } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
@@ -13,45 +13,45 @@ export default function AboutPage() {
         </div>
         <div className="container mx-auto px-4 text-center max-w-4xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase mb-8 border border-primary/20">
-            <Star className="w-3 h-3 fill-primary" /> The Premium Outcome Standard
+            <Zap className="w-3 h-3 fill-primary" /> The New Economy Standard
           </div>
           <h1 className="font-headline text-5xl font-extrabold tracking-tight sm:text-7xl mb-8">
-            The World's Roster for <span className="text-primary italic">Elite Expertise</span>
+            The Roster for <span className="text-primary italic">Mission-Critical</span> Outcomes
           </h1>
           <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-            RFPCentral bridges the gap between high-growth companies and a vetted roster of the world's most talented independent experts. We've modernized professional services by moving away from opaque billable hours and into transparent, market-driven auctions.
+            RFPCentral is the operational hub for the new economy. We bridge the gap between high-growth companies and a vetted roster of independent operators who specialize in high-touch AI, strategic marketing, and fractional leadership.
           </p>
         </div>
       </section>
 
-      {/* Disruption Section */}
+      {/* The Vision Section */}
       <section className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           <div className="space-y-8">
-            <h2 className="font-headline text-4xl font-bold italic text-primary">Death of the Billable Hour</h2>
+            <h2 className="font-headline text-4xl font-bold italic text-primary">Outcome Certainty, Not Billable Hours</h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Traditional professional services—law, consulting, engineering—are built on the flawed incentive of the billable hour. It rewards inefficiency and creates unnecessary friction between clients and experts.
+              The billable hour is an artifact of a slower era. It rewards inefficiency and creates friction. In a world of rapid iteration and agentic systems, founders need results, not spreadsheets of time.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed font-medium">
-              At RFPCentral, we acquire and vet elite talent for our roster, then allow them to auction **packaged outcomes**. Whether it's a 40-hour legal sprint or a fractional CTO block, the market decides the value based on results, not the ticking clock.
+              At RFPCentral, we acquire and vet talent for our roster, then allow them to auction **fractional capacity blocks**. Whether it's a 40-hour agentic orchestration or a Series A roadshow sprint, the market decides the value based on the business impact.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-4">
               <div className="flex gap-4">
                 <div className="bg-primary/10 p-3 h-fit rounded-2xl border border-primary/20 shadow-sm shadow-primary/10">
-                  <Scale className="w-6 h-6 text-primary" />
+                  <Bot className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-lg">Fair Market Value</h4>
-                  <p className="text-sm text-muted-foreground">True pricing discovery for high-demand, limited-capacity talent.</p>
+                  <h4 className="font-bold text-lg">Agentic Ready</h4>
+                  <p className="text-sm text-muted-foreground">Specialized operators for high-touch AI and agent orchestrations.</p>
                 </div>
               </div>
               <div className="flex gap-4">
                 <div className="bg-primary/10 p-3 h-fit rounded-2xl border border-primary/20 shadow-sm shadow-primary/10">
-                  <Zap className="w-6 h-6 text-primary" />
+                  <ShieldCheck className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-lg">Guaranteed Results</h4>
-                  <p className="text-sm text-muted-foreground">Secure urgent talent blocks with delivery held in escrow.</p>
+                  <h4 className="font-bold text-lg">Zero-Friction Vetting</h4>
+                  <p className="text-sm text-muted-foreground">Every partner is verified through rigorous project history audits.</p>
                 </div>
               </div>
             </div>
@@ -60,8 +60,8 @@ export default function AboutPage() {
             <div className="absolute -inset-4 bg-primary/20 rounded-[3rem] blur-2xl group-hover:bg-primary/30 transition-all duration-500"></div>
             <div className="relative aspect-square lg:aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white bg-white">
               <img 
-                src="https://picsum.photos/seed/elite-vetting/800/600" 
-                alt="Elite Professional Vetting" 
+                src="https://picsum.photos/seed/strategic-ops/800/600" 
+                alt="Strategic Operations" 
                 className="object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-700"
               />
             </div>
@@ -75,7 +75,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
             {[
               { label: 'Strategic Outcomes', value: '4.2k+', icon: Briefcase },
-              { label: 'Vetted Experts', value: '850+', icon: Users },
+              { label: 'Vetted Partners', value: '850+', icon: Users },
               { label: 'Global Founders', value: '15k+', icon: Globe },
               { label: 'Roster Acceptance', value: '4.2%', icon: Award },
             ].map((stat, i) => (
@@ -98,17 +98,17 @@ export default function AboutPage() {
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-black/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl"></div>
           
           <div className="relative z-10 space-y-6">
-            <h2 className="text-5xl lg:text-6xl font-extrabold tracking-tight">Ready to hire elite talent?</h2>
+            <h2 className="text-5xl lg:text-6xl font-extrabold tracking-tight">Outsource your operational anxiety.</h2>
             <p className="text-xl opacity-90 max-w-2xl mx-auto leading-relaxed">
-              Secure your next strategic partner through our dynamic bidding platform. Join the founders who are changing the way high-ticket work gets done.
+              Secure your next strategic partner through our fractional capacity auctions. Join the founders who are changing the way high-stakes work gets done.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row justify-center gap-6 relative z-10">
             <Button size="lg" variant="secondary" className="h-16 px-12 rounded-full font-bold text-lg shadow-xl" asChild>
-              <Link href="/auctions">Browse the Roster</Link>
+              <Link href="/auctions">Browse Roster Capacity</Link>
             </Button>
             <Button size="lg" variant="outline" className="h-16 px-12 rounded-full font-bold text-lg border-white/30 hover:bg-white/10 text-white" asChild>
-              <Link href="/rfp/create">Post Strategic RFP</Link>
+              <Link href="/rfp/create">Post Strategic Bounty</Link>
             </Button>
           </div>
         </div>
