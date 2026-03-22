@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -16,19 +15,29 @@ import { cn } from '@/lib/utils';
 
 const SUGGESTED_BOUNTIES = [
   {
-    title: "Outbound Sales Machine Setup",
-    description: "Build an outbound sales motion including lead lists, email sequences, and SDR CRM setup for a B2B SaaS product.",
+    title: "Short-Form Video Engine",
+    description: "Chop 10 long-form podcasts into 40 high-engagement YouTube Shorts/TikToks. Includes captions and B-roll.",
+    budget: "$2k - $4k"
+  },
+  {
+    title: "Bookkeeping & Payroll Setup",
+    description: "Reconcile 6 months of backlogged transactions in Xero, setup Gusto payroll, and design monthly reporting dashboard.",
+    budget: "$3k - $5k"
+  },
+  {
+    title: "Performance Ad Overhaul",
+    description: "Deep audit of Meta/Google ad accounts. Create 10 new high-converting ad creatives and landing page wireframes.",
     budget: "$5k - $10k"
   },
   {
-    title: "Product Launch PR Sprint",
-    description: "Full communications strategy for a Q4 product launch. Includes press release, journalist outreach, and media kit design.",
-    budget: "$3k - $7k"
+    title: "SOC2 Compliance Roadmap",
+    description: "Full gap analysis and evidence collection roadmap for SOC2 Type 1 readiness. Includes policy drafting.",
+    budget: "$10k - $20k"
   },
   {
-    title: "Enterprise Legal Infrastructure",
-    description: "Design and vet a suite of Master Sales Agreements, NDAs, and DPAs for high-ticket enterprise sales cycles.",
-    budget: "$4k - $8k"
+    title: "Zapier/Make Automation Sprint",
+    description: "Connect HubSpot, Slack, and Stripe into a seamless automated lead-to-cash workflow to reduce manual data entry.",
+    budget: "$2k - $6k"
   }
 ];
 
@@ -92,7 +101,7 @@ export default function SubmitRFPPage() {
         aiAssessment: analysis?.strategicAssessment
       });
 
-      toast({ title: "RFP Live", description: "Your strategic bounty has been broadcast to verified experts." });
+      toast({ title: "Bounty Live", description: "Your strategic bounty has been broadcast to verified experts." });
       router.push(`/rfp/${rfpId}`);
     } catch (err: any) {
       toast({ title: "Error", description: err.message, variant: "destructive" });
@@ -134,7 +143,7 @@ export default function SubmitRFPPage() {
             <CardHeader className="bg-primary/5 border-b px-8 py-6">
               <CardTitle className="flex items-center gap-2 text-xl font-bold">
                 <FileText className="w-5 h-5 text-primary" />
-                RFP Definition
+                Bounty Definition
               </CardTitle>
             </CardHeader>
             <CardContent className="p-8 space-y-6">
@@ -164,7 +173,7 @@ export default function SubmitRFPPage() {
                     <DollarSign className="w-3.5 h-3.5" /> Budget Range
                   </label>
                   <Input 
-                    placeholder="e.g. $10k - $25k" 
+                    placeholder="e.g. $5k - $10k" 
                     value={formData.budgetRange}
                     onChange={e => setFormData({...formData, budgetRange: e.target.value})}
                   />

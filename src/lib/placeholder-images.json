@@ -61,10 +61,16 @@
       "imageHint": "sales calls"
     },
     {
-      "id": "comms",
-      "description": "Communications & PR Strategy",
-      "imageUrl": "https://picsum.photos/seed/comms1/600/400",
-      "imageHint": "public relations"
+      "id": "video",
+      "description": "Short-Form Video Engine",
+      "imageUrl": "https://picsum.photos/seed/video1/600/400",
+      "imageHint": "video editing"
+    },
+    {
+      "id": "cyber",
+      "description": "Cybersecurity Pentest",
+      "imageUrl": "https://picsum.photos/seed/cyber1/600/400",
+      "imageHint": "computer security"
     }
   ]
 }

@@ -1,4 +1,3 @@
-
 import { Auction, Bid, UserProfile, RFP, Proposal } from './types';
 import { PlaceHolderImages } from './placeholder-images';
 
@@ -11,13 +10,30 @@ let auctions: Auction[] = [
     sellerSales: 42,
     isVerified: true,
     title: '1-Month Fractional CMO Strategy Block',
-    description: 'A dedicated 20-hour outcome package including brand positioning, GTM strategy, and performance marketing oversight for Series A startups. Secure the expertise you need to scale without the full-time overhead.',
+    description: 'A dedicated 20-hour outcome package including brand positioning, GTM strategy, and performance marketing oversight for Series A startups.',
     imageUrl: PlaceHolderImages[0].imageUrl,
     startingPrice: 5000,
     currentPrice: 6200,
     reservePrice: 7500,
     createdAt: Date.now() - 86400000,
     endAt: Date.now() + 172800000,
+    status: 'active'
+  },
+  {
+    id: '12',
+    sellerId: 'user-seller-12',
+    sellerName: 'ShortsFactory',
+    sellerRating: 5.0,
+    sellerSales: 156,
+    isVerified: true,
+    title: 'Short-Form Video Engine (30 Clips)',
+    description: 'We turn your long-form podcasts or webinars into 30 high-drama YouTube Shorts/TikToks. Includes professional captions, B-roll, and sound design.',
+    imageUrl: PlaceHolderImages[10].imageUrl,
+    startingPrice: 1500,
+    currentPrice: 1850,
+    reservePrice: 2000,
+    createdAt: Date.now() - 10000,
+    endAt: Date.now() + 259200000,
     status: 'active'
   },
   {
@@ -28,13 +44,30 @@ let auctions: Auction[] = [
     sellerSales: 18,
     isVerified: true,
     title: 'Fractional CFO: Cashflow & Burn Audit',
-    description: 'Stop guessing your runway. This 10-hour intensive audit delivers a full 18-month cashflow forecast, unit economics analysis, and burn rate optimization roadmap. Perfect for founders prepping for a bridge round.',
+    description: 'Stop guessing your runway. This 10-hour intensive audit delivers a full 18-month cashflow forecast and unit economics analysis.',
     imageUrl: PlaceHolderImages[6].imageUrl,
     startingPrice: 3500,
     currentPrice: 4200,
     reservePrice: 4500,
     createdAt: Date.now() - 50000,
     endAt: Date.now() + 259200000,
+    status: 'active'
+  },
+  {
+    id: '13',
+    sellerId: 'user-seller-13',
+    sellerName: 'AuditForce Security',
+    sellerRating: 4.9,
+    sellerSales: 28,
+    isVerified: true,
+    title: 'Penetration Test & Security Audit',
+    description: 'Mission-critical security audit for your web application. Includes vulnerability scanning, manual pen-testing, and a remediation roadmap for SOC2 compliance.',
+    imageUrl: PlaceHolderImages[11].imageUrl,
+    startingPrice: 4000,
+    currentPrice: 4500,
+    reservePrice: 5000,
+    createdAt: Date.now() - 200000,
+    endAt: Date.now() + 172800000,
     status: 'active'
   },
   {
@@ -45,47 +78,13 @@ let auctions: Auction[] = [
     sellerSales: 25,
     isVerified: true,
     title: 'HR Infrastructure Sprint: Scale 5 to 20',
-    description: 'Outsource your HR anxiety. We deliver a complete employee handbook, state-compliant offer letters, payroll setup, and an automated onboarding flow in a 15-hour capacity block.',
+    description: 'Outsource your HR anxiety. We deliver a complete employee handbook, offer letters, payroll setup, and an automated onboarding flow.',
     imageUrl: PlaceHolderImages[7].imageUrl,
     startingPrice: 2500,
     currentPrice: 3100,
     reservePrice: 3500,
     createdAt: Date.now() - 30000,
     endAt: Date.now() + 172800000,
-    status: 'active'
-  },
-  {
-    id: '10',
-    sellerId: 'user-seller-10',
-    sellerName: 'Growth Engine Sales',
-    sellerRating: 4.9,
-    sellerSales: 34,
-    isVerified: true,
-    title: 'Outbound Sales Machine: 40-Hour Sprint',
-    description: 'We build your outbound sales motion from scratch. Includes lead list building (500 qualified leads), email sequence design, and SDR training. Guaranteed lead-gen infrastructure for B2B startups.',
-    imageUrl: PlaceHolderImages[9].imageUrl,
-    startingPrice: 4500,
-    currentPrice: 5100,
-    reservePrice: 5500,
-    createdAt: Date.now() - 100000,
-    endAt: Date.now() + 345600000,
-    status: 'active'
-  },
-  {
-    id: '11',
-    sellerId: 'user-seller-11',
-    sellerName: 'Veritas PR',
-    sellerRating: 5.0,
-    sellerSales: 21,
-    isVerified: true,
-    title: 'Product Launch Communications Block',
-    description: '15 hours of direct PR capacity. Includes drafting your announcement press release, journalist list curation, and 3 high-impact media pitches. Secure the narrative for your next launch.',
-    imageUrl: PlaceHolderImages[10].imageUrl,
-    startingPrice: 3000,
-    currentPrice: 3800,
-    reservePrice: 4000,
-    createdAt: Date.now() - 200000,
-    endAt: Date.now() + 518400000,
     status: 'active'
   },
   {
@@ -96,7 +95,7 @@ let auctions: Auction[] = [
     sellerSales: 15,
     isVerified: true,
     title: 'Series A Investor Roadshow Preparation',
-    description: 'Mission-critical capacity for founders preparing for a Series A raise. Includes pitch deck narrative audit, financial model stress-testing, and 10 hours of direct executive coaching. Outsource your roadshow anxiety.',
+    description: 'Mission-critical capacity for founders preparing for a Series A raise. Includes pitch deck narrative audit and financial model stress-testing.',
     imageUrl: PlaceHolderImages[4].imageUrl,
     startingPrice: 12000,
     currentPrice: 14500,
@@ -109,7 +108,7 @@ let auctions: Auction[] = [
 
 let bids: Bid[] = [
   { id: 'b1', auctionId: '1', bidderId: 'b-1', bidderName: 'TechScale Founders', amount: 6200, createdAt: Date.now() - 50000 },
-  { id: 'b2', auctionId: '10', bidderId: 'b-2', bidderName: 'VentureReady SaaS', amount: 5100, createdAt: Date.now() - 100000 },
+  { id: 'b2', auctionId: '12', bidderId: 'b-2', bidderName: 'CreatorX Studio', amount: 1850, createdAt: Date.now() - 10000 },
 ];
 
 let rfps: RFP[] = [
@@ -125,33 +124,10 @@ let rfps: RFP[] = [
     createdAt: Date.now() - 43200000,
     expiresAt: Date.now() + 86400000,
     aiAssessment: 'Mission-critical infrastructure task. Requires AWS/GCP certification and CUDA optimization experience.'
-  },
-  {
-    id: 'rfp-2',
-    buyerId: 'buyer-2',
-    buyerName: 'Series B FinTech',
-    title: 'Regulatory Compliance & SOC2 Readiness',
-    description: 'Need a fractional compliance officer to lead our SOC2 Type 2 audit preparation and vendor risk management framework.',
-    budgetRange: '$20k - $40k',
-    timeline: '2 Months',
-    status: 'open',
-    createdAt: Date.now() - 21600000,
-    expiresAt: Date.now() + 604800000,
-    aiAssessment: 'High-stakes compliance audit. Requires experience in FinTech regulatory environments and SOC2 frameworks.'
   }
 ];
 
-let proposals: Proposal[] = [
-  {
-    id: 'p-1',
-    rfpId: 'rfp-1',
-    expertId: 'expert-1',
-    expertName: 'CloudArchitects Group',
-    amount: 18000,
-    coverLetter: 'We have built similar pipelines for three YC companies in the last year.',
-    createdAt: Date.now() - 10000
-  }
-];
+let proposals: Proposal[] = [];
 
 export const getMockAuctions = async (): Promise<Auction[]> => {
   return [...auctions];
