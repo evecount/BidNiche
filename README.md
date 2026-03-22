@@ -10,17 +10,25 @@ In an era of rapid AI iteration, linear human time is the only remaining constan
 - **Human-in-the-Loop**: We bridge the gap between AI potential and business reality by providing vetted strategic experts to orchestrate the shift.
 - **Price Discovery for Brilliance**: Real-time bidding ensures that elite fractional capacity is valued based on its true business impact.
 
+## Core Agentic Logic (Tier-0)
+The platform is powered by a suite of specialized Autonomous Orchestrators built with Google Genkit:
+
+- **AAO (Autonomous Agentic Orchestrator)**: Handles end-to-end enterprise proposal synthesis, spawning specialist sub-agents for Legal, Security, and Pricing.
+- **APO (Autonomous Procurement Orchestrator)**: Architects and adjudicates high-stakes tenders, stress-testing bids for "Total Value of Ownership" (TVO).
+- **Strategic DNA**: A private, persistent AI corpus that remembers the founder's specific risk appetite, preferences, and technical context across sessions.
+- **Visual Outcome Generator**: Uses Imagen to render "Success Blueprints," helping founders visualize the anxiety-free future of their projects.
+
 ## Features
-- **Outcome Auctions**: Bid on dedicated blocks of expert capacity (e.g., "30-Clip Short Form Video Engine").
-- **Strategic Bounties (RFP)**: Post bespoke project needs and receive AI-analyzed strategic briefs.
-- **AI Strategic Consultant**: Built with Google Genkit, our assistant analyzes project requirements to provide complexity scores and matching criteria.
-- **Vetted Roster**: A rigorous 4% acceptance rate ensuring only top-tier operators list their capacity.
+- **Outcome Auctions**: Bid on dedicated blocks of expert capacity (e.g., "40-Hour Technical Audit").
+- **Strategic Project RFPs**: Post bespoke project needs and receive AI-analyzed strategic briefs.
+- **Vetted Roster**: A rigorous 4.2% acceptance rate ensuring only top-tier strategic operators list their capacity.
+- **Escrow Protection**: High-ticket trust via milestone-based payment release.
 
 ## Tech Stack
 - **Framework**: Next.js 15 (App Router)
 - **UI**: React 19, Tailwind CSS, Shadcn UI
-- **AI**: Google Genkit (Gemini 2.5 Flash)
-- **Backend**: Firebase (Auth & Firestore ready)
+- **AI**: Google Genkit (Gemini 2.5 Flash, Imagen 4)
+- **Backend**: Firebase (Auth & Firestore)
 - **Icons**: Lucide React
 
 ## Getting Started
@@ -29,10 +37,10 @@ To get started with the development server:
 npm run dev
 ```
 
-For AI flow development:
+For AI flow development and testing:
 ```bash
 npm run genkit:dev
 ```
 
 ---
-*Built at the bleeding edge of sensibility and reality.*
+*Built at the intersection of sense and reality by the Founding Partners.*
