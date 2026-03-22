@@ -9,12 +9,12 @@ let auctions: Auction[] = [
     sellerRating: 4.9,
     sellerSales: 42,
     isVerified: true,
-    title: 'Q4 Product Launch Marketing Rollout',
-    description: 'A complete, high-intensity marketing rollout package for an enterprise product launch. Includes GTM strategy, asset creation oversight, and a 48-hour performance monitoring sprint.',
+    title: '1-Month Fractional CMO Strategy Block',
+    description: 'A dedicated 20-hour outcome package including brand positioning, GTM strategy, and performance marketing oversight for Series A startups. Secure the expertise you need to scale without the full-time overhead.',
     imageUrl: PlaceHolderImages[0].imageUrl,
-    startingPrice: 15000,
-    currentPrice: 18200,
-    reservePrice: 20000,
+    startingPrice: 5000,
+    currentPrice: 6200,
+    reservePrice: 7500,
     createdAt: Date.now() - 86400000,
     endAt: Date.now() + 172800000,
     status: 'active'
@@ -27,7 +27,7 @@ let auctions: Auction[] = [
     sellerSales: 15,
     isVerified: true,
     title: 'Series A Investor Roadshow Preparation',
-    description: 'Elite strategic block for founders preparing for a Series A raise. Includes pitch deck narrative audit, financial model stress-testing, and 10 hours of direct executive coaching.',
+    description: 'Mission-critical capacity for founders preparing for a Series A raise. Includes pitch deck narrative audit, financial model stress-testing, and 10 hours of direct executive coaching. Outsource your roadshow anxiety.',
     imageUrl: PlaceHolderImages[4].imageUrl,
     startingPrice: 12000,
     currentPrice: 14500,
@@ -44,7 +44,7 @@ let auctions: Auction[] = [
     sellerSales: 29,
     isVerified: true,
     title: 'Enterprise Security Compliance Audit',
-    description: 'A 40-hour deep-dive security audit designed for companies facing mission-critical compliance hurdles. Delivers a verified roadmap for SOC2/ISO readiness.',
+    description: 'A 40-hour deep-dive security audit designed for companies facing mission-critical compliance hurdles. Delivers a verified roadmap for SOC2/ISO readiness. Stop sweating the audit.',
     imageUrl: PlaceHolderImages[5].imageUrl,
     startingPrice: 8000,
     currentPrice: 9500,
@@ -65,13 +65,13 @@ let rfps: RFP[] = [
     buyerId: 'buyer-1',
     buyerName: 'Stealth AI Startup',
     title: 'Multi-Region Kubernetes Scaling Project',
-    description: 'We need an elite DevOps architect to design our multi-region Kubernetes deployment specifically for GPU-intensive workloads.',
+    description: 'We need a strategic operator to design our multi-region Kubernetes deployment specifically for GPU-intensive workloads.',
     budgetRange: '$15k - $25k',
     timeline: '3 Weeks',
     status: 'open',
     createdAt: Date.now() - 43200000,
     expiresAt: Date.now() + 86400000,
-    aiAssessment: 'High-complexity infrastructure task. Requires AWS/GCP elite certification and CUDA optimization experience.'
+    aiAssessment: 'Mission-critical infrastructure task. Requires AWS/GCP certification and CUDA optimization experience.'
   }
 ];
 
@@ -80,7 +80,7 @@ let proposals: Proposal[] = [
     id: 'p-1',
     rfpId: 'rfp-1',
     expertId: 'expert-1',
-    expertName: 'CloudArchitects Elite',
+    expertName: 'CloudArchitects Group',
     amount: 18000,
     coverLetter: 'We have built similar pipelines for three YC companies in the last year.',
     createdAt: Date.now() - 10000
