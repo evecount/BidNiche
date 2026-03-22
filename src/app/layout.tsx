@@ -33,7 +33,7 @@ export default function RootLayout({
         <footer className="border-t bg-card pt-16 pb-8 mt-20">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-              {/* Brand Section */}
+              {/* Brand Section: The 'Who' and 'Why' */}
               <div className="space-y-6">
                 <Link href="/" className="flex items-center gap-2">
                   <div className="bg-primary p-1.5 rounded-lg shadow-lg shadow-primary/20">
@@ -59,7 +59,7 @@ export default function RootLayout({
                 </div>
               </div>
 
-              {/* Marketplace Section */}
+              {/* Marketplace Section: Core Product Routes */}
               <div className="space-y-6">
                 <h4 className="text-sm font-bold uppercase tracking-widest text-foreground">Marketplace</h4>
                 <ul className="space-y-4 text-sm text-muted-foreground">
@@ -70,7 +70,7 @@ export default function RootLayout({
                 </ul>
               </div>
 
-              {/* Support Section */}
+              {/* Support Section: Trust-Building Links */}
               <div className="space-y-6">
                 <h4 className="text-sm font-bold uppercase tracking-widest text-foreground">Support</h4>
                 <ul className="space-y-4 text-sm text-muted-foreground">
@@ -81,7 +81,7 @@ export default function RootLayout({
                 </ul>
               </div>
 
-              {/* Company Section */}
+              {/* Company Section: Brand Story and Legal */}
               <div className="space-y-6">
                 <h4 className="text-sm font-bold uppercase tracking-widest text-foreground">Company</h4>
                 <ul className="space-y-4 text-sm text-muted-foreground">
