@@ -3,17 +3,15 @@ import { notFound } from 'next/navigation';
 import { 
   Target, 
   Clock, 
-  DollarSign, 
   ShieldCheck, 
   FileText, 
   Sparkles, 
-  Briefcase, 
-  AlertCircle,
   CheckCircle2,
   Users,
   Cpu,
   Zap,
-  ShieldAlert
+  Layout,
+  Eye
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -23,6 +21,7 @@ import Link from 'next/link';
 import { ProposalForm } from './ProposalForm';
 import { AAOSynthesisTrigger } from '@/components/AAOSynthesisTrigger';
 import { APOAdjudicatorTrigger } from '@/components/APOAdjudicatorTrigger';
+import { VisualOutcomeTrigger } from '@/components/VisualOutcomeTrigger';
 
 export default async function RFPDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -77,14 +76,17 @@ export default async function RFPDetailPage({ params }: { params: Promise<{ id: 
       </div>
 
       <Tabs defaultValue="scope" className="space-y-12">
-        <TabsList className="bg-muted/50 p-1 rounded-xl h-14 w-full md:w-auto grid grid-cols-3 md:inline-flex">
-          <TabsTrigger value="scope" className="rounded-lg h-full px-10 text-base font-bold data-[state=active]:bg-background">
+        <TabsList className="bg-muted/50 p-1 rounded-xl h-14 w-full md:w-auto grid grid-cols-4 md:inline-flex">
+          <TabsTrigger value="scope" className="rounded-lg h-full px-8 text-sm font-bold data-[state=active]:bg-background">
             <FileText className="w-4 h-4 mr-2" /> Project Scope
           </TabsTrigger>
-          <TabsTrigger value="review" className="rounded-lg h-full px-10 text-base font-bold data-[state=active]:bg-background">
+          <TabsTrigger value="visual" className="rounded-lg h-full px-8 text-sm font-bold data-[state=active]:bg-background">
+            <Eye className="w-4 h-4 mr-2 text-primary" /> Visual Blueprint
+          </TabsTrigger>
+          <TabsTrigger value="review" className="rounded-lg h-full px-8 text-sm font-bold data-[state=active]:bg-background">
             <Sparkles className="w-4 h-4 mr-2 text-accent" /> Strategic Review
           </TabsTrigger>
-          <TabsTrigger value="proposals" className="rounded-lg h-full px-10 text-base font-bold data-[state=active]:bg-background">
+          <TabsTrigger value="proposals" className="rounded-lg h-full px-8 text-sm font-bold data-[state=active]:bg-background">
             <Users className="w-4 h-4 mr-2" /> Proposals ({proposals.length})
           </TabsTrigger>
         </TabsList>
@@ -155,6 +157,21 @@ export default async function RFPDetailPage({ params }: { params: Promise<{ id: 
           </div>
         </TabsContent>
 
+        <TabsContent value="visual" className="animate-in fade-in slide-in-from-top-4 duration-500">
+           <div className="max-w-4xl mx-auto space-y-8 text-center">
+              <div className="space-y-4">
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-bold tracking-wide uppercase border border-primary/20">
+                  <Layout className="w-4 h-4" /> Visual Outcome Blueprint
+                </div>
+                <h2 className="text-3xl font-bold">Visualize the Strategic Success</h2>
+                <p className="text-muted-foreground text-lg">Use our AI to generate a visual representation of what a successful outcome looks like for this project.</p>
+              </div>
+              <div className="pt-8">
+                <VisualOutcomeTrigger projectTitle={rfp.title} projectDescription={rfp.description} />
+              </div>
+           </div>
+        </TabsContent>
+
         <TabsContent value="review" className="animate-in fade-in slide-in-from-right-4 duration-500">
           <div className="max-w-4xl mx-auto space-y-12">
             <div className="text-center space-y-4">
@@ -180,7 +197,7 @@ export default async function RFPDetailPage({ params }: { params: Promise<{ id: 
               <Card className="border-primary/20 bg-primary/5">
                 <CardHeader>
                   <CardTitle className="text-xl font-bold flex items-center gap-2 text-primary">
-                    <AlertCircle className="w-5 h-5" /> Complexity Profile
+                    <Zap className="w-5 h-5" /> Complexity Profile
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
@@ -198,24 +215,6 @@ export default async function RFPDetailPage({ params }: { params: Promise<{ id: 
                   </p>
                 </CardContent>
               </Card>
-            </div>
-
-            <div className="bg-card border rounded-[2.5rem] p-10 lg:p-16 space-y-8">
-              <h3 className="text-2xl font-bold italic text-center">"This project is a high-leverage strategic sprint. Failures here compound; success accelerates everything."</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center pt-8 border-t">
-                <div className="space-y-2">
-                  <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Expert Fit</p>
-                  <p className="text-lg font-bold">Senior/Lead</p>
-                </div>
-                <div className="space-y-2">
-                  <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Risk Level</p>
-                  <p className="text-lg font-bold text-accent">Moderate</p>
-                </div>
-                <div className="space-y-2">
-                  <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Matching Criteria</p>
-                  <p className="text-lg font-bold">Verified History</p>
-                </div>
-              </div>
             </div>
           </div>
         </TabsContent>
