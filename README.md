@@ -24,7 +24,7 @@ The platform is powered by a suite of specialized Autonomous Orchestrators built
 - **APO (Autonomous Procurement Orchestrator)**: Architects and adjudicates high-stakes tenders, stress-testing bids for "Total Value of Ownership" (TVO).
 - **AMO (Autonomous Monetization Orchestrator)**: Adjudicates project "Worth," dynamic win fees, and autonomous escrow release based on milestone completion.
 - **Strategic DNA**: A private, persistent AI corpus that remembers the founder's specific risk appetite and technical context.
-- **Visual Outcome Generator**: Uses Imagen to render "Success Blueprints," helping founders visualize the anxiety-free future of their projects.
+- **Visual Outcome Generator**: Uses Imagen 4 to render "Success Blueprints," helping founders visualize the anxiety-free future of their projects.
 
 ## Tech Stack
 - **Framework**: Next.js 15 (App Router)

@@ -105,7 +105,7 @@ export default async function Home() {
               <p className="text-sm text-muted-foreground leading-relaxed italic">"Autonomous Procurement Orchestrator: Requirement harvesting, bid interrogation, & global logistics risk monitoring."</p>
               <ul className="space-y-2 text-xs font-bold text-foreground">
                 <li className="flex items-center gap-2"><ShieldCheck className="w-3 h-3 text-accent" /> ESG Standards Validation</li>
-                <li className="flex items-center gap-2"><Scale className="w-3 h-3 text-accent" /> Should-Cost Simulation</li>
+                <li className="flex items-center gap-2"><Waves className="w-3 h-3 text-accent" /> Global Logistics Risk Monitor</li>
               </ul>
             </div>
             <div className="space-y-6">
@@ -113,7 +113,7 @@ export default async function Home() {
               <h4 className="text-2xl font-bold">AMO</h4>
               <p className="text-sm text-muted-foreground leading-relaxed italic">"Autonomous Monetization Orchestrator: Value-based yield optimization & autonomous escrow adjudication."</p>
               <ul className="space-y-2 text-xs font-bold text-foreground">
-                <li className="flex items-center gap-2"><DollarSign className="w-3 h-3 text-green-500" /> Dynamic Win-Fee Calculation</li>
+                <li className="flex items-center gap-2"><Zap className="w-3 h-3 text-green-500" /> Dynamic Win-Fee Calculation</li>
                 <li className="flex items-center gap-2"><Waves className="w-3 h-3 text-green-500" /> Yield Window Analysis</li>
               </ul>
             </div>
@@ -142,21 +142,5 @@ export default async function Home() {
         </div>
       </section>
     </div>
-  );
-}
-
-function Scale({ className }: { className?: string }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-      <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h18"/>
-    </svg>
-  );
-}
-
-function DollarSign({ className }: { className?: string }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-      <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-    </svg>
   );
 }

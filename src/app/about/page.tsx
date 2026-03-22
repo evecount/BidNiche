@@ -1,4 +1,4 @@
-import { Briefcase, ShieldCheck, Zap, Users, Globe, Award, Target, Scale, Star, Bot, Sparkles, Waves } from 'lucide-react';
+import { Briefcase, ShieldCheck, Zap, Users, Globe, Award, Target, Scale, Star, Bot, Sparkles, Waves, Cpu, ShieldAlert } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
@@ -13,13 +13,13 @@ export default function AboutPage() {
         </div>
         <div className="container mx-auto px-4 text-center max-w-4xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase mb-8 border border-primary/20">
-            <Zap className="w-3 h-3 fill-primary" /> The New Economy Standard
+            <Zap className="w-3 h-3 fill-primary" /> The Deep Water Method
           </div>
           <h1 className="font-headline text-5xl font-extrabold tracking-tight sm:text-7xl mb-8">
-            The <span className="text-primary italic">Deep Water</span> Method.
+            The <span className="text-primary italic">Sovereign</span> Strategy.
           </h1>
           <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-            RFPCentral provides founders with the <span className="text-foreground font-bold">"human-in-the-loop"</span> expertise needed to outsource mission-critical projects. We operate on a success-only model: <span className="text-foreground font-bold">Free to Post, Free to Tender, Pay for the Win.</span>
+            RFPCentral is the first "Human-in-the-Loop" marketplace designed for the agentic shift. We don't sell hours. We sell <span className="text-foreground font-bold italic">certainty</span>.
           </p>
         </div>
       </section>
@@ -30,7 +30,7 @@ export default function AboutPage() {
           <div className="space-y-8">
             <h2 className="font-headline text-4xl font-bold italic text-primary">Outcome Adjudication, Not Arbitrary Billing</h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              The billable hour is dead. In the agentic shift, linear human time is the only remaining constant. We help you buy guaranteed outcomes, not just hours.
+              The billable hour is a legacy constraint. In the new economy, we buy back our lives by buying guaranteed outcomes. Our Tier-0 orchestrators handle the complexity so you can focus on the win.
             </p>
             <div className="bg-muted/50 p-6 rounded-2xl border border-dashed border-primary/20 space-y-4">
               <h4 className="font-bold flex items-center gap-2">
@@ -38,43 +38,23 @@ export default function AboutPage() {
               </h4>
               <ul className="space-y-3 text-sm">
                 <li className="flex gap-2">
-                  <span className="font-bold text-primary">Free to Post:</span> Founders list mission-critical RFPs at zero cost.
+                  <span className="font-bold text-primary">Free to Post:</span> Founders list mission-critical RFPs at zero cost. No discovery fees.
                 </li>
                 <li className="flex gap-2">
-                  <span className="font-bold text-primary">Free to Tender:</span> Experts submit strategic proposals without upfront fees.
+                  <span className="font-bold text-primary">Free to Tender:</span> Elite experts submit strategic proposals without upfront fees.
                 </li>
                 <li className="flex gap-2">
-                  <span className="font-bold text-primary">Pay for the Win:</span> RFPCentral captures value only when a tender is won, adjudicated by the AMO.
+                  <span className="font-bold text-primary">Pay for the Win:</span> We only monetize when the outcome is secured, adjudicated by our AMO.
                 </li>
               </ul>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-4">
-              <div className="flex gap-4">
-                <div className="bg-primary/10 p-3 h-fit rounded-2xl border border-primary/20 shadow-sm shadow-primary/10">
-                  <Bot className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-lg">Agentic Ready</h4>
-                  <p className="text-sm text-muted-foreground">Specialized operators for high-touch AI and agent orchestrations.</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="bg-primary/10 p-3 h-fit rounded-2xl border border-primary/20 shadow-sm shadow-primary/10">
-                  <ShieldCheck className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-lg">Zero-Friction Vetting</h4>
-                  <p className="text-sm text-muted-foreground">Every partner is verified through rigorous project history audits.</p>
-                </div>
-              </div>
             </div>
           </div>
           <div className="relative group">
             <div className="absolute -inset-4 bg-primary/20 rounded-[3rem] blur-2xl group-hover:bg-primary/30 transition-all duration-500"></div>
             <div className="relative aspect-square lg:aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white bg-white">
               <img 
-                src="https://picsum.photos/seed/strategic-ops/800/600" 
-                alt="Strategic Operations" 
+                src="https://picsum.photos/seed/sovereign-ops/800/600" 
+                alt="Sovereign Operations" 
                 className="object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-700"
               />
             </div>
@@ -82,25 +62,47 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="bg-card py-24 border-y">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
-            {[
-              { label: 'Strategic Outcomes', value: '4.2k+', icon: Briefcase },
-              { label: 'Vetted Partners', value: '850+', icon: Users },
-              { label: 'Global Founders', value: '15k+', icon: Globe },
-              { label: 'Roster Acceptance', value: '4.2%', icon: Award },
-            ].map((stat, i) => (
-              <div key={i} className="text-center space-y-4">
-                <div className="bg-primary/5 w-16 h-16 rounded-[2rem] flex items-center justify-center mx-auto mb-4 border border-primary/10">
-                  <stat.icon className="w-8 h-8 text-primary" />
-                </div>
-                <p className="text-4xl font-extrabold text-foreground tracking-tighter">{stat.value}</p>
-                <p className="text-xs text-muted-foreground uppercase tracking-[0.2em] font-bold">{stat.label}</p>
-              </div>
-            ))}
+      {/* Tier-0 Tiering Section */}
+      <section className="container mx-auto px-4 py-24 bg-card border rounded-[3rem]">
+        <div className="max-w-4xl mx-auto text-center space-y-12">
+          <h2 className="text-4xl font-extrabold tracking-tight">The <span className="text-primary italic">Tier-0</span> Logic Layer</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="p-8 bg-muted/30 rounded-2xl border space-y-4">
+              <Cpu className="w-10 h-10 text-primary mx-auto" />
+              <h4 className="font-bold">AAO</h4>
+              <p className="text-xs text-muted-foreground">End-to-end enterprise proposal synthesis shaped for the buyer's psychological profile.</p>
+            </div>
+            <div className="p-8 bg-muted/30 rounded-2xl border space-y-4">
+              <ShieldAlert className="w-10 h-10 text-accent mx-auto" />
+              <h4 className="font-bold">APO</h4>
+              <p className="text-xs text-muted-foreground">Autonomous procurement governance, interrogating bids for hidden margins and logistics risk.</p>
+            </div>
+            <div className="p-8 bg-muted/30 rounded-2xl border space-y-4">
+              <Zap className="w-10 h-10 text-green-500 mx-auto" />
+              <h4 className="font-bold">AMO</h4>
+              <p className="text-xs text-muted-foreground">Strategic value extraction, adjudicating win-fees based on business impact delta.</p>
+            </div>
           </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="container mx-auto px-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
+          {[
+            { label: 'Strategic Wins', value: '4.2k+', icon: Briefcase },
+            { label: 'Vetted Partners', value: '850+', icon: Users },
+            { label: 'Global Founders', value: '15k+', icon: Globe },
+            { label: 'Roster Acceptance', value: '4.2%', icon: Award },
+          ].map((stat, i) => (
+            <div key={i} className="text-center space-y-4">
+              <div className="bg-primary/5 w-16 h-16 rounded-[2rem] flex items-center justify-center mx-auto mb-4 border border-primary/10">
+                <stat.icon className="w-8 h-8 text-primary" />
+              </div>
+              <p className="text-4xl font-extrabold text-foreground tracking-tighter">{stat.value}</p>
+              <p className="text-xs text-muted-foreground uppercase tracking-[0.2em] font-bold">{stat.label}</p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -108,10 +110,8 @@ export default function AboutPage() {
       <section className="container mx-auto px-4">
         <div className="bg-primary rounded-[3rem] p-16 lg:p-24 text-center text-primary-foreground space-y-10 shadow-[0_40px_80px_-20px_rgba(var(--primary),0.3)] relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-black/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl"></div>
-          
           <div className="relative z-10 space-y-6">
-            <h2 className="text-5xl lg:text-6xl font-extrabold tracking-tight">Outsource your operational anxiety.</h2>
+            <h2 className="text-5xl lg:text-6xl font-extrabold tracking-tight italic">Outsource the anxiety.</h2>
             <p className="text-xl opacity-90 max-w-2xl mx-auto leading-relaxed">
               Post for free. Tender for free. Pay only when the outcome is secured.
             </p>
