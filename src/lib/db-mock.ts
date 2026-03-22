@@ -71,6 +71,23 @@ let auctions: Auction[] = [
     createdAt: Date.now() - 10000,
     endAt: Date.now() + 600000, // 10 mins left
     status: 'active'
+  },
+  {
+    id: '5',
+    sellerId: 'user-seller-5',
+    sellerName: 'GrowthHackers Collective',
+    sellerRating: 4.7,
+    sellerSales: 215,
+    isVerified: true,
+    title: 'Q3 SEO & Content Growth Package',
+    description: 'Full audit and strategy for the next quarter. Includes keyword mapping, technical SEO fix list, and 10 high-authority content outlines.',
+    imageUrl: PlaceHolderImages[3].imageUrl,
+    startingPrice: 4500,
+    currentPrice: 4500,
+    reservePrice: 6000,
+    createdAt: Date.now() - 5000,
+    endAt: Date.now() + 86400000 * 2, // 2 days
+    status: 'active'
   }
 ];
 
