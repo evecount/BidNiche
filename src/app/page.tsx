@@ -19,7 +19,7 @@ export default async function Home() {
               <ShieldCheck className="w-3 h-3" /> Vetted Roster of Strategic Operators
             </div>
             <h1 className="font-headline text-5xl font-extrabold tracking-tight sm:text-7xl mb-6 text-foreground leading-[1.1]">
-              Secure <span className="text-primary italic">Strategic Capacity</span> for the Agentic Shift.
+              Secure <span className="text-primary italic">Human Capacity</span> for the Agentic Shift.
             </h1>
             <h2 className="text-xl text-muted-foreground mb-10 leading-relaxed max-w-2xl">
               Providing founders with the <span className="text-foreground font-bold">"human-in-the-loop"</span> expertise needed to navigate the new economy. Secure guaranteed outcomes for mission-critical projects.
