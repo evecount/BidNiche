@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, Zap, Award, Target, Briefcase, Gavel, ShieldCheck, Clock, Star, Layout, Sparkles } from 'lucide-react';
+import { ArrowRight, Zap, Award, Target, Briefcase, Gavel, ShieldCheck, Clock, Star, Layout, Sparkles, Waves } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { AuctionCard } from '@/components/AuctionCard';
 import { getMockAuctions } from '@/lib/db-mock';
@@ -22,7 +22,7 @@ export default async function Home() {
               Secure <span className="text-primary italic">Human Capacity</span> for the Agentic Shift.
             </h1>
             <h2 className="text-xl text-muted-foreground mb-10 leading-relaxed max-w-2xl">
-              Providing founders with the <span className="text-foreground font-bold">"human-in-the-loop"</span> expertise needed to navigate the new economy. Secure guaranteed outcomes for mission-critical projects.
+              The <span className="text-foreground font-bold">Deep Water</span> Marketplace: Free to Post, Free to Tender. We only charge a strategic fee when the win is adjudicated by our Tier-0 AI.
             </h2>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" className="h-14 px-10 text-lg rounded-full shadow-2xl shadow-primary/30 font-bold" asChild>
@@ -31,7 +31,7 @@ export default async function Home() {
                 </Link>
               </Button>
               <Button size="lg" variant="outline" className="h-14 px-10 text-lg rounded-full border-primary/50 text-primary hover:bg-primary/5 font-bold" asChild>
-                <Link href="/rfp/create">Post a Project RFP</Link>
+                <Link href="/rfp/create">Post a Free Project RFP</Link>
               </Button>
             </div>
           </div>
@@ -85,11 +85,11 @@ export default async function Home() {
           </div>
           <div className="bg-card border rounded-[2rem] p-8 space-y-4 hover:border-primary/50 transition-all group">
             <div className="bg-primary/10 w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-              <Target className="w-6 h-6 text-primary" />
+              <Waves className="w-6 h-6 text-primary" />
             </div>
-            <h3 className="text-xl font-bold">Autonomous Adjudication</h3>
+            <h3 className="text-xl font-bold">Deep Water Model</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Our APO (Autonomous Procurement Orchestrator) stress-tests every bid, uncovering hidden margins and enforcing 100% ESG and security compliance.
+              Zero upfront costs. Free to post mission-critical RFPs and free for elite experts to tender. We only charge when the AMO adjudicates a win.
             </p>
           </div>
         </div>
@@ -115,8 +115,8 @@ export default async function Home() {
                 <li className="flex gap-4">
                   <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary font-bold text-xs border border-primary/20">01</div>
                   <div>
-                    <p className="font-bold">Bypass Agency Overhead</p>
-                    <p className="text-muted-foreground">Secure direct access to the world's most talented independent operators without the 40% agency markup.</p>
+                    <p className="font-bold">Zero-Cost Discovery</p>
+                    <p className="text-muted-foreground">Post your mission-critical requirements for free. Receive deep strategic proposals from the world's best operators without a retainer.</p>
                   </div>
                 </li>
                 <li className="flex gap-4">
@@ -140,15 +140,15 @@ export default async function Home() {
                 <li className="flex gap-4">
                   <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center shrink-0 text-accent font-bold text-xs border border-accent/20">01</div>
                   <div>
-                    <p className="font-bold">Auction Your Yield</p>
-                    <p className="text-muted-foreground">Maximize the value of your limited monthly bandwidth. Let exclusivity drive your price floor.</p>
+                    <p className="font-bold">Free to Tender</p>
+                    <p className="text-muted-foreground">Stop paying for "Connects" or leads. Submit your highest-performance proposals for free. We win only when you win.</p>
                   </div>
                 </li>
                 <li className="flex gap-4">
                   <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center shrink-0 text-accent font-bold text-xs border border-accent/20">02</div>
                   <div>
-                    <p className="font-bold">No More Proposals</p>
-                    <p className="text-muted-foreground">Stop writing RFPs for free. We bring qualified, high-intent founders directly to your capacity auctions or RFP requests.</p>
+                    <p className="font-bold">Auction Your Yield</p>
+                    <p className="text-muted-foreground">Maximize the value of your limited monthly bandwidth. Let exclusivity drive your price floor via our auction engine.</p>
                   </div>
                 </li>
               </ul>

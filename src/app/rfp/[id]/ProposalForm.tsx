@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-import { Gavel, ShieldCheck, Send } from 'lucide-react';
+import { Gavel, ShieldCheck, Send, Waves } from 'lucide-react';
 import { submitProposal } from '@/lib/db-mock';
 
 interface ProposalFormProps {
@@ -34,7 +34,7 @@ export function ProposalForm({ rfpId }: ProposalFormProps) {
 
       toast({ 
         title: "Proposal Submitted", 
-        description: "The founder has been notified of your strategic offer." 
+        description: "The founder has been notified. Free to Tender enabled." 
       });
       setAmount('');
       setCoverLetter('');
@@ -52,12 +52,17 @@ export function ProposalForm({ rfpId }: ProposalFormProps) {
   return (
     <Card className="border-primary/20 shadow-2xl overflow-hidden">
       <CardHeader className="bg-primary/5 border-b px-8 py-6">
-        <CardTitle className="flex items-center gap-2 text-xl font-bold">
-          <Gavel className="w-5 h-5 text-primary" />
-          Submit Your Strategic Proposal
-        </CardTitle>
+        <div className="flex justify-between items-center mb-2">
+           <CardTitle className="flex items-center gap-2 text-xl font-bold">
+            <Gavel className="w-5 h-5 text-primary" />
+            Submit Your Strategic Proposal
+          </CardTitle>
+          <div className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-accent/10 text-accent text-[10px] font-bold tracking-widest uppercase border border-accent/20">
+            <Waves className="w-3 h-3" /> Free to Tender
+          </div>
+        </div>
         <CardDescription>
-          Clearly define your approach and how you will guarantee the project outcome.
+          Outline your approach. We don't charge you to bid—we only monetize on the win.
         </CardDescription>
       </CardHeader>
       <CardContent className="p-8 space-y-6">
@@ -80,7 +85,7 @@ export function ProposalForm({ rfpId }: ProposalFormProps) {
           <div className="space-y-2">
             <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Execution Strategy & Cover Letter</label>
             <Textarea 
-              placeholder="Outline your specific methodology for this outcome. Why should the founder trust you with this mission-critical task?" 
+              placeholder="How will you secure the outcome? Why should the founder trust you with this mission-critical task?" 
               className="min-h-[200px] focus-visible:ring-primary text-base"
               value={coverLetter}
               onChange={(e) => setCoverLetter(e.target.value)}
@@ -91,7 +96,7 @@ export function ProposalForm({ rfpId }: ProposalFormProps) {
           <div className="bg-accent/5 p-6 rounded-2xl border border-accent/20 flex gap-4 items-start">
             <ShieldCheck className="w-6 h-6 text-accent shrink-0" />
             <p className="text-xs text-muted-foreground leading-relaxed">
-              Your proposal will only be visible to the project founder. If awarded, the project funds will be secured in escrow before you begin work.
+              Your proposal is visible only to the founder. If awarded, the adjudicated win fee will be managed autonomously by the AMO.
             </p>
           </div>
 

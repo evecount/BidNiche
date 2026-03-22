@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { FileText, Sparkles, Target, DollarSign, Calendar, ArrowRight, ShieldCheck, Zap, Lightbulb, Bot } from 'lucide-react';
+import { FileText, Sparkles, Target, DollarSign, Calendar, ArrowRight, ShieldCheck, Zap, Lightbulb, Bot, Waves } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -117,8 +117,11 @@ export default function SubmitRFPPage() {
         {/* Form Column */}
         <div className="lg:col-span-7 space-y-8">
           <div className="space-y-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold tracking-widest uppercase mb-2">
+              <Waves className="w-3 h-3" /> Deep Water Method: Free to Post
+            </div>
             <h1 className="text-4xl font-extrabold tracking-tight">Post a Project RFP</h1>
-            <p className="text-muted-foreground text-lg">Define your fractional outcome and have verified experts compete for the execution.</p>
+            <p className="text-muted-foreground text-lg">Define your fractional outcome. It's free to list—you only pay for the strategic win.</p>
           </div>
 
           <div className="space-y-4">
@@ -161,7 +164,7 @@ export default function SubmitRFPPage() {
               <div className="space-y-2">
                 <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Requirements & Deliverables</label>
                 <Textarea 
-                  placeholder="Describe the outcome you need. For AI work, specify if you need agent orchestration, fine-tuning, or a custom RAG system." 
+                  placeholder="Describe the outcome you need. Our AI orchestrators will help verified experts compete for the win." 
                   className="min-h-[200px] focus-visible:ring-primary text-base"
                   value={formData.description}
                   onChange={e => setFormData({...formData, description: e.target.value})}
@@ -234,7 +237,7 @@ export default function SubmitRFPPage() {
                       <Sparkles className="w-6 h-6 text-muted-foreground" />
                     </div>
                     <p className="text-sm text-muted-foreground px-4">
-                      Submit your requirements to receive a professional AI-driven strategic assessment and complexity score.
+                      Submit your requirements to receive a professional AI-driven strategic assessment. Zero upfront cost.
                     </p>
                   </div>
                 ) : (
@@ -283,7 +286,7 @@ export default function SubmitRFPPage() {
             <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10 flex gap-4 items-start">
               <ShieldCheck className="w-6 h-6 text-primary shrink-0" />
               <p className="text-xs text-muted-foreground leading-relaxed">
-                By launching this RFP, you authorize RFPCentral to reach out to our network of verified experts. Your funds will be held in escrow upon awarding the contract.
+                By launching this RFP, you authorize RFPCentral to reach out to our network. We only win when you award—no upfront platform fees.
               </p>
             </div>
           </div>

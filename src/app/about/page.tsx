@@ -1,4 +1,4 @@
-import { Briefcase, ShieldCheck, Zap, Users, Globe, Award, Target, Scale, Star, Bot, Sparkles } from 'lucide-react';
+import { Briefcase, ShieldCheck, Zap, Users, Globe, Award, Target, Scale, Star, Bot, Sparkles, Waves } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
@@ -16,10 +16,10 @@ export default function AboutPage() {
             <Zap className="w-3 h-3 fill-primary" /> The New Economy Standard
           </div>
           <h1 className="font-headline text-5xl font-extrabold tracking-tight sm:text-7xl mb-8">
-            Navigating the <span className="text-primary italic">Agentic Shift</span>.
+            The <span className="text-primary italic">Deep Water</span> Method.
           </h1>
           <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-            RFPCentral provides founders with the <span className="text-foreground font-bold">"human-in-the-loop"</span> expertise needed to outsource mission-critical projects with total confidence. We bridge the gap between high-growth companies and a vetted roster of independent strategic operators via fractional auctions and standard RFPs.
+            RFPCentral provides founders with the <span className="text-foreground font-bold">"human-in-the-loop"</span> expertise needed to outsource mission-critical projects. We operate on a success-only model: <span className="text-foreground font-bold">Free to Post, Free to Tender, Pay for the Win.</span>
           </p>
         </div>
       </section>
@@ -28,13 +28,26 @@ export default function AboutPage() {
       <section className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           <div className="space-y-8">
-            <h2 className="font-headline text-4xl font-bold italic text-primary">Outcome Certainty, Not Billable Hours</h2>
+            <h2 className="font-headline text-4xl font-bold italic text-primary">Outcome Adjudication, Not Arbitrary Billing</h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              The billable hour is an artifact of a slower era. In a world of rapid iteration and agentic systems, founders need results, not spreadsheets of time. Linear human time is our only constant; we help you buy it back.
+              The billable hour is dead. In the agentic shift, linear human time is the only remaining constant. We help you buy guaranteed outcomes, not just hours.
             </p>
-            <p className="text-lg text-muted-foreground leading-relaxed font-medium">
-              At RFPCentral, we acquire and vet talent for our roster, then allow them to auction **fractional capacity blocks** or respond to your **Strategic RFPs**. Whether it's a 40-hour agentic orchestration or a Series A roadshow sprint, the market decides the value based on the business impact.
-            </p>
+            <div className="bg-muted/50 p-6 rounded-2xl border border-dashed border-primary/20 space-y-4">
+              <h4 className="font-bold flex items-center gap-2">
+                <Waves className="w-5 h-5 text-primary" /> The Deep Water Philosophy
+              </h4>
+              <ul className="space-y-3 text-sm">
+                <li className="flex gap-2">
+                  <span className="font-bold text-primary">Free to Post:</span> Founders list mission-critical RFPs at zero cost.
+                </li>
+                <li className="flex gap-2">
+                  <span className="font-bold text-primary">Free to Tender:</span> Experts submit strategic proposals without upfront fees.
+                </li>
+                <li className="flex gap-2">
+                  <span className="font-bold text-primary">Pay for the Win:</span> RFPCentral captures value only when a tender is won, adjudicated by the AMO.
+                </li>
+              </ul>
+            </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-4">
               <div className="flex gap-4">
                 <div className="bg-primary/10 p-3 h-fit rounded-2xl border border-primary/20 shadow-sm shadow-primary/10">
@@ -100,7 +113,7 @@ export default function AboutPage() {
           <div className="relative z-10 space-y-6">
             <h2 className="text-5xl lg:text-6xl font-extrabold tracking-tight">Outsource your operational anxiety.</h2>
             <p className="text-xl opacity-90 max-w-2xl mx-auto leading-relaxed">
-              Secure your next strategic partner through our fractional capacity auctions or post a bespoke project RFP.
+              Post for free. Tender for free. Pay only when the outcome is secured.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row justify-center gap-6 relative z-10">
@@ -108,7 +121,7 @@ export default function AboutPage() {
               <Link href="/auctions">Browse Roster Capacity</Link>
             </Button>
             <Button size="lg" variant="outline" className="h-16 px-12 rounded-full font-bold text-lg border-white/30 hover:bg-white/10 text-white" asChild>
-              <Link href="/rfp/create">Post Project RFP</Link>
+              <Link href="/rfp/create">Post Free RFP</Link>
             </Button>
           </div>
         </div>
