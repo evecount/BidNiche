@@ -1,4 +1,3 @@
-
 import { getMockAuction, getMockBids } from '@/lib/db-mock';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
@@ -90,7 +89,7 @@ export default async function AuctionPage({ params }: { params: Promise<{ id: st
             <div className="bg-muted/30 rounded-2xl p-6 border border-border/50">
               <h4 className="font-bold text-foreground flex items-center gap-2 mb-4">
                 <ShieldCheck className="w-5 h-5 text-accent" />
-                The BidNiche Service Guarantee
+                The RFPCentral Service Guarantee
               </h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                 <div className="space-y-1">

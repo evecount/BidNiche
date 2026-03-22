@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -120,7 +119,7 @@ export function BiddingInterface({
       </CardContent>
       <CardFooter className="bg-muted/30 px-8 py-4 flex justify-center border-t">
         <p className="text-[10px] text-muted-foreground text-center uppercase tracking-widest font-bold">
-          All bids are binding. Verification required for purchases over $10k.
+          All bids are binding. RFPCentral verification required for purchases over $10k.
         </p>
       </CardFooter>
     </Card>

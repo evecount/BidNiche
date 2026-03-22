@@ -59,17 +59,17 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Testimonial Section: The "Stopped Sweating" Proof */}
+      {/* Testimonial Section */}
       <section className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {[
             {
-              quote: "I used to sweat over our Q4 rollouts. Now, I just secure a vetted capacity block on BidNiche and know the outcome is guaranteed by an elite operator.",
+              quote: "I used to sweat over our Q4 rollouts. Now, I just secure a vetted capacity block on RFPCentral and know the outcome is guaranteed by an elite operator.",
               author: "Marcus Chen",
               role: "CEO, NexaStream AI"
             },
             {
-              quote: "The RFP dance was killing our momentum. Posting a Strategic Bounty on BidNiche brought the experts to us, with AI vetting the complexity first.",
+              quote: "The RFP dance was killing our momentum. Posting a Strategic Bounty on RFPCentral brought the experts to us, with AI vetting the complexity first.",
               author: "Sarah Jenkins",
               role: "Founder, Bloom Capital"
             },
@@ -91,7 +91,7 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* The Multi-Tenant Value Prop */}
+      {/* Value Prop */}
       <section className="container mx-auto px-4 py-12">
         <div className="bg-primary/5 rounded-[3rem] p-12 lg:p-20 border border-primary/10">
           <div className="max-w-3xl mb-16">
@@ -154,7 +154,7 @@ export default async function Home() {
         <div className="text-center max-w-2xl mx-auto mb-16">
           <h3 className="text-sm font-bold uppercase tracking-widest text-primary mb-2">Our Standards</h3>
           <h2 className="text-4xl font-extrabold">The 4% Acceptance Roster</h2>
-          <p className="text-muted-foreground mt-4">We hand-vet every expert on BidNiche to ensure only top-tier strategic outcomes are delivered.</p>
+          <p className="text-muted-foreground mt-4">We hand-vet every expert on RFPCentral to ensure only top-tier strategic outcomes are delivered.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
           <div className="space-y-4">

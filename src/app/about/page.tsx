@@ -1,4 +1,3 @@
-
 import { Briefcase, ShieldCheck, Zap, Users, Globe, Award, Target, Scale, Star } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -20,7 +19,7 @@ export default function AboutPage() {
             The World's Roster for <span className="text-primary italic">Elite Expertise</span>
           </h1>
           <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-            BidNiche bridges the gap between high-growth companies and a vetted roster of the world's most talented independent experts. We've modernized professional services by moving away from opaque billable hours and into transparent, market-driven auctions.
+            RFPCentral bridges the gap between high-growth companies and a vetted roster of the world's most talented independent experts. We've modernized professional services by moving away from opaque billable hours and into transparent, market-driven auctions.
           </p>
         </div>
       </section>
@@ -34,7 +33,7 @@ export default function AboutPage() {
               Traditional professional services—law, consulting, engineering—are built on the flawed incentive of the billable hour. It rewards inefficiency and creates unnecessary friction between clients and experts.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed font-medium">
-              At BidNiche, we acquire and vet elite talent for our roster, then allow them to auction **packaged outcomes**. Whether it's a 40-hour legal sprint or a fractional CTO block, the market decides the value based on results, not the ticking clock.
+              At RFPCentral, we acquire and vet elite talent for our roster, then allow them to auction **packaged outcomes**. Whether it's a 40-hour legal sprint or a fractional CTO block, the market decides the value based on results, not the ticking clock.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-4">
               <div className="flex gap-4">

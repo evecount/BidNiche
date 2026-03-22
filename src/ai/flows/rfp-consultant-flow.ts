@@ -29,7 +29,7 @@ const prompt = ai.definePrompt({
   name: 'rfpConsultantPrompt',
   input: { schema: RFPConsultantInputSchema },
   output: { schema: RFPConsultantOutputSchema },
-  prompt: `You are the BidNiche AI Strategic Consultant. Your role is to take a founder's mission-critical project requirements (like a roadshow or marketing rollout) and transform it into a professional strategic brief.
+  prompt: `You are the RFPCentral AI Strategic Consultant. Your role is to take a founder's mission-critical project requirements (like a roadshow or marketing rollout) and transform it into a professional strategic brief.
 
 Analyze the following project bounty:
 Title: {{{title}}}

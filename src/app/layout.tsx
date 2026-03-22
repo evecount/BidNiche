@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { Gavel, Heart, Mail, Twitter, Instagram, Globe, Award, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'BidNiche | Elite Project Outcome Auctions',
+  title: 'RFPCentral | Elite Project Outcome Auctions',
   description: 'The world\'s premier roster for mission-critical outsourced projects. Secure elite capacity for your next product rollout or strategic roadshow.',
 };
 
@@ -39,7 +39,7 @@ export default function RootLayout({
                     <Gavel className="w-5 h-5 text-white" />
                   </div>
                   <span className="font-headline font-extrabold text-2xl tracking-tighter text-primary">
-                    BidNiche
+                    RFPCentral
                   </span>
                 </Link>
                 <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
@@ -94,7 +94,7 @@ export default function RootLayout({
 
             <div className="pt-10 border-t flex flex-col md:flex-row justify-between items-center gap-8">
               <p className="text-xs text-muted-foreground font-medium uppercase tracking-widest">
-                © {new Date().getFullYear()} BidNiche. Ending the Billable Hour. Strategic Project Auctions.
+                © {new Date().getFullYear()} RFPCentral. Ending the Billable Hour. Strategic Project Auctions.
               </p>
               <div className="flex items-center gap-3 text-xs text-muted-foreground bg-muted/50 px-4 py-2 rounded-full border">
                 Built with <Heart className="w-3.5 h-3.5 text-destructive fill-destructive animate-pulse" /> by the Founding Partners

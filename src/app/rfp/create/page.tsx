@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -12,6 +11,7 @@ import { useToast } from '@/hooks/use-toast';
 import { rfpConsultant, type RFPConsultantOutput } from '@/ai/flows/rfp-consultant-flow';
 import { createMockRFP } from '@/lib/db-mock';
 import Link from 'next/link';
+import { cn } from '@/lib/utils';
 
 export default function SubmitRFPPage() {
   const router = useRouter();
@@ -226,7 +226,7 @@ export default function SubmitRFPPage() {
             <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10 flex gap-4 items-start">
               <ShieldCheck className="w-6 h-6 text-primary shrink-0" />
               <p className="text-xs text-muted-foreground leading-relaxed">
-                By launching this bounty, you authorize BidNiche to reach out to our network of verified elite experts. Your funds will be held in escrow upon awarding the contract.
+                By launching this bounty, you authorize RFPCentral to reach out to our network of verified elite experts. Your funds will be held in escrow upon awarding the contract.
               </p>
             </div>
           </div>
@@ -236,5 +236,3 @@ export default function SubmitRFPPage() {
     </div>
   );
 }
-
-import { cn } from '@/lib/utils';

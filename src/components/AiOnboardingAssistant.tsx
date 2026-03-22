@@ -18,7 +18,7 @@ export function AiOnboardingAssistant() {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'model', text: 'Hi! I\'m your BidNiche assistant. How can I help you get started with our premium auctions today?' }
+    { role: 'model', text: 'Hi! I\'m your RFPCentral assistant. How can I help you get started with our premium auctions today?' }
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -59,7 +59,7 @@ export function AiOnboardingAssistant() {
           <CardHeader className="bg-primary px-4 py-3 flex flex-row justify-between items-center text-primary-foreground rounded-t-lg">
             <CardTitle className="text-sm font-bold flex items-center gap-2">
               <Sparkles className="w-4 h-4" />
-              BidNiche Guide
+              RFPCentral Guide
             </CardTitle>
             <Button 
               variant="ghost" 

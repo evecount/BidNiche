@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from 'next/link';
@@ -27,7 +26,7 @@ export function Navbar() {
             <Gavel className="w-6 h-6 text-white" />
           </div>
           <span className="font-headline font-extrabold text-2xl tracking-tight text-primary">
-            BidNiche
+            RFPCentral
           </span>
         </Link>
 
@@ -46,8 +45,8 @@ export function Navbar() {
               {item.name}
             </Link>
           ))}
-          <Button variant="outline" className="rounded-full px-6 border-accent text-accent hover:bg-accent hover:text-white transition-all font-bold">
-            Submit RFP
+          <Button variant="outline" className="rounded-full px-6 border-accent text-accent hover:bg-accent hover:text-white transition-all font-bold" asChild>
+            <Link href="/rfp/create">Submit RFP</Link>
           </Button>
         </div>
 
@@ -74,7 +73,9 @@ export function Navbar() {
               {item.name}
             </Link>
           ))}
-          <Button className="w-full rounded-full bg-accent hover:bg-accent/90">Post Project RFP</Button>
+          <Button className="w-full rounded-full bg-accent hover:bg-accent/90" asChild>
+            <Link href="/rfp/create">Post Project RFP</Link>
+          </Button>
         </div>
       )}
     </nav>

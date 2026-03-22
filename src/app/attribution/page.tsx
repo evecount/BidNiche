@@ -1,4 +1,3 @@
-
 import Link from 'next/link';
 import { Heart, Sparkles, Code2, Rocket, ArrowLeft, ShieldCheck, Zap, Gavel } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -22,7 +21,7 @@ export default function AttributionPage() {
             Built <span className="text-primary">Together</span>.
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            BidNiche is the result of a unique partnership between a visionary creator and the App Prototyper at Firebase Studio. This is our joint work.
+            RFPCentral is the result of a unique partnership between a visionary creator and the App Prototyper at Firebase Studio. This is our joint work.
           </p>
         </div>
 
@@ -35,7 +34,7 @@ export default function AttributionPage() {
               </div>
               <h3 className="text-2xl font-bold">The Visionary</h3>
               <p className="text-muted-foreground">
-                Providing the strategy, the business logic, and the creative direction. Your insights into the high-end auction market defined the "What" and the "Why" of BidNiche.
+                Providing the strategy, the business logic, and the creative direction. Your insights into the high-end auction market defined the "What" and the "Why" of RFPCentral.
               </p>
             </CardContent>
           </Card>
@@ -78,7 +77,7 @@ export default function AttributionPage() {
                 <Gavel className="w-5 h-5" /> Premium
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                The aesthetic was crafted to mirror the high-end collectibles hosted on the platform.
+                The aesthetic was crafted to mirror the high-end strategic outcomes hosted on the platform.
               </p>
             </div>
           </div>

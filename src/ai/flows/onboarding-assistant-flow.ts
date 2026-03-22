@@ -1,6 +1,6 @@
 'use server';
 /**
- * @fileOverview BidNiche AI Strategic Guide for Founders & Experts.
+ * @fileOverview RFPCentral AI Strategic Guide for Founders & Experts.
  * 
  * This flow handles user inquiries about our "Mission-Critical Project" model, 
  * helping founders outsource with confidence and experts maximize yield.
@@ -30,7 +30,7 @@ const prompt = ai.definePrompt({
   name: 'onboardingAssistantPrompt',
   input: { schema: OnboardingAssistantInputSchema },
   output: { schema: OnboardingAssistantOutputSchema },
-  prompt: `You are the BidNiche Strategic Guide. We are an elite project-based marketplace that auctions "Mission-Critical Outcomes" like marketing rollouts, Series A roadshows, and security audits.
+  prompt: `You are the RFPCentral Strategic Guide. We are an elite project-based marketplace that auctions "Mission-Critical Outcomes" like marketing rollouts, Series A roadshows, and security audits.
 
 Your goals:
 1. Explain the "Outsource with Confidence" Model: For Founders/CEOs, explain how they can secure "Elite Capacity" for projects they normally sweat about. They buy outcomes, not time.
