@@ -1,3 +1,40 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "watch",
+      "description": "Luxury Watch",
+      "imageUrl": "https://picsum.photos/seed/watch1/600/400",
+      "imageHint": "luxury watch"
+    },
+    {
+      "id": "car",
+      "description": "Classic Vintage Car",
+      "imageUrl": "https://picsum.photos/seed/car1/600/400",
+      "imageHint": "classic car"
+    },
+    {
+      "id": "art",
+      "description": "Abstract Modern Painting",
+      "imageUrl": "https://picsum.photos/seed/art1/600/400",
+      "imageHint": "abstract painting"
+    },
+    {
+      "id": "camera",
+      "description": "Vintage Leica Camera",
+      "imageUrl": "https://picsum.photos/seed/camera1/600/400",
+      "imageHint": "vintage camera"
+    },
+    {
+      "id": "sneakers",
+      "description": "Limited Edition Sneakers",
+      "imageUrl": "https://picsum.photos/seed/sneaker1/600/400",
+      "imageHint": "limited sneakers"
+    },
+    {
+      "id": "laptop",
+      "description": "High-end Workstation Laptop",
+      "imageUrl": "https://picsum.photos/seed/laptop1/600/400",
+      "imageHint": "modern laptop"
+    }
+  ]
 }
