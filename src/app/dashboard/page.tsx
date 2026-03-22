@@ -1,8 +1,9 @@
+
 import { getMockUserAuctions, getMockUserBids, getCorpusItems } from '@/lib/db-mock';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Plus, Gavel, ShoppingBag, Clock, ArrowRight, ExternalLink, Briefcase, Sparkles, Brain, DollarSign, Cpu, ShieldAlert, Zap, Globe } from 'lucide-react';
+import { Plus, Gavel, ShoppingBag, Clock, ArrowRight, ExternalLink, Briefcase, Sparkles, Brain, DollarSign, Cpu, ShieldAlert, Zap, Globe, BookOpen } from 'lucide-react';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 
@@ -24,6 +25,11 @@ export default async function DashboardPage() {
           </p>
         </div>
         <div className="flex flex-wrap gap-3">
+          <Button variant="outline" className="rounded-full px-6 border-primary/50 text-primary hover:bg-primary/5" asChild>
+            <Link href="/dashboard/blueprint">
+              <BookOpen className="w-4 h-4 mr-2" /> Agentic Blueprint
+            </Link>
+          </Button>
           <Button variant="outline" className="rounded-full px-6 border-green-500/50 text-green-600 hover:bg-green-50" asChild>
             <Link href="/dashboard/yield">
               <DollarSign className="w-4 h-4 mr-2" /> Yield Optimization
