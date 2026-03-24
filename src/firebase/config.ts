@@ -1,8 +1,10 @@
+import { env } from '@/lib/env';
+
 export const firebaseConfig = {
-  "projectId": "studio-1471106617-950ed",
-  "appId": "1:738875195565:web:ad1b0cc29163401a208624",
-  "apiKey": "AIzaSyBXxc3y1ovuCPArZ2SwIALuDGLYNnfNV_U",
-  "authDomain": "studio-1471106617-950ed.firebaseapp.com",
-  "measurementId": "",
-  "messagingSenderId": "738875195565"
+  projectId: env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  appId: env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  apiKey: env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  messagingSenderId: env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  measurementId: env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID || "",
 };
